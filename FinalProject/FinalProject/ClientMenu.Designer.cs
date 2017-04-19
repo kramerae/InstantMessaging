@@ -36,6 +36,7 @@
             this.uxInstructions = new System.Windows.Forms.Label();
             this.uxTitleLabel = new System.Windows.Forms.Label();
             this.uxContactListBox = new System.Windows.Forms.ListBox();
+            this.uxLogout = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // uxlabel1
@@ -52,7 +53,7 @@
             // 
             this.uxStartChat.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.uxStartChat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxStartChat.Location = new System.Drawing.Point(233, 293);
+            this.uxStartChat.Location = new System.Drawing.Point(233, 294);
             this.uxStartChat.Name = "uxStartChat";
             this.uxStartChat.Size = new System.Drawing.Size(157, 74);
             this.uxStartChat.TabIndex = 2;
@@ -61,7 +62,7 @@
             // 
             // uxAddContact
             // 
-            this.uxAddContact.Location = new System.Drawing.Point(248, 190);
+            this.uxAddContact.Location = new System.Drawing.Point(248, 194);
             this.uxAddContact.Name = "uxAddContact";
             this.uxAddContact.Size = new System.Drawing.Size(119, 37);
             this.uxAddContact.TabIndex = 3;
@@ -70,7 +71,7 @@
             // 
             // uxRemoveContact
             // 
-            this.uxRemoveContact.Location = new System.Drawing.Point(249, 233);
+            this.uxRemoveContact.Location = new System.Drawing.Point(249, 237);
             this.uxRemoveContact.Name = "uxRemoveContact";
             this.uxRemoveContact.Size = new System.Drawing.Size(118, 38);
             this.uxRemoveContact.TabIndex = 4;
@@ -80,7 +81,7 @@
             // uxInstructions
             // 
             this.uxInstructions.AutoSize = true;
-            this.uxInstructions.Location = new System.Drawing.Point(207, 70);
+            this.uxInstructions.Location = new System.Drawing.Point(207, 86);
             this.uxInstructions.Name = "uxInstructions";
             this.uxInstructions.Size = new System.Drawing.Size(215, 91);
             this.uxInstructions.TabIndex = 5;
@@ -90,7 +91,7 @@
             // 
             this.uxTitleLabel.AutoSize = true;
             this.uxTitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxTitleLabel.Location = new System.Drawing.Point(224, 41);
+            this.uxTitleLabel.Location = new System.Drawing.Point(224, 55);
             this.uxTitleLabel.Name = "uxTitleLabel";
             this.uxTitleLabel.Size = new System.Drawing.Size(166, 20);
             this.uxTitleLabel.TabIndex = 6;
@@ -104,11 +105,21 @@
             this.uxContactListBox.Size = new System.Drawing.Size(189, 355);
             this.uxContactListBox.TabIndex = 7;
             // 
+            // uxLogout
+            // 
+            this.uxLogout.Location = new System.Drawing.Point(335, 12);
+            this.uxLogout.Name = "uxLogout";
+            this.uxLogout.Size = new System.Drawing.Size(81, 26);
+            this.uxLogout.TabIndex = 8;
+            this.uxLogout.Text = "Log Out";
+            this.uxLogout.UseVisualStyleBackColor = true;
+            // 
             // ClientMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(428, 402);
+            this.Controls.Add(this.uxLogout);
             this.Controls.Add(this.uxContactListBox);
             this.Controls.Add(this.uxTitleLabel);
             this.Controls.Add(this.uxInstructions);
@@ -132,6 +143,7 @@
         private System.Windows.Forms.Label uxInstructions;
         private System.Windows.Forms.Label uxTitleLabel;
         private System.Windows.Forms.ListBox uxContactListBox;
+        private System.Windows.Forms.Button uxLogout;
     }
 }
 
