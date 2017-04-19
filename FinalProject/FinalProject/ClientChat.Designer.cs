@@ -1,6 +1,6 @@
 ﻿namespace FinalProject
 {
-    partial class Form1
+    partial class ClientChat
     {
         /// <summary>
         /// Required designer variable.
