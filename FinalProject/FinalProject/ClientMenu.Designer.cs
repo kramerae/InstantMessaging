@@ -59,6 +59,7 @@
             this.uxStartChat.TabIndex = 2;
             this.uxStartChat.Text = "Start Chat";
             this.uxStartChat.UseVisualStyleBackColor = false;
+            this.uxStartChat.Click += new System.EventHandler(this.uxStartChat_Click);
             // 
             // uxAddContact
             // 
@@ -68,6 +69,7 @@
             this.uxAddContact.TabIndex = 3;
             this.uxAddContact.Text = "Add Contact";
             this.uxAddContact.UseVisualStyleBackColor = true;
+            this.uxAddContact.Click += new System.EventHandler(this.uxAddContact_Click);
             // 
             // uxRemoveContact
             // 
@@ -77,6 +79,7 @@
             this.uxRemoveContact.TabIndex = 4;
             this.uxRemoveContact.Text = "Remove Contact";
             this.uxRemoveContact.UseVisualStyleBackColor = true;
+            this.uxRemoveContact.Click += new System.EventHandler(this.uxRemoveContact_Click);
             // 
             // uxInstructions
             // 
@@ -113,6 +116,7 @@
             this.uxLogout.TabIndex = 8;
             this.uxLogout.Text = "Log Out";
             this.uxLogout.UseVisualStyleBackColor = true;
+            this.uxLogout.Click += new System.EventHandler(this.uxLogout_Click);
             // 
             // ClientMenu
             // 

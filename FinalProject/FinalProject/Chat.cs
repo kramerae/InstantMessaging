@@ -16,5 +16,10 @@ namespace FinalProject
         {
             InitializeComponent();
         }
+
+        private void uxSend_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -61,6 +61,7 @@
             this.uxSend.TabIndex = 2;
             this.uxSend.Text = "SEND";
             this.uxSend.UseVisualStyleBackColor = false;
+            this.uxSend.Click += new System.EventHandler(this.uxSend_Click);
             // 
             // Chat
             // 
