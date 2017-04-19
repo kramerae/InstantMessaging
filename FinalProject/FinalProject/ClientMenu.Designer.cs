@@ -28,24 +28,48 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.uxlabel1 = new System.Windows.Forms.Label();
+            this.uxContactListBox = new System.Windows.Forms.ListBox();
+            this.uxStartChat = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // label1
+            // uxlabel1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(20, 44);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "label1";
+            this.uxlabel1.AutoSize = true;
+            this.uxlabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uxlabel1.Location = new System.Drawing.Point(12, 9);
+            this.uxlabel1.Name = "uxlabel1";
+            this.uxlabel1.Size = new System.Drawing.Size(87, 18);
+            this.uxlabel1.TabIndex = 0;
+            this.uxlabel1.Text = "Contact List";
+            // 
+            // uxContactListBox
+            // 
+            this.uxContactListBox.FormattingEnabled = true;
+            this.uxContactListBox.Location = new System.Drawing.Point(15, 30);
+            this.uxContactListBox.Name = "uxContactListBox";
+            this.uxContactListBox.Size = new System.Drawing.Size(186, 355);
+            this.uxContactListBox.TabIndex = 1;
+            // 
+            // uxStartChat
+            // 
+            this.uxStartChat.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.uxStartChat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uxStartChat.Location = new System.Drawing.Point(232, 305);
+            this.uxStartChat.Name = "uxStartChat";
+            this.uxStartChat.Size = new System.Drawing.Size(156, 69);
+            this.uxStartChat.TabIndex = 2;
+            this.uxStartChat.Text = "Start Chat";
+            this.uxStartChat.UseVisualStyleBackColor = false;
             // 
             // ClientMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(422, 402);
+            this.Controls.Add(this.uxStartChat);
+            this.Controls.Add(this.uxContactListBox);
+            this.Controls.Add(this.uxlabel1);
             this.Name = "ClientMenu";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -55,7 +79,9 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label uxlabel1;
+        private System.Windows.Forms.ListBox uxContactListBox;
+        private System.Windows.Forms.Button uxStartChat;
     }
 }
 
