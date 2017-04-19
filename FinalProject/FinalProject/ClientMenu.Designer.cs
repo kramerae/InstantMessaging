@@ -1,6 +1,6 @@
 ﻿namespace FinalProject
 {
-    partial class ClientChat
+    partial class ClientMenu
     {
         /// <summary>
         /// Required designer variable.

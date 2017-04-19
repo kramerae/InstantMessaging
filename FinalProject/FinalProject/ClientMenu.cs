@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace FinalProject
 {
-    public partial class ClientChat : Form
+    public partial class ClientMenu : Form
     {
-        public ClientChat()
+        public ClientMenu()
         {
             InitializeComponent();
         }
