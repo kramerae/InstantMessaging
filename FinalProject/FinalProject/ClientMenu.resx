@@ -117,4 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="uxInstructions.Text" xml:space="preserve">
+    <value>Select a contact from your list and hit the
+start chat button to begin your conversation!
+Or select a contact and press the remove
+contact button to delete them from your 
+contact list. Know a contact's name press 
+the add contact button to add them to 
+your contact list!</value>
+  </data>
 </root>
