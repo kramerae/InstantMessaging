@@ -12,8 +12,11 @@ namespace FinalProject
 {
     public partial class ClientMenu : Form
     {
-        public ClientMenu()
+        private ClientController _c;
+
+        public ClientMenu(ClientController c)
         {
+            _c = c;
             InitializeComponent();
         }
 

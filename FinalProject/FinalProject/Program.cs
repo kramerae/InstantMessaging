@@ -16,7 +16,8 @@ namespace FinalProject
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ClientMenu());
+            ClientController c = new ClientController();
+            Application.Run(new LoginForm(c));
         }
     }
 }
