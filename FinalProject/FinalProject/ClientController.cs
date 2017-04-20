@@ -9,8 +9,8 @@ namespace FinalProject
     public class ClientController
     {
         private string userName;
-     //   private WebSocket ws; 
-
+        //   private WebSocket ws; 
+        private Dictionary<string, bool> contacts; 
 
 
         public ClientController()
