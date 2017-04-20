@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WebSocketSharp;
 
 
 namespace FinalProject
@@ -10,8 +11,8 @@ namespace FinalProject
     public class ClientController
     {
         private string userName;
-        //   private WebSocket ws; 
-        private Dictionary<string, bool> contacts; 
+        private WebSocket ws; 
+
 
 
         public ClientController()
