@@ -8,5 +8,12 @@ namespace FinalProject
 {
     class ClientModel
     {
+        private Dictionary<string, bool> contacts; 
+        private List<string> messages;
+
+
+
+
+
     }
 }
