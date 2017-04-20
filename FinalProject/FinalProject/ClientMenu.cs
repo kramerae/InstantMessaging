@@ -18,26 +18,35 @@ namespace FinalProject
         {
             _c = c;
             InitializeComponent();
+            uxRemoveContact.Enabled = false;
+            uxStartChat.Enabled = false;
+
         }
 
         private void uxLogout_Click(object sender, EventArgs e)
         {
-
+            // Call server to update status to offline
+            // Close form
         }
 
         private void uxRemoveContact_Click(object sender, EventArgs e)
         {
-
+            // Update contact list in server
+            // Update Model
+            // Update ListBox
         }
 
         private void uxAddContact_Click(object sender, EventArgs e)
         {
-
+            // Check to see if user exists in server
+            // If so add to contact list in server
+            // Update ListBox
         }
 
         private void uxStartChat_Click(object sender, EventArgs e)
         {
-
+            // Check to see if online
+            // Lauch chat form
         }
     }
 }
