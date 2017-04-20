@@ -16,5 +16,25 @@ namespace FinalProject
         {
             InitializeComponent();
         }
+
+        private void uxLogout_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void uxRemoveContact_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void uxAddContact_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void uxStartChat_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
