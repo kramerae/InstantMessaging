@@ -64,6 +64,39 @@ namespace FP_Server
             }
         }
 
+        /// <summary>
+        /// Checks if the user exsist
+        /// </summary>
+        /// <param name="username"></param>
+        /// <returns></returns>
+        public bool CheckUser(string username)
+        {
+            return _userDatabase.ContainsKey(username);
+        }
+
+
+
+        /// <summary>
+        /// Checks if the password is correct
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        public bool PasswordValidation(string username, string password)
+        {
+            string dbPassword = _userDatabase[username].Password;
+
+            if(password == dbPassword)
+            {
+                return true;
+            }
+
+            return false;
+
+
+
+
+        }
 
     }
 
