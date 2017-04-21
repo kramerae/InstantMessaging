@@ -26,20 +26,41 @@ namespace FP_Server
        /// </summary>
         private void ReadFromFile()
         {
-            using (StreamReader file = File.OpenText(@"U:users.json"))
+            using (StreamReader file = new StreamReader("users.json"))
             {
 
-                //Deserializes object
-                Console.WriteLine("Working");
-                JsonSerializer serializer = new JsonSerializer();
-                users people = (users)serializer.Deserialize(file, typeof(users));
+                string json = file.ReadToEnd();
+                dynamic result = JsonConvert.DeserializeObject(json);
                 
-                foreach(user u in people.data)
-                {
-                    _userDatabase.Add(u.username, new User_m(u.username, u.password, u.contacts));
-                }
-               
 
+                foreach(var user in result.users)
+                {
+                    string name = user.username.ToString();
+                    string password = user.password.ToString();
+                    var data = new List<string>();
+                    foreach (var person in user.contacts)
+                    {
+                        data.Add(person.ToString());
+                    }
+
+
+                    _userDatabase.Add(name, new User_m(name, password, data));
+                }
+
+                //List<users> items = JsonConvert.DeserializeObject<List<users>>(json);
+
+                //Deserializes object
+                /*   Console.WriteLine("Working");
+                   JsonSerializer serializer = new JsonSerializer();
+                   users people = (users)serializer.Deserialize(file, typeof(users));
+
+                   foreach(user u in people.data)
+                   {
+                       _userDatabase.Add(u.username, new User_m(u.username, u.password, u.contacts));
+                   }
+
+
+               }*/
             }
         }
 
