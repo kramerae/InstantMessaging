@@ -20,10 +20,15 @@ namespace FP_Server
             ReadFromFile();
         }
 
+        private void WriteToFile()
+        {
 
-       /// <summary>
-       /// This method reads from the jsonfile and adds it to the database.
-       /// </summary>
+        }
+
+
+        /// <summary>
+        /// This method reads from the jsonfile and adds it to the database.
+        /// </summary>
         private void ReadFromFile()
         {
             using (StreamReader file = new StreamReader("users.json"))
@@ -64,10 +69,7 @@ namespace FP_Server
             }
         }
 
-        private void WriteToFile()
-        {
-            
-        }
+      
 
 
     }
