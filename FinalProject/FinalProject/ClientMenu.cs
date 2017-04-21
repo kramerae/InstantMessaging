@@ -38,6 +38,7 @@ namespace FinalProject
 
         private void uxAddContact_Click(object sender, EventArgs e)
         {
+            AddContactForm ac = new AddContactForm();
             // Check to see if user exists in server
             // If so add to contact list in server
             // Update ListBox
