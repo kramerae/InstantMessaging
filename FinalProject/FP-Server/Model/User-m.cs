@@ -27,6 +27,14 @@ namespace FP_Server.Model
         {
             get
             {
+                return _user;
+            }
+        }
+
+        public string Password
+        {
+            get
+            {
                 return _password;
             }
         }
