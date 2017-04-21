@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace FP_Server
 {
-    class ServerController
+    public class ServerController
     {
+        private ServerDatabase _database;
+
+        public ServerController(ServerDatabase d)
+        {
+            _database = d;
+        }
     }
 }

@@ -12,6 +12,15 @@ namespace FP_Server
     {
         static void Main(string[] args)
         {
+            // Construct model
+
+            ServerDatabase d = new ServerDatabase();
+
+            // Construct Server Controlller
+            ServerController c = new ServerController(d);
+
+
+
             // Start a websocket server at port 8001
             var wss = new WebSocketServer(8550);
 

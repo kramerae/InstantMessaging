@@ -12,10 +12,11 @@ namespace FP_Server.Model
         private string _password;
         private List<string> _contacts;
 
-        public User_m(string user, string password)
+        public User_m(string user, string password, List<string> contacts)
         {
             _user = user;
             _password = password;
+            _contacts = contacts;
 
         }
 
