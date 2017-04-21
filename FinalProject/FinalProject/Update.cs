@@ -6,20 +6,9 @@ using System.Threading.Tasks;
 
 namespace FinalProject
 {
-    public class ClientModel
+    public delegate void UpdateContacts();
+    public interface Update
     {
-        
-        private List<string> messages;
-        
-
-        public ClientModel()
-        {
-            
-        }
-  
-
-
-
-
+        //event UpdateContacts Update
     }
 }

@@ -20,6 +20,7 @@ namespace FinalProject
             InitializeComponent();
             uxRemoveContact.Enabled = false;
             uxStartChat.Enabled = false;
+            UpdateContactList();
 
         }
 
@@ -54,6 +55,30 @@ namespace FinalProject
         {
             // Check to see if online
             // Lauch chat form
+        }
+
+        public void UpdateContactList()
+        {
+            Dictionary<string, bool> contacts = _c.GetContacts;
+
+            foreach (string s in contacts.Keys)
+            {
+                if(contacts[s] == true)
+                {
+                    uxContactListBox.Items.Add(string.Format("{0}  |  {1}", s, "ONLINE"));
+       
+                }
+                else
+                {
+                    uxContactListBox.Items.Add(string.Format("{0}    {1}", s, ""));
+                }
+            }
+        }
+
+        private void uxContactListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            uxRemoveContact.Enabled = true;
+            uxStartChat.Enabled = true;
         }
     }
 }
