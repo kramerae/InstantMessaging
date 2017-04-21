@@ -52,6 +52,7 @@
             // uxStartChat
             // 
             this.uxStartChat.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.uxStartChat.Cursor = System.Windows.Forms.Cursors.Hand;
             this.uxStartChat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.uxStartChat.Location = new System.Drawing.Point(233, 294);
             this.uxStartChat.Name = "uxStartChat";
@@ -107,6 +108,7 @@
             this.uxContactListBox.Name = "uxContactListBox";
             this.uxContactListBox.Size = new System.Drawing.Size(189, 355);
             this.uxContactListBox.TabIndex = 7;
+            this.uxContactListBox.SelectedIndexChanged += new System.EventHandler(this.uxContactListBox_SelectedIndexChanged);
             // 
             // uxLogout
             // 
