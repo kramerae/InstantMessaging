@@ -20,6 +20,10 @@ namespace FP_Server
             ReadFromFile();
         }
 
+        private void WriteToFile()
+        {
+
+        }
 
        /// <summary>
        /// This method reads from the jsonfile and adds it to the database.
@@ -47,20 +51,6 @@ namespace FP_Server
                     _userDatabase.Add(name, new User_m(name, password, data));
                 }
 
-                //List<users> items = JsonConvert.DeserializeObject<List<users>>(json);
-
-                //Deserializes object
-                /*   Console.WriteLine("Working");
-                   JsonSerializer serializer = new JsonSerializer();
-                   users people = (users)serializer.Deserialize(file, typeof(users));
-
-                   foreach(user u in people.data)
-                   {
-                       _userDatabase.Add(u.username, new User_m(u.username, u.password, u.contacts));
-                   }
-
-
-               }*/
             }
         }
 
