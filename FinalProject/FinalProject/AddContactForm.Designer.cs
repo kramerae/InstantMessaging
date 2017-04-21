@@ -50,10 +50,12 @@
             this.uxAddTextBox.Name = "uxAddTextBox";
             this.uxAddTextBox.Size = new System.Drawing.Size(156, 22);
             this.uxAddTextBox.TabIndex = 1;
+            this.uxAddTextBox.TextChanged += new System.EventHandler(this.uxAddTextBox_TextChanged);
             // 
             // uxAddButton
             // 
             this.uxAddButton.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.uxAddButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.uxAddButton.Font = new System.Drawing.Font("Britannic Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.uxAddButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.uxAddButton.Location = new System.Drawing.Point(146, 89);
