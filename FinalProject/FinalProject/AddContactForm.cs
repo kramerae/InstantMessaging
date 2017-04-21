@@ -15,6 +15,13 @@ namespace FinalProject
         public AddContactForm()
         {
             InitializeComponent();
+            uxAddButton.Enabled = false;
+
+        }
+
+        private void uxAddTextBox_TextChanged(object sender, EventArgs e)
+        {
+            uxAddButton.Enabled = true;
         }
     }
 }

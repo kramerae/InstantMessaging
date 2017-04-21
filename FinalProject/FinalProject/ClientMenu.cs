@@ -35,6 +35,16 @@ namespace FinalProject
             // Update contact list in server
             // Update Model
             // Update ListBox
+            const string message = "Are you sure that you would like to remove the contact?";
+            const string caption = "Remove Contact";
+            var result = MessageBox.Show(message, caption,MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+
+            if(result == DialogResult.Yes)
+            {
+                // server remove contact
+                MessageBox.Show("Contact Removed!");
+                // update contact list 
+            }
         }
 
         private void uxAddContact_Click(object sender, EventArgs e)
