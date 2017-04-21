@@ -11,12 +11,15 @@ namespace FP_Server.Model
         private string _user;
         private string _password;
         private List<string> _contacts;
+        private bool _isOnline;
+
 
         public User_m(string user, string password, List<string> contacts)
         {
             _user = user;
             _password = password;
             _contacts = contacts;
+
 
         }
 
@@ -41,6 +44,16 @@ namespace FP_Server.Model
             }
         }
 
+        public bool IsOnline
+        {
+            get
+            {
+                return _isOnline;
+            }set
+            {
+                _isOnline = value;
+            }
+        }
 
     }
 }
