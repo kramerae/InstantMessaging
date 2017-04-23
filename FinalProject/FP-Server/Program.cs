@@ -14,10 +14,10 @@ namespace FP_Server
         {
             // Construct model
 
-            ServerDatabase d = new ServerDatabase();
+           // ServerDatabase d = new ServerDatabase();
 
             // Construct Server Controlller
-            ServerController c = new ServerController(d);
+          //  ServerController c = new ServerController(d);
 
 
 
@@ -28,7 +28,7 @@ namespace FP_Server
             wss.AddWebSocketService<Echo>("/echo");
 
             // Add the Chat websocket service
-            wss.AddWebSocketService<Chat>("/chat");
+            wss.AddWebSocketService<ServerController>("/chat");
 
             // Start the server
             wss.Start();

@@ -13,15 +13,48 @@ namespace FP_Server
     public class ServerDatabase
     {
         Dictionary<string, User_m> _userDatabase;
-        
+
         public ServerDatabase()
         {
             _userDatabase = new Dictionary<string, User_m>();
             ReadFromFile();
+
         }
+
+        private void AddPerson()
+        {
+            List<string> a = new List<string>();
+
+            a.Add("Matt");
+            a.Add("Jason");
+            a.Add("Steven");
+            _userDatabase.Add("sriegodedios", new User_m("sriegodedios", "shaner26", a));
+
+
+
+
+        }
+
+
+
+
 
         private void WriteToFile()
         {
+            string jsonString = JsonConvert.SerializeObject(_userDatabase);
+
+            using (StreamWriter sw = new StreamWriter("users.json"))
+            {
+                sw.Write(jsonString);
+            }
+            
+           // Dictionary<string, User_m> m = JsonConvert.DeserializeObject<Dictionary<string, User_m>>(jsonString);
+
+
+
+
+
+
 
         }
 
@@ -32,27 +65,25 @@ namespace FP_Server
         {
             using (StreamReader file = new StreamReader("users.json"))
             {
-
-                string json = file.ReadToEnd();
-                dynamic result = JsonConvert.DeserializeObject(json);
-                
-
-                foreach(var user in result.users)
-                {
-                    string name = user.username.ToString();
-                    string password = user.password.ToString();
-                    var data = new List<string>();
-                    foreach (var person in user.contacts)
-                    {
-                        data.Add(person.ToString());
-                    }
-
-
-                    _userDatabase.Add(name, new User_m(name, password, data));
-                }
-
+                string jsonString = file.ReadToEnd();
+                _userDatabase = JsonConvert.DeserializeObject<Dictionary<string, User_m>>(jsonString);
+              
             }
         }
+
+        /// <summary>
+        /// This method adds the user to the database if the user makes a new account
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        public void AddUser(string username, string password)
+        {
+            _userDatabase.Add(username, new User_m(username, password, new List<string>()));
+
+        }
+
+
+
 
         /// <summary>
         /// Checks if the user exsist
@@ -85,31 +116,6 @@ namespace FP_Server
 
         }
 
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-    public class users
-    {
-        public List<user> data { get; set; }
-
-    }
-
-    public class user
-    {
-        public string username { get; set;}
-        public string password { get; set;}
-
-        public List<string> contacts { get; set; }
 
 
     }
