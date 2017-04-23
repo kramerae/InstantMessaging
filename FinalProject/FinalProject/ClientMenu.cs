@@ -20,6 +20,7 @@ namespace FinalProject
             InitializeComponent();
             uxRemoveContact.Enabled = false;
             uxStartChat.Enabled = false;
+            UpdateContactList();
 
         }
 
@@ -34,10 +35,27 @@ namespace FinalProject
             // Update contact list in server
             // Update Model
             // Update ListBox
+            const string message = "Are you sure that you would like to remove the contact?";
+            const string caption = "Remove Contact";
+            var result = MessageBox.Show(message, caption,MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+
+            if(result == DialogResult.Yes)
+            {
+                // server remove contact
+                MessageBox.Show("Contact Removed!");
+                // update contact list 
+            }
         }
 
         private void uxAddContact_Click(object sender, EventArgs e)
         {
+            using (AddContactForm ac = new AddContactForm())
+            {
+                if (ac.ShowDialog() == DialogResult.OK)
+                {
+                    // ???????
+                }
+            }
             // Check to see if user exists in server
             // If so add to contact list in server
             // Update ListBox
@@ -47,6 +65,30 @@ namespace FinalProject
         {
             // Check to see if online
             // Lauch chat form
+        }
+
+        public void UpdateContactList()
+        {
+            Dictionary<string, bool> contacts = _c.GetContacts;
+
+            foreach (string s in contacts.Keys)
+            {
+                if(contacts[s] == true)
+                {
+                    uxContactListBox.Items.Add(string.Format("{0}  |  {1}", s, "ONLINE"));
+       
+                }
+                else
+                {
+                    uxContactListBox.Items.Add(string.Format("{0}    {1}", s, ""));
+                }
+            }
+        }
+
+        private void uxContactListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            uxRemoveContact.Enabled = true;
+            uxStartChat.Enabled = true;
         }
     }
 }
