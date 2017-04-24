@@ -65,6 +65,14 @@ namespace FinalProject
         {
             // Check to see if online
             // Lauch chat form
+            using (Chat ch = new Chat(_c.MessageEntered))
+            {
+                if (ch.ShowDialog() == DialogResult.OK)
+                {
+                    _c.MessageReceived += ch.MessageReceived;
+                    // ???????
+                }
+            }
         }
 
         public void UpdateContactList()
