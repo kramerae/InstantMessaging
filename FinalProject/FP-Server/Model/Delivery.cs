@@ -8,13 +8,13 @@ namespace FP_Server.Model
 {
     public class Delivery
     {
-        int _status; // 101 = request loggin, 200 login succesfull, 403 loggin invalid, 201 send message
+        Status _status; // 101 = request loggin, 200 login succesfull, 403 loggin invalid, 201 send message
         string _message;
         int _chatroom;
         string _username;
         string _password;
 
-        public Delivery(int status, string username, string password)
+        public Delivery(Status status, string username, string password)
         {
             _status = status;
             _username = username;
@@ -25,7 +25,16 @@ namespace FP_Server.Model
 
         }
 
-        public Delivery(int status, string message, int chatroom)
+        public Delivery(Status status)
+        {
+            _status = status;
+            _username = null;
+            _password = null;
+            _message = null;
+            _chatroom = -100;
+        }
+
+        public Delivery(Status status, string message, int chatroom)
         {
             _status = status;
             _message = message;
@@ -34,8 +43,23 @@ namespace FP_Server.Model
             _password = null;
         }
 
+        public string Username
+        {
+            get
+            {
+                return _username;
+            }
+        }
 
-        public int TypeStatus
+        public string Password
+        {
+            get
+            {
+                return _password;
+            }
+        }
+
+        public Status TypeStatus
         {
             get
             {
