@@ -18,7 +18,6 @@ namespace FP_Server
         {
             _userDatabase = new Dictionary<string, User_m>();
             ReadFromFile();
-
         }
 
         private void AddPerson()
@@ -29,14 +28,7 @@ namespace FP_Server
             a.Add("Jason");
             a.Add("Steven");
             _userDatabase.Add("sriegodedios", new User_m("sriegodedios", "shaner26", a));
-
-
-
-
         }
-
-
-
 
 
         private void WriteToFile()
@@ -47,15 +39,6 @@ namespace FP_Server
             {
                 sw.Write(jsonString);
             }
-            
-           // Dictionary<string, User_m> m = JsonConvert.DeserializeObject<Dictionary<string, User_m>>(jsonString);
-
-
-
-
-
-
-
         }
 
        /// <summary>
@@ -67,7 +50,6 @@ namespace FP_Server
             {
                 string jsonString = file.ReadToEnd();
                 _userDatabase = JsonConvert.DeserializeObject<Dictionary<string, User_m>>(jsonString);
-              
             }
         }
 
@@ -83,8 +65,6 @@ namespace FP_Server
         }
 
 
-
-
         /// <summary>
         /// Checks if the user exsist
         /// </summary>
@@ -94,7 +74,6 @@ namespace FP_Server
         {
             return _userDatabase.ContainsKey(username);
         }
-
 
 
         /// <summary>
@@ -113,11 +92,7 @@ namespace FP_Server
             }
 
             return false;
-
         }
-
-
-
     }
 
 }

@@ -17,9 +17,7 @@ namespace FP_Server
            // ServerDatabase d = new ServerDatabase();
 
             // Construct Server Controlller
-          //  ServerController c = new ServerController(d);
-
-
+            // ServerController c = new ServerController(d);
 
             // Start a websocket server at port 8550
             var wss = new WebSocketServer(8550);

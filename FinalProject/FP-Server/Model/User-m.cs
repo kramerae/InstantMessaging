@@ -21,8 +21,6 @@ namespace FP_Server.Model
             _user = user;
             _password = password;
             _contacts = contacts;
-
-
         }
 
         public string User

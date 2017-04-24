@@ -17,10 +17,8 @@ namespace FP_Server
 
         protected override void OnMessage(MessageEventArgs e)
         {
-
             Delivery messageJSON = JsonConvert.DeserializeObject<Delivery>(e.Data);
             Send("Echo: " + messageJSON.Message);
-
         }
         
         public ServerController()
