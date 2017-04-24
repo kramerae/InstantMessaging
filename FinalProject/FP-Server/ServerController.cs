@@ -20,7 +20,7 @@ namespace FP_Server
 
         protected override void OnOpen()
         {
-                
+            Sessions.SendTo(ID, ID);
 
 
         }
@@ -28,62 +28,63 @@ namespace FP_Server
 
         protected override void OnMessage(MessageEventArgs e)
         {
-            
-            Delivery messageJSON = JsonConvert.DeserializeObject<Delivery>(e.Data);
+            string msg = e.Data;
+            Sessions.Broadcast(msg);
+          /*  Delivery messageJSON = JsonConvert.DeserializeObject<Delivery>(e.Data);
             Sessions.Broadcast(messageJSON.Message);
-           
+
             switch (messageJSON.TypeStatus)
-            {
-                case Status.LoginRequest:
-                    {
-                        if (!_database.CheckUser(messageJSON.Username))
-                        {
-                            //User does not exsist
+             {
+                 case Status.LoginRequest:
+                     {
+                         if (!_database.CheckUser(messageJSON.Username))
+                         {
+                             //User does not exsist
 
-                            _database.AddUser(messageJSON.Username, messageJSON.Password);
+                             _database.AddUser(messageJSON.Username, messageJSON.Password);
 
-                            // Logins the user
-                            Sessions.Broadcast(JsonConvert.SerializeObject(new Delivery(Status.LoginSuccess)));
-
-
-                        }else
-                        {
-                            //User exsists
-
-                            if(!_database.PasswordValidation(messageJSON.Username, messageJSON.Password))
-                            {
-                                //Password is incorrect
-                                Sessions.Broadcast(JsonConvert.SerializeObject(new Delivery(Status.LoginFailed)));
-
-                            }else
-                            {
-                                //Password is correct
-                                Sessions.Broadcast(JsonConvert.SerializeObject(new Delivery(Status.LoginSuccess)));
-                            }
-
-                        }
-                        break;
-                    }
-                case Status.SendMessage:
-                    {
-
-                        Sessions.Broadcast()
+                             // Logins the user
+                             Sessions.Broadcast(JsonConvert.SerializeObject(new Delivery(Status.LoginSuccess)));
 
 
-                        break;
-                    }
-                    
+                         }else
+                         {
+                             //User exsists
 
-                   
-               
-                    
-                
-                    
-                    
+                             if(!_database.PasswordValidation(messageJSON.Username, messageJSON.Password))
+                             {
+                                 //Password is incorrect
+                                 Sessions.Broadcast(JsonConvert.SerializeObject(new Delivery(Status.LoginFailed)));
+
+                             }else
+                             {
+                                 //Password is correct
+                                 Sessions.Broadcast(JsonConvert.SerializeObject(new Delivery(Status.LoginSuccess)));
+                             }
+
+                         }
+                         break;
+                     }
+                 case Status.SendMessage:
+                     {
+
+                        Sessions.Broadcast(messageJSON.Message);
+
+
+                         break;
+                     }
 
 
 
-            }
+
+
+
+
+
+
+
+
+             } */
 
 
 

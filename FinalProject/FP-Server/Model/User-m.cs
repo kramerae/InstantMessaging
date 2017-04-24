@@ -14,6 +14,7 @@ namespace FP_Server.Model
         private string _password;
         private List<string> _contacts;
         private bool _isOnline;
+       // private _currentW
 
 
         public User_m(string user, string password, List<string> contacts)
