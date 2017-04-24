@@ -13,7 +13,7 @@ namespace FP_Server
     public class ServerController: WebSocketBehavior
     {
         private ServerDatabase _database;
-
+        
 
         protected override void OnMessage(MessageEventArgs e)
         {
@@ -27,5 +27,6 @@ namespace FP_Server
         {
             _database = new ServerDatabase();
         }
+
     }
 }
