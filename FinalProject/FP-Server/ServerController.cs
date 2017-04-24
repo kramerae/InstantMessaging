@@ -13,19 +13,47 @@ namespace FP_Server
     public class ServerController: WebSocketBehavior
     {
         private ServerDatabase _database;
+        private List<int> _chatRoom;
+        private int _count = 0;
+
+        protected override void OnOpen()
+        {
+                
+
+
+        }
 
 
         protected override void OnMessage(MessageEventArgs e)
         {
 
             Delivery messageJSON = JsonConvert.DeserializeObject<Delivery>(e.Data);
-            Send("Echo: " + messageJSON.Message);
+            Sessions.Broadcast(messageJSON.Message);
+            switch (messageJSON.TypeStatus)
+            {
+                case 
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         }
         
         public ServerController()
         {
             _database = new ServerDatabase();
+            _chatRoom = new List<int>();
         }
     }
 }
