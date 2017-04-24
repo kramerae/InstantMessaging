@@ -15,43 +15,9 @@ namespace FP_Server.Model
         string _username;
         string _password;
         
-        public Delivery(string chatID)
-        {
-            _chatID = chatID;
-            _status = Status.ConSuccess;
-            _message = null;
-            _chatroom = -100;
-            _username = null;
-            _password = null;
-        }
-
-        public Delivery(Status status, string username, string password)
-        {
-            _status = status;
-            _username = username;
-            _password = password;
-            _message = null;
-            _chatroom = -100;
-
-
-        }
-
         public Delivery(Status status)
         {
             _status = status;
-            _username = null;
-            _password = null;
-            _message = null;
-            _chatroom = -100;
-        }
-
-        public Delivery(Status status, string message, int chatroom)
-        {
-            _status = status;
-            _message = message;
-            _chatroom = chatroom;
-            _username = null;
-            _password = null;
         }
 
         public string Username
@@ -59,6 +25,9 @@ namespace FP_Server.Model
             get
             {
                 return _username;
+            }set
+            {
+                _username = value;
             }
         }
 
@@ -67,6 +36,10 @@ namespace FP_Server.Model
             get
             {
                 return _password;
+            }
+            set
+            {
+                _password = value;
             }
         }
 
@@ -83,6 +56,9 @@ namespace FP_Server.Model
             get
             {
                 return _message;
+            }set
+            {
+                _message = value;
             }
         }
 
@@ -91,6 +67,9 @@ namespace FP_Server.Model
             get
             {
                 return _chatroom;
+            }set
+            {
+                _chatroom = value;
             }
         }
 

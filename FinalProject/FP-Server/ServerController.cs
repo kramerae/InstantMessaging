@@ -82,7 +82,7 @@ namespace FP_Server
         public ServerController()
         {
             _database = new ServerDatabase();
-            _chatRoom = new List<int>();
+            _chatRoom = new List<ChatRoom>();
         }
 
 
@@ -121,7 +121,7 @@ namespace FP_Server
                 }
 
             }
-            break;
+            
         }
 
         private void SendMessage()
