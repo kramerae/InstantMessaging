@@ -63,13 +63,15 @@ namespace FinalProject
 
         private void uxStartChat_Click(object sender, EventArgs e)
         {
+            
             // Check to see if online
             // Lauch chat form
             using (Chat ch = new Chat(_c.MessageEntered))
             {
+                _c.MessageReceived += ch.MessageReceived;
                 if (ch.ShowDialog() == DialogResult.OK)
                 {
-                    _c.MessageReceived += ch.MessageReceived;
+                   
                     // ???????
                 }
             }
