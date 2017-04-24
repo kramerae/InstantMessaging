@@ -29,7 +29,7 @@ namespace FinalProject
             
 
             // Connects to the server
-            ws = new WebSocket("ws://127.0.0.1:8551/chat");
+            ws = new WebSocket("ws://127.0.0.1:8550/chat");
             ws.OnMessage += (sender, e) => { if (MessageReceived != null) MessageReceived(e.Data); };
             ws.Connect();
 
