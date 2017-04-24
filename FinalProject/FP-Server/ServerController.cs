@@ -15,13 +15,14 @@ namespace FP_Server
     {
       //  private Status en = new Status();
         private ServerDatabase _database;
-        private List<int> _chatRoom;
+        private List<ChatRoom> _chatRoom;
         private int _count = 0;
+        
+
 
         protected override void OnOpen()
         {
-            Sessions.SendTo(ID, ID);
-
+            Sessions.SendTo(ID, JsonConvert.SerializeObject(new Delivery(ID)));
 
         }
 
@@ -30,45 +31,20 @@ namespace FP_Server
         {
             string msg = e.Data;
             Sessions.Broadcast(msg);
-          /*  Delivery messageJSON = JsonConvert.DeserializeObject<Delivery>(e.Data);
+            Delivery messageJSON = JsonConvert.DeserializeObject<Delivery>(e.Data);
             Sessions.Broadcast(messageJSON.Message);
 
             switch (messageJSON.TypeStatus)
              {
                  case Status.LoginRequest:
-                     {
-                         if (!_database.CheckUser(messageJSON.Username))
-                         {
-                             //User does not exsist
-
-                             _database.AddUser(messageJSON.Username, messageJSON.Password);
-
-                             // Logins the user
-                             Sessions.Broadcast(JsonConvert.SerializeObject(new Delivery(Status.LoginSuccess)));
-
-
-                         }else
-                         {
-                             //User exsists
-
-                             if(!_database.PasswordValidation(messageJSON.Username, messageJSON.Password))
-                             {
-                                 //Password is incorrect
-                                 Sessions.Broadcast(JsonConvert.SerializeObject(new Delivery(Status.LoginFailed)));
-
-                             }else
-                             {
-                                 //Password is correct
-                                 Sessions.Broadcast(JsonConvert.SerializeObject(new Delivery(Status.LoginSuccess)));
-                             }
-
-                         }
-                         break;
-                     }
+                    {
+                        Authentication(messageJSON);
+                        break;
+                    }
                  case Status.SendMessage:
                      {
 
-                        Sessions.Broadcast(messageJSON.Message);
+                        
 
 
                          break;
@@ -84,11 +60,11 @@ namespace FP_Server
 
 
 
-             } */
+             }
 
 
 
-
+            
 
 
 
@@ -100,11 +76,59 @@ namespace FP_Server
 
 
         }
+
+
         
         public ServerController()
         {
             _database = new ServerDatabase();
             _chatRoom = new List<int>();
         }
+
+
+        /// <summary>
+        /// This method excutes the authentication of the user
+        /// </summary>
+        /// <param name="messageJSON"></param>
+        private void Authentication(Delivery messageJSON)
+        {
+
+            if (!_database.CheckUser(messageJSON.Username))
+            {
+                //User does not exsist
+
+                _database.AddUser(messageJSON.Username, messageJSON.Password);
+
+                // Logins the user
+                Sessions.Broadcast(JsonConvert.SerializeObject(new Delivery(Status.LoginSuccess)));
+
+
+            }
+            else
+            {
+                //User exsists
+
+                if (!_database.PasswordValidation(messageJSON.Username, messageJSON.Password))
+                {
+                    //Password is incorrect
+                    Sessions.Broadcast(JsonConvert.SerializeObject(new Delivery(Status.LoginFailed)));
+
+                }
+                else
+                {
+                    //Password is correct
+                    Sessions.Broadcast(JsonConvert.SerializeObject(new Delivery(Status.LoginSuccess)));
+                }
+
+            }
+            break;
+        }
+
+        private void SendMessage()
+        {
+
+        }
+
+    
     }
 }

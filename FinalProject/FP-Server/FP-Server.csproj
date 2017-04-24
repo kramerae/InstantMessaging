@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="Chat.cs" />
     <Compile Include="Echo.cs" />
+    <Compile Include="Model\ChatRoom.cs" />
     <Compile Include="Model\Status.cs" />
     <Compile Include="Model\Delivery.cs" />
     <Compile Include="Model\User-m.cs" />

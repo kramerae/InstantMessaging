@@ -10,9 +10,20 @@ namespace FP_Server.Model
     {
         Status _status; // 101 = request loggin, 200 login succesfull, 403 loggin invalid, 201 send message
         string _message;
+        string _chatID;
         int _chatroom;
         string _username;
         string _password;
+        
+        public Delivery(string chatID)
+        {
+            _chatID = chatID;
+            _status = Status.ConSuccess;
+            _message = null;
+            _chatroom = -100;
+            _username = null;
+            _password = null;
+        }
 
         public Delivery(Status status, string username, string password)
         {
@@ -80,6 +91,18 @@ namespace FP_Server.Model
             get
             {
                 return _chatroom;
+            }
+        }
+
+        public string ChatID
+        {
+            get
+            {
+                return _chatID;
+            }
+            set
+            {
+                _chatID = value;
             }
         }
 
