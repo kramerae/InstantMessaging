@@ -16,8 +16,6 @@ namespace FinalProject
         private string username;
         private string password;
 
-  
-
         public LoginForm(ClientController c)
         {
             _c = c;
@@ -26,6 +24,15 @@ namespace FinalProject
             button1.Enabled = false;
             textBox2.Enabled = false;
         }
+
+        public string GetUsername
+        {
+            get
+            {
+                return username;
+            }
+        }
+
 
 
         private void button1_Click(object sender, EventArgs e)
@@ -48,6 +55,9 @@ namespace FinalProject
                 }
                 else
                 {
+                    // test
+                    // Set username in controller
+                    _c.UserName = username;
                     using (ClientMenu cm = new ClientMenu(_c))
                     {
                         if (cm.ShowDialog() == DialogResult.OK)
