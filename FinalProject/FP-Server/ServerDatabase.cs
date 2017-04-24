@@ -31,11 +31,9 @@ namespace FP_Server
             _userDatabase.Add("sriegodedios", new User_m("sriegodedios", "shaner26", a));
 
 
-
-
         }
 
-
+        
 
 
 
@@ -49,12 +47,6 @@ namespace FP_Server
             }
             
            // Dictionary<string, User_m> m = JsonConvert.DeserializeObject<Dictionary<string, User_m>>(jsonString);
-
-
-
-
-
-
 
         }
 
@@ -113,7 +105,6 @@ namespace FP_Server
             }
 
             return false;
-
         }
 
 

@@ -18,10 +18,10 @@ namespace FP_Server
 
             // Construct Server Controlller
           //  ServerController c = new ServerController(d);
+           
 
 
-
-            // Start a websocket server at port 8001
+            // Start a websocket server at port 8550
             var wss = new WebSocketServer(8550);
 
             // Add the Echo websocket service
@@ -32,7 +32,7 @@ namespace FP_Server
 
             // Start the server
             wss.Start();
-
+            
             Console.WriteLine("Press Enter to exit.");
             Console.ReadLine();
 

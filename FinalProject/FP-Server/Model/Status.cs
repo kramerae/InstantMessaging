@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace FP_Server.Model
 {
-    public class Status
-    {
-        public enum status{Online, Offline}
-    }
+    
+        public enum Status{LoginRequest, LoginSuccess, LoginFailed, SendMessage, CloseClient, OpenClient}
+    
 }
