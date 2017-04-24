@@ -15,6 +15,7 @@ namespace FinalProject
         private WebSocket ws;
         private Dictionary<string, bool> contacts;
 
+        public event Message MessageReceived;
 
         public ClientController()
         {
@@ -24,6 +25,27 @@ namespace FinalProject
             contacts.Add("Bob", true);
             contacts.Add("Sally", false);
             contacts.Add("Austin", true);
+
+            
+
+            // Connects to the server
+            ws = new WebSocket("ws://127.0.0.1:8551/chat");
+            ws.OnMessage += (sender, e) => { if (MessageReceived != null) MessageReceived(e.Data); };
+            ws.Connect();
+
+
+        }
+
+        public string UserName
+        {
+            get
+            {
+                return userName;
+            }
+            set
+            {
+                userName = value; 
+            }
         }
 
         // REMOVE LATER
@@ -49,12 +71,21 @@ namespace FinalProject
 
 
         
-        /*
+        
         // Handles when a new message is entered by the user
         public bool MessageEntered(string message)
         {
-
+            // Send the message to the server if connection is alive
+            if (ws.IsAlive)
+            {
+                ws.Send(userName + ": " + message);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
-        */
+        
     }
 }
