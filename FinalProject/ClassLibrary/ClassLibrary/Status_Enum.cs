@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary
 {
-    class Status
+    public class Status_Enum
     {
+        public enum Status { };
     }
 }
