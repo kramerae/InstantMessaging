@@ -22,7 +22,9 @@ namespace FP_Server
 
         protected override void OnOpen()
         {
-            Sessions.SendTo(ID, JsonConvert.SerializeObject(new Delivery(ID)));
+            Delivery d = new Delivery(Status.ConSuccess);
+            d.ChatID = ID;
+            Sessions.SendTo(ID, JsonConvert.SerializeObject(d));
 
         }
 
@@ -100,7 +102,10 @@ namespace FP_Server
                 _database.AddUser(messageJSON.Username, messageJSON.Password);
 
                 // Logins the user
-                Sessions.Broadcast(JsonConvert.SerializeObject(new Delivery(Status.LoginSuccess)));
+                Delivery s1 = new Delivery(Status.LoginSuccess);
+                SendMessage(ID, s1);
+
+               
 
 
             }
@@ -124,9 +129,9 @@ namespace FP_Server
             
         }
 
-        private void SendMessage()
+        private void SendMessage(string id, Delivery d)
         {
-
+            Sessions.SendTo(id, JsonConvert.SerializeObject(d));
         }
 
     
