@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ClassLibrary;
 
 namespace FP_Server.Model
 {
@@ -14,6 +15,7 @@ namespace FP_Server.Model
         int _chatroom;
         string _username;
         string _password;
+        Packet
         
         public Delivery(Status status)
         {
