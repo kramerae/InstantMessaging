@@ -12,8 +12,10 @@ namespace FP_Server
 {
     public partial class ServerForm : Form
     {
-        public ServerForm()
+        ServerController _sc;
+        public ServerForm(ServerController sc)
         {
+            _sc = sc;
             InitializeComponent();
         }
     }
