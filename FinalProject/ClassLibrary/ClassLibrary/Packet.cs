@@ -12,9 +12,10 @@ namespace ClassLibrary
         string _username;
         string _password;
         string _message;
-        string _destination;
         List<string> _messageHistory;
         Dictionary<string,bool> _contactList;
+        string _destinationID;
+        string _originID;
 
         public Packet(Status status)
         {
@@ -22,15 +23,6 @@ namespace ClassLibrary
             _messageHistory = new List<string>();
         }
 
-        public Status GetStatus
-        {
-            get
-            {
-                return _status;
-            }
-        }
-
-          
         /// <summary>
         /// This is property for the username
         /// </summary>
@@ -103,14 +95,21 @@ namespace ClassLibrary
             }
         }
 
-        public string Destination
+        public string OriginID
         {
-            get
-            {
-                return _destination;
-            }set
-            {
-                _destination = value;
+            get{
+                return _originID;
+            }set{
+                _originID = value;
+            }
+        }
+
+        public string DestinationID
+        {
+            get{
+                return _destinationID;
+            }set{
+                _destinationID = value;
             }
         }
 
