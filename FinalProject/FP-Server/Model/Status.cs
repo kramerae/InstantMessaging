@@ -7,6 +7,6 @@ using System.Threading.Tasks;
 namespace FP_Server.Model
 {
     
-        public enum Status{ConReq, ConSuccess, LoginRequest, LoginSuccess, LoginFailed, SendMessage, CloseClient, OpenClient, ConnectToRoom}
+        //public enum Status{ConReq, ConSuccess, LoginRequest, LoginSuccess, LoginFailed, SendMessage, CloseClient, OpenClient, ConnectToRoom}
     
 }

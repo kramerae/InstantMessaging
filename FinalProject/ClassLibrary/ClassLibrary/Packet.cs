@@ -12,6 +12,7 @@ namespace ClassLibrary
         string _username;
         string _password;
         string _message;
+        string _destination;
         List<string> _messageHistory;
         Dictionary<string,bool> _contactList;
 
@@ -21,6 +22,15 @@ namespace ClassLibrary
             _messageHistory = new List<string>();
         }
 
+        public Status GetStatus
+        {
+            get
+            {
+                return _status;
+            }
+        }
+
+          
         /// <summary>
         /// This is property for the username
         /// </summary>
@@ -90,6 +100,17 @@ namespace ClassLibrary
             }set
             {
                 _contactList = value;
+            }
+        }
+
+        public string Destination
+        {
+            get
+            {
+                return _destination;
+            }set
+            {
+                _destination = value;
             }
         }
 

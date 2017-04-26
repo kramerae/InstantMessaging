@@ -15,7 +15,7 @@ namespace FP_Server.Model
         int _chatroom;
         string _username;
         string _password;
-        Packet
+        //Packet
         
         public Delivery(Status status)
         {

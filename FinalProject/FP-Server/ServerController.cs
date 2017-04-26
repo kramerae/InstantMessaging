@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WebSocketSharp;
+using ClassLibrary;
 
 using WebSocketSharp.Server;
 
@@ -17,14 +18,15 @@ namespace FP_Server
         private ServerDatabase _database;
         private List<ChatRoom> _chatRoom;
         private int _count = 0;
+        private List<string> users = new List<string>();
         
 
 
         protected override void OnOpen()
         {
-            Delivery d = new Delivery(Status.ConSuccess);
-            d.ChatID = ID;
-            Sessions.SendTo(ID, JsonConvert.SerializeObject(d));
+            Packet p = new Packet(Status.onlineTrue);
+            users.Add(ID);
+            Sessions.SendTo(ID, JsonConvert.SerializeObject(p));
 
         }
 
@@ -32,19 +34,20 @@ namespace FP_Server
         protected override void OnMessage(MessageEventArgs e)
         {
             string msg = e.Data;
-            Sessions.Broadcast(msg);
-            Delivery messageJSON = JsonConvert.DeserializeObject<Delivery>(e.Data);
-            Sessions.Broadcast(messageJSON.Message);
+            //Sessions.Broadcast(msg);
+            Packet messageJSON = JsonConvert.DeserializeObject<Packet>(e.Data);
+            //Sessions.Broadcast(messageJSON.Message);
 
-            switch (messageJSON.TypeStatus)
+            switch (messageJSON.GetStatus)
              {
-                 case Status.LoginRequest:
+                 case Status.loginValidate:
                     {
                         Authentication(messageJSON);
                         break;
                     }
-                 case Status.SendMessage:
+                 case Status.messageSend:
                      {
+                        string message = messageJSON.Message;
 
                         
 
@@ -92,7 +95,7 @@ namespace FP_Server
         /// This method excutes the authentication of the user
         /// </summary>
         /// <param name="messageJSON"></param>
-        private void Authentication(Delivery messageJSON)
+        private void Authentication(Packet messageJSON)
         {
 
             if (!_database.CheckUser(messageJSON.Username))
@@ -102,7 +105,7 @@ namespace FP_Server
                 _database.AddUser(messageJSON.Username, messageJSON.Password);
 
                 // Logins the user
-                Delivery s1 = new Delivery(Status.LoginSuccess);
+                Delivery s1 = new Delivery(Status.loginTrue);
                 SendMessage(ID, s1);
 
                
@@ -116,13 +119,13 @@ namespace FP_Server
                 if (!_database.PasswordValidation(messageJSON.Username, messageJSON.Password))
                 {
                     //Password is incorrect
-                    Sessions.Broadcast(JsonConvert.SerializeObject(new Delivery(Status.LoginFailed)));
+                    Sessions.Broadcast(JsonConvert.SerializeObject(new Delivery(Status.loginFalse)));
 
                 }
                 else
                 {
                     //Password is correct
-                    Sessions.Broadcast(JsonConvert.SerializeObject(new Delivery(Status.LoginSuccess)));
+                    Sessions.Broadcast(JsonConvert.SerializeObject(new Delivery(Status.loginTrue)));
                 }
 
             }

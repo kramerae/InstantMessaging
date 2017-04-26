@@ -29,18 +29,20 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.usersLabel = new System.Windows.Forms.Label();
-            this.checkedListBoxUsers = new System.Windows.Forms.CheckedListBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.uxLabelContacts = new System.Windows.Forms.Label();
             this.uxListBoxUsers = new System.Windows.Forms.ListBox();
+            this.uxLabelContacts = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.checkedListBoxUsers = new System.Windows.Forms.CheckedListBox();
+            this.usersLabel = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.listView1 = new System.Windows.Forms.ListView();
             this.label1 = new System.Windows.Forms.Label();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.uxBtnStartServer = new System.Windows.Forms.Button();
+            this.uxBtnStopServer = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,33 +60,6 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(700, 350);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.checkedListBoxUsers);
-            this.panel1.Controls.Add(this.usersLabel);
-            this.panel1.Location = new System.Drawing.Point(3, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(344, 344);
-            this.panel1.TabIndex = 0;
-            // 
-            // usersLabel
-            // 
-            this.usersLabel.AutoSize = true;
-            this.usersLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.usersLabel.Location = new System.Drawing.Point(4, 4);
-            this.usersLabel.Name = "usersLabel";
-            this.usersLabel.Size = new System.Drawing.Size(49, 16);
-            this.usersLabel.TabIndex = 0;
-            this.usersLabel.Text = "Users";
-            // 
-            // checkedListBoxUsers
-            // 
-            this.checkedListBoxUsers.FormattingEnabled = true;
-            this.checkedListBoxUsers.Location = new System.Drawing.Point(4, 24);
-            this.checkedListBoxUsers.Name = "checkedListBoxUsers";
-            this.checkedListBoxUsers.Size = new System.Drawing.Size(337, 304);
-            this.checkedListBoxUsers.TabIndex = 1;
-            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.uxListBoxUsers);
@@ -93,6 +68,14 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(344, 344);
             this.panel2.TabIndex = 1;
+            // 
+            // uxListBoxUsers
+            // 
+            this.uxListBoxUsers.FormattingEnabled = true;
+            this.uxListBoxUsers.Location = new System.Drawing.Point(0, 24);
+            this.uxListBoxUsers.Name = "uxListBoxUsers";
+            this.uxListBoxUsers.Size = new System.Drawing.Size(340, 303);
+            this.uxListBoxUsers.TabIndex = 1;
             // 
             // uxLabelContacts
             // 
@@ -104,13 +87,32 @@
             this.uxLabelContacts.TabIndex = 0;
             this.uxLabelContacts.Text = "Contacts";
             // 
-            // uxListBoxUsers
+            // panel1
             // 
-            this.uxListBoxUsers.FormattingEnabled = true;
-            this.uxListBoxUsers.Location = new System.Drawing.Point(0, 24);
-            this.uxListBoxUsers.Name = "uxListBoxUsers";
-            this.uxListBoxUsers.Size = new System.Drawing.Size(340, 303);
-            this.uxListBoxUsers.TabIndex = 1;
+            this.panel1.Controls.Add(this.checkedListBoxUsers);
+            this.panel1.Controls.Add(this.usersLabel);
+            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(344, 344);
+            this.panel1.TabIndex = 0;
+            // 
+            // checkedListBoxUsers
+            // 
+            this.checkedListBoxUsers.FormattingEnabled = true;
+            this.checkedListBoxUsers.Location = new System.Drawing.Point(4, 24);
+            this.checkedListBoxUsers.Name = "checkedListBoxUsers";
+            this.checkedListBoxUsers.Size = new System.Drawing.Size(337, 304);
+            this.checkedListBoxUsers.TabIndex = 1;
+            // 
+            // usersLabel
+            // 
+            this.usersLabel.AutoSize = true;
+            this.usersLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.usersLabel.Location = new System.Drawing.Point(4, 4);
+            this.usersLabel.Name = "usersLabel";
+            this.usersLabel.Size = new System.Drawing.Size(49, 16);
+            this.usersLabel.TabIndex = 0;
+            this.usersLabel.Text = "Users";
             // 
             // panel3
             // 
@@ -120,14 +122,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(700, 247);
             this.panel3.TabIndex = 1;
-            // 
-            // listView1
-            // 
-            this.listView1.Location = new System.Drawing.Point(7, 19);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(686, 214);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
             // 
             // label1
             // 
@@ -139,20 +133,52 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Chat Rooms";
             // 
+            // listView1
+            // 
+            this.listView1.Location = new System.Drawing.Point(7, 19);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(686, 214);
+            this.listView1.TabIndex = 0;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            // 
+            // uxBtnStartServer
+            // 
+            this.uxBtnStartServer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uxBtnStartServer.Location = new System.Drawing.Point(13, 1);
+            this.uxBtnStartServer.Name = "uxBtnStartServer";
+            this.uxBtnStartServer.Size = new System.Drawing.Size(125, 26);
+            this.uxBtnStartServer.TabIndex = 2;
+            this.uxBtnStartServer.Text = "Start Server";
+            this.uxBtnStartServer.UseVisualStyleBackColor = true;
+            this.uxBtnStartServer.Click += new System.EventHandler(this.uxBtnStartServer_Click);
+            // 
+            // uxBtnStopServer
+            // 
+            this.uxBtnStopServer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uxBtnStopServer.Location = new System.Drawing.Point(144, 1);
+            this.uxBtnStopServer.Name = "uxBtnStopServer";
+            this.uxBtnStopServer.Size = new System.Drawing.Size(125, 26);
+            this.uxBtnStopServer.TabIndex = 3;
+            this.uxBtnStopServer.Text = "Stop Server";
+            this.uxBtnStopServer.UseVisualStyleBackColor = true;
+            this.uxBtnStopServer.Click += new System.EventHandler(this.uxBtnStopServer_Click);
+            // 
             // ServerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(725, 643);
+            this.Controls.Add(this.uxBtnStopServer);
+            this.Controls.Add(this.uxBtnStartServer);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "ServerForm";
             this.Text = "ServerForm";
             this.tableLayoutPanel1.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.ResumeLayout(false);
@@ -171,5 +197,7 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.Button uxBtnStartServer;
+        private System.Windows.Forms.Button uxBtnStopServer;
     }
 }

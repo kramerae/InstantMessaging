@@ -9,6 +9,7 @@ namespace FP_Server.Model
     public class ChatRoom
     {
         private List<string> _usernames;
+        private List<string> _messageHistory;
         private int _roomID;
 
 
@@ -16,11 +17,17 @@ namespace FP_Server.Model
         {
             _roomID = i;
             _usernames = new List<string>();
+            _messageHistory = new List<string>();
         }
 
         public void AddUser(string username)
         {
             _usernames.Add(username);
+        }
+
+        public void AddMessage(string message)
+        {
+            _messageHistory.Add(message);
         }
 
         

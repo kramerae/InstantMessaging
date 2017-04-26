@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WebSocketSharp;
 using WebSocketSharp.Server;
+using System.Windows.Forms;
 
 namespace FP_Server
 {
@@ -28,14 +29,19 @@ namespace FP_Server
             // Add the Chat websocket service
             wss.AddWebSocketService<ServerController>("/chat");
 
-            // Start the server
-            wss.Start();
+
+            //Construct Form
+
+            ServerForm sf = new ServerForm(wss);
+
+
+            Application.Run(sf);
             
-            Console.WriteLine("Press Enter to exit.");
-            Console.ReadLine();
+           // Console.WriteLine("Press Enter to exit.");
+           // Console.ReadLine();
 
             // Stop the server
-            wss.Stop();
+          //  wss.Stop();
 
         }
     }
