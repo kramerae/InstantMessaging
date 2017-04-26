@@ -40,12 +40,14 @@ namespace FP_Server
              {
                  case Status.LoginRequest:
                     {
+                        //An authentication rquest is request
                         Authentication(messageJSON);
                         break;
                     }
                  case Status.SendMessage:
                      {
-
+                        string id = messageJSON.
+                        SendMessage()
                         
 
 
@@ -92,7 +94,7 @@ namespace FP_Server
         /// This method excutes the authentication of the user
         /// </summary>
         /// <param name="messageJSON"></param>
-        private void Authentication(Delivery messageJSON)
+        private void Authentication(Packet messageJSON)
         {
 
             if (!_database.CheckUser(messageJSON.Username))
@@ -102,7 +104,7 @@ namespace FP_Server
                 _database.AddUser(messageJSON.Username, messageJSON.Password);
 
                 // Logins the user
-                Delivery s1 = new Delivery(Status.LoginSuccess);
+                Delivery s1 = new Delivery(Status.loginSuccess);
                 SendMessage(ID, s1);
 
                
@@ -116,22 +118,30 @@ namespace FP_Server
                 if (!_database.PasswordValidation(messageJSON.Username, messageJSON.Password))
                 {
                     //Password is incorrect
-                    Sessions.Broadcast(JsonConvert.SerializeObject(new Delivery(Status.LoginFailed)));
+                    Sessions.Broadcast(JsonConvert.SerializeObject(new Packet(Status.loginFalse)));
 
                 }
                 else
                 {
                     //Password is correct
-                    Sessions.Broadcast(JsonConvert.SerializeObject(new Delivery(Status.LoginSuccess)));
+                    Sessions.Broadcast(JsonConvert.SerializeObject(new Packet(Status.loginSuccess)));
                 }
 
             }
             
         }
 
+        ///<summary>
+        /// This method sends a message to a specified client
+        ///</summary>
+        ///<param name="id">The id to send</param>
+        ///<param name="d">The packet to send</param>
         private void SendMessage(string id, Delivery d)
         {
-            Sessions.SendTo(id, JsonConvert.SerializeObject(d));
+            Delivery temp = new Delivery(Status.messageRecieved);
+            temp.Message = d.Message;
+
+            Sessions.SendTo(id, JsonConvert.SerializeObject(temp));
         }
 
     

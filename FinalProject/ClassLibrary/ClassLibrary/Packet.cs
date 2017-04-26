@@ -14,6 +14,8 @@ namespace ClassLibrary
         string _message;
         List<string> _messageHistory;
         Dictionary<string,bool> _contactList;
+        string _destinationID;
+        string _originID;
 
         public Packet(Status status)
         {
@@ -90,6 +92,24 @@ namespace ClassLibrary
             }set
             {
                 _contactList = value;
+            }
+        }
+
+        public string OriginID
+        {
+            get{
+                return _originID;
+            }set{
+                _originID = value;
+            }
+        }
+
+        public string DestinationID
+        {
+            get{
+                return _destinationID;
+            }set{
+                _destinationID = value;
             }
         }
 
