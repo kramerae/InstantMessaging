@@ -129,17 +129,17 @@ your contact list!</value>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="uxRefresh.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAAB8UlEQVRIS7XVz0sUYRzHcTP6
-        eaguEpaIUigeolt0EvFgl1Dob9CDgp3tIHoQPYjUKdAoEsGLJxGKIumUJijoJUEUCUQzgyCQfohO78/O
-        82Ufx5ndGVg/8BL32eeZz87Ms7NlQRCcutjBUgv/JKcSHZjGGnaxjUWM4gGKJ6HkJnrwDZpQyCzakJyY
-        kmroU0cPVsxTlONkIiX3sY7oAVahy9OLfszgF6LzXuFkvJJz+AJ/0Ve04xKiqcUL+PPlMY7HK+mDP3ke
-        uvHF8gj+Wf3FPeTjSm7gp146G6hC2nTD1soU8nEl2kn+pIfIEl3qZdj6LVxGGFfyQf86OqMKZI3unR3j
-        AA0I40p0g23CnAZS5DzuoA63obM/hB2nCzW4ZSV7sDf17U4TlQxAa/7gN47ca/mHfRxaia6hvflRAylz
-        FuOwtXHGreSTN/gd15AlQ7D1vrcot5JBN2gakSU6o9fwj/EZ4QZyJfXQjrAJC9C2zJphaP0mrmogF1ei
-        PIeVyCQuIksu4Bmacq8sXonuww/4Re9xF3E5Az2n3uGKBhLjlSitiD5dtT311B3BE+hJPIYl2Jw3SN4s
-        kRKlGf5zLC19gPjElCjaCC8RPVCcHXQi+ZIllFhaMIEV6Aure6ang57S+inQD9h1FI5KTlvsYGkFZf8B
-        518unLAaUPYAAAAASUVORK5CYII=
+        iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAHxSURBVEhLtdXPSxRhHMdxM/p5qC4SlohSKB6iW3QS
+        8WCXUOhv0IOCne0gehA9iNQp0CgSwYsnEYoi6ZQmKOglQRQJRDODIJB+iE7vz87zZR/Hmd0ZWD/wEvfZ
+        55nPzsyzs2VBEJy62MFSC/8kpxIdmMYadrGNRYziAYonoeQmevANmlDILNqQnJiSauhTRw9WzFOU42Qi
+        JfexjugBVqHL04t+zOAXovNe4WS8knP4An/RV7TjEqKpxQv48+Uxjscr6YM/eR668cXyCP5Z/cU95ONK
+        buCnXjobqELadMPWyhTycSXaSf6kh8gSXepl2PotXEYYV/JB/zo6owpkje6dHeMADQjjSnSDbcKcBlLk
+        PO6gDrehsz+EHacLNbhlJXuwN/XtThOVDEBr/uA3jtxr+Yd9HFqJrqG9+VEDKXMW47C1ccat5JM3+B3X
+        kCVDsPW+tyi3kkE3aBqRJTqj1/CP8RnhBnIl9dCOsAkL0LbMmmFo/SauaiAXV6I8h5XIJC4iSy7gGZpy
+        ryxeie7DD/hF73EXcTkDPafe4YoGEuOVKK2IPl21PfXUHcET6Ek8hiXYnDdI3iyREqUZ/nMsLX2A+MSU
+        KNoILxE9UJwddCL5kiWUWFowgRXoC6t7pqeDntL6KdAP2HUUjkpOW+xgaQVl/wHnXy6csBpQ9gAAAABJ
+        RU5ErkJggg==
 </value>
   </data>
 </root>

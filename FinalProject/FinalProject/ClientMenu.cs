@@ -100,5 +100,10 @@ namespace FinalProject
             uxRemoveContact.Enabled = true;
             uxStartChat.Enabled = true;
         }
+
+        private void uxRefresh_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

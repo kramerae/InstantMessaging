@@ -132,6 +132,7 @@
             this.uxRefresh.Size = new System.Drawing.Size(39, 38);
             this.uxRefresh.TabIndex = 9;
             this.uxRefresh.UseVisualStyleBackColor = false;
+            this.uxRefresh.Click += new System.EventHandler(this.uxRefresh_Click);
             // 
             // ClientMenu
             // 
