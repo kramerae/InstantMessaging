@@ -18,7 +18,7 @@ namespace FP_Server.Model
        // private _currentW
 
 
-        public User_m(string id, string user, string password, Dictionary<string, bool> contacts)
+        public User_m(string user, string password, Dictionary<string, bool> contacts)
         {
             _id = id;
             _user = user;
@@ -63,6 +63,18 @@ namespace FP_Server.Model
             }set
             {
                 _isOnline = value;
+            }
+        }
+
+        public string GetID
+        {
+            get
+            {
+                return _id;
+
+            }set{
+
+                _id = value;
             }
         }
 

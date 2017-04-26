@@ -56,21 +56,18 @@ namespace FP_Server
                 case Status.contactListRequest:
                     {
                         //Sends a message history from a specific client.
-                        _database.
-                        
+                        Dictionary contacts = _database.GetContacts(messageJSON.OriginID);
 
+                        Packet p = new Packet(Status.contactListRecieved);
+                        p.ContactList = contacts;
+                        p.DestinationID = messageJSON.OriginID;
+                        p.OriginID = "server";
+
+                        Sessions.SendTo(p.DestinationID, JsonConvert.SerializeObject(p));
 
                         break;
                     }
-
-
-
-
-
-
-
-
-
+                
 
 
              }
