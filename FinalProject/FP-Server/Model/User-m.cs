@@ -12,13 +12,15 @@ namespace FP_Server.Model
     {
         private string _user;
         private string _password;
-        private List<string> _contacts;
+        private Dictionary<string, bool> _contacts;
         private bool _isOnline;
+        private string _id;
        // private _currentW
 
 
-        public User_m(string user, string password, List<string> contacts)
+        public User_m(string id, string user, string password, Dictionary<string, bool> contacts)
         {
+            _id = id;
             _user = user;
             _password = password;
             _contacts = contacts;
@@ -40,12 +42,12 @@ namespace FP_Server.Model
             }
         }
 
-        public void AddContact(string name)
+        public void AddContact(string name, bool isOnline)
         {
-            _contacts.Add(name);
+            _contacts.Add(name, isOnline);
         }
 
-        public List<string> GetContacts
+        public Dictionary<string, bool> GetContacts
         {
             get
             {

@@ -23,6 +23,13 @@ namespace ClassLibrary
             _messageHistory = new List<string>();
         }
 
+        public Status GetStatus
+        {
+            get
+            {
+                return _status;
+            }
+        }
         /// <summary>
         /// This is property for the username
         /// </summary>

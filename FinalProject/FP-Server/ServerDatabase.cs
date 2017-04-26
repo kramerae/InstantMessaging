@@ -33,6 +33,15 @@ namespace FP_Server
 
         }
 
+        public Dictionary<string,bool> GetContacts(string id)
+        {
+
+
+
+
+
+        }
+
         
 
 
