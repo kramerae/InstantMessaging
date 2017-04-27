@@ -121,6 +121,16 @@ namespace ClassLibrary
             }
         }
 
+        public string GetID
+        {
+            get{
+                return _ID;
+
+            }set{
+                _ID = value;
+            }
+        }
+
 
 
        

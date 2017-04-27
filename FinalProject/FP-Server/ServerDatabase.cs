@@ -36,9 +36,7 @@ namespace FP_Server
         public Dictionary<string,bool> GetContacts(string id)
         {
 
-
-
-
+           return _userDatabase[id].GetContacts;
 
         }
 
@@ -77,9 +75,11 @@ namespace FP_Server
         /// </summary>
         /// <param name="username"></param>
         /// <param name="password"></param>
-        public void AddUser(string username, string password)
+        public void AddUser(string username, string password, string Id)
         {
-            _userDatabase.Add(username, new User_m(username, password, new List<string>()));
+            User_m user = new User_m(username, password, new Dictionary<string,bool>());
+            user.GetID = Id;
+            _userDatabase.Add(Id, user);
 
         }
 
