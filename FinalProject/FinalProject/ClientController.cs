@@ -4,7 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WebSocketSharp;
-
+using ClassLibrary;
+using Newtonsoft.Json;
 
 namespace FinalProject
 {
@@ -16,7 +17,7 @@ namespace FinalProject
         private Dictionary<string, bool> contacts;
         private string _id;
 
-        public event Message MessageReceived;
+        public event Message MessageEvent;
 
         public ClientController()
         {
@@ -30,8 +31,8 @@ namespace FinalProject
             
 
             // Connects to the server
-            ws = new WebSocket("ws://127.0.0.1:8551/chat");
-            ws.OnMessage += (sender, e) => { if (MessageReceived != null) MessageReceived(e.Data); };
+            ws = new WebSocket("ws://127.0.0.1:8550/chat");
+            ws.OnMessage += (sender, e) => { if (MessageEvent != null) MessageReceived(e.Data); };
             ws.Connect();
 
 
@@ -71,7 +72,27 @@ namespace FinalProject
 
 
 
-        
+        public bool MessageReceived(string message)
+        {
+            // Deseralize Packet 
+            Packet p = JsonConvert.DeserializeObject<Packet>(message);
+
+            switch (p.GetStatus)
+            {
+                case Status.loginTrue:
+                    //MessageBox.Show("Works: Login Successful");
+                    break;
+                case Status.loginFalse:
+                   //MessageBox.Show("Login Invalid: Wrong Password");
+                    break;
+                case Status.connectionSuccess:
+                    _id = p.GetID;
+                    break;
+
+            }
+
+            return true; 
+        }
         
         // Handles when a new message is entered by the user
         public bool MessageEntered(string message)

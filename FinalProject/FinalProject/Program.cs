@@ -20,6 +20,7 @@ namespace FinalProject
             Application.SetCompatibleTextRenderingDefault(false);
             
             ClientController c = new ClientController();
+            c.MessageEvent += c.MessageReceived;
             LoginForm f = new LoginForm(c);
             Application.Run(f);
         }
