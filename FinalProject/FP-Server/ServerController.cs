@@ -58,9 +58,9 @@ namespace FP_Server
                 case Status.contactListRequest:
                     {
                         //Sends a message history from a specific client.
-                        Dictionary contacts = _database.GetContacts(messageJSON.OriginID);
+                        Dictionary<string, bool> contacts = _database.GetContacts(messageJSON.OriginID);
 
-                        Packet p = new Packet(Status.contactListRecieved);
+                        Packet p = new Packet(Status.contactListSend);
                         p.ContactList = contacts;
                         p.DestinationID = messageJSON.OriginID;
                         p.OriginID = "server";
@@ -128,15 +128,13 @@ namespace FP_Server
                 if (!_database.PasswordValidation(messageJSON.Username, messageJSON.Password))
                 {
                     //Password is incorrect
-                    Sessions.SendTo(messageJSON.GetID ,JsonConvert.SerializeObject(new Packet(Status.loginFalse)));
+                    Sessions.Broadcast(JsonConvert.SerializeObject(new Packet(Status.loginFalse)));
 
                 }
                 else
                 {
                     //Password is correct
-                    Packet p = new Packet(Status.loginTrue);
-                    p.ContactList = _database.GetContacts(messageJSON.GetID);
-                    Sessions.SendTo(messageJSON.GetID, JsonConvert.SerializeObject(p));
+                    Sessions.Broadcast(JsonConvert.SerializeObject(new Packet(Status.loginTrue)));
                 }
 
             }
