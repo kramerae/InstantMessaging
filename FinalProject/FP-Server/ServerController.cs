@@ -30,6 +30,7 @@ namespace FP_Server
         }
 
 
+
         protected override void OnMessage(MessageEventArgs e)
         {
 
@@ -109,7 +110,7 @@ namespace FP_Server
             {
                 //User does not exsist
 
-                _database.AddUser(messageJSON.Username, messageJSON.Password);
+                _database.AddUser(messageJSON.Username, messageJSON.Password, messageJSON.GetID);
 
 
                 // Logins the user

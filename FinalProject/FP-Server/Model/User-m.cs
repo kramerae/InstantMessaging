@@ -20,7 +20,7 @@ namespace FP_Server.Model
 
         public User_m(string user, string password, Dictionary<string, bool> contacts)
         {
-            _id = id;
+            //_id = id;
             _user = user;
             _password = password;
             _contacts = contacts;

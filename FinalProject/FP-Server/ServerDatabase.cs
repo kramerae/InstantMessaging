@@ -23,11 +23,11 @@ namespace FP_Server
 
         private void AddPerson()
         {
-            List<string> a = new List<string>();
+            Dictionary<string, bool> a = new Dictionary<string, bool>();
 
-            a.Add("Matt");
-            a.Add("Jason");
-            a.Add("Steven");
+            a.Add("Matt", true);
+            a.Add("Jason", true);
+            a.Add("Steven", true);
             _userDatabase.Add("sriegodedios", new User_m("sriegodedios", "shaner26", a));
 
 

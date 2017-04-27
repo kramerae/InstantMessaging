@@ -26,6 +26,7 @@ namespace FP_Server
         private void uxBtnStartServer_Click(object sender, EventArgs e)
         {
             ws.Start();
+            
             uxBtnStartServer.Enabled = false;
             uxBtnStopServer.Enabled = true;
 

@@ -41,6 +41,8 @@ namespace FinalProject
           //  {
                 //if (ev.KeyCode == Keys.Enter)
                // {
+
+                    
                     string message = ChatTextBox.Text;
                     if (mh(message))
                     {
