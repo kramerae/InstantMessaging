@@ -13,6 +13,7 @@ namespace FP_Server.Model
         private int _roomID;
 
 
+
         public ChatRoom(int i)
         {
             _roomID = i;

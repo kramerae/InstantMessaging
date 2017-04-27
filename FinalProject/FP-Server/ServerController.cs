@@ -25,7 +25,7 @@ namespace FP_Server
         {
            Packet p = new Packet(Status.connectionSuccess);
            p.GetID = ID;
-           Sessions.SendTo(ID, JsonConvert.SerializeObject(p));
+           Sessions.SendTo(JsonConvert.SerializeObject(p), ID);
 
         }
 
@@ -36,7 +36,6 @@ namespace FP_Server
 
 
             string msg = e.Data;
-            Sessions.Broadcast(msg);
             Packet messageJSON = JsonConvert.DeserializeObject<Packet>(e.Data);
             Sessions.Broadcast(messageJSON.Message);
 
@@ -70,7 +69,9 @@ namespace FP_Server
 
                         break;
                     }
-                
+                case Status.connectionSuccess:
+                    Authentication(messageJSON);
+                    break;
 
 
              }

@@ -65,7 +65,7 @@ namespace FP_Server
             using (StreamReader file = new StreamReader("users.json"))
             {
                 string jsonString = file.ReadToEnd();
-                _userDatabase = JsonConvert.DeserializeObject<Dictionary<string, User_m>>(jsonString);
+               // _userDatabase = JsonConvert.DeserializeObject<Dictionary<string, User_m>>(jsonString);
               
             }
         }
