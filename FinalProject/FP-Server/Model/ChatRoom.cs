@@ -40,7 +40,6 @@ namespace FP_Server.Model
                     return true;
                 }
             }
-
             return false;
         }
     }

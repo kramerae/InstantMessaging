@@ -14,6 +14,7 @@ namespace FinalProject
         private string userName;
         private WebSocket ws;
         private Dictionary<string, bool> contacts;
+        private string _id;
 
         public event Message MessageReceived;
 

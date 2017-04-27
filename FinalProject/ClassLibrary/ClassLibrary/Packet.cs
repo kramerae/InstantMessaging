@@ -16,6 +16,7 @@ namespace ClassLibrary
         Dictionary<string,bool> _contactList;
         string _destinationID;
         string _originID;
+        string _ID;
 
         public Packet(Status status)
         {
@@ -121,6 +122,8 @@ namespace ClassLibrary
         }
 
 
+
+       
 
 
 
