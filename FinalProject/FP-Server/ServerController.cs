@@ -23,15 +23,17 @@ namespace FP_Server
 
         protected override void OnOpen()
         {
-           // Delivery d = new Delivery(Status.ConSuccess);
-           // d.ChatID = ID;
-           // Sessions.SendTo(ID, JsonConvert.SerializeObject(d));
+           Packet p = new Packet(Status.connectionSuccess);
+           p.GetID = ID;
+           Sessions.SendTo(ID, JsonConvert.SerializeObject(p));
 
         }
 
 
         protected override void OnMessage(MessageEventArgs e)
         {
+
+
             string msg = e.Data;
             Sessions.Broadcast(msg);
             Packet messageJSON = JsonConvert.DeserializeObject<Packet>(e.Data);
@@ -109,9 +111,10 @@ namespace FP_Server
 
                 _database.AddUser(messageJSON.Username, messageJSON.Password);
 
+
                 // Logins the user
-                Packet s1 = new Packet(Status.loginFalse);
-                Sessions.SendTo(messageJSON.DestinationID, JsonConvert.SerializeObject(s1));
+                Packet s1 = new Packet(Status.loginTrue);
+                Sessions.SendTo(messageJSON.GetID, JsonConvert.SerializeObject(s1));
 
 
 
@@ -125,13 +128,15 @@ namespace FP_Server
                 if (!_database.PasswordValidation(messageJSON.Username, messageJSON.Password))
                 {
                     //Password is incorrect
-                    Sessions.Broadcast(JsonConvert.SerializeObject(new Packet(Status.loginFalse)));
+                    Sessions.SendTo(messageJSON.GetID ,JsonConvert.SerializeObject(new Packet(Status.loginFalse)));
 
                 }
                 else
                 {
                     //Password is correct
-                    Sessions.Broadcast(JsonConvert.SerializeObject(new Packet(Status.loginTrue)));
+                    Packet p = new Packet(Status.loginTrue);
+                    p.ContactList = _database.GetContacts(messageJSON.GetID);
+                    Sessions.SendTo(messageJSON.GetID, JsonConvert.SerializeObject(p));
                 }
 
             }
