@@ -22,7 +22,7 @@ namespace FP_Server
 
             // Start a websocket server at port 8550
             var wss = new WebSocketServer(8550);
-
+           
             // Add the Echo websocket service
             wss.AddWebSocketService<Echo>("/echo");
 

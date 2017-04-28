@@ -16,20 +16,27 @@ namespace FP_Server
 
         public ServerDatabase()
         {
+            
             _userDatabase = new Dictionary<string, User_m>();
-            ReadFromFile();
-
+            AddPerson();
+            //  ReadFromFile();
+            WriteToFile();
+            
         }
 
         private void AddPerson()
         {
             Dictionary<string, bool> a = new Dictionary<string, bool>();
+            Dictionary<string, bool> m = new Dictionary<string, bool>();
 
             a.Add("Matt", true);
             a.Add("Jason", true);
             a.Add("Steven", true);
+            m.Add("Shane", true);
+            m.Add("Jason", true);
+            m.Add("Steven", true);
             _userDatabase.Add("sriegodedios", new User_m("sriegodedios", "shaner26", a));
-
+            _userDatabase.Add("mhixon", new User_m("sriegodedios", "matt555", m));
 
         }
 
@@ -65,7 +72,7 @@ namespace FP_Server
             using (StreamReader file = new StreamReader("users.json"))
             {
                 string jsonString = file.ReadToEnd();
-                _userDatabase = JsonConvert.DeserializeObject<Dictionary<string, User_m>>(jsonString);
+               // _userDatabase = JsonConvert.DeserializeObject<Dictionary<string, User_m>>(jsonString);
               
             }
         }
