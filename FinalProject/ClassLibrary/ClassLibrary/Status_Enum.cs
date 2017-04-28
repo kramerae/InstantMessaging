@@ -6,6 +6,6 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary
 {
-        public enum Status { connectionSuccess, loginValidate, loginTrue, loginFalse, onlineValidate, onlineTrue, onlineFalse, messageSend, messageReceive, messageHistory, messageHistorySend, contactListRequest, contactListSend, requestChatRoom, logout};
+        public enum Status { loginValidate, connectionSuccess, loginTrue, loginFalse, onlineValidate, onlineTrue, onlineFalse, messageSend, messageReceive, messageHistory, messageHistorySend, contactListRequest, contactListSend, requestChatRoom, logout};
     
 }
