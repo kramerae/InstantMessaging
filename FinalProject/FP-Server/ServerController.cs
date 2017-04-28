@@ -14,11 +14,16 @@ namespace FP_Server
 {
     public class ServerController: WebSocketBehavior
     {
-      //  private Status en = new Status();
-        private ServerDatabase _database;
+        //  private Status en = new Status();
+        private ServerDatabase _database; //= new ServerDatabase();
         private List<ChatRoom> _chatRoom;
         private int _count = 0;
-        
+
+        public ServerController()
+        {
+            _database = new ServerDatabase();
+            _chatRoom = new List<ChatRoom>();
+        }
 
 
         protected override void OnOpen()
@@ -51,9 +56,8 @@ namespace FP_Server
                      {
                         //Send message to a specific client
                         string id = messageJSON.DestinationID;
-                        SendMessage(id, messageJSON);
-
-                         break;
+                        SendMessage(messageJSON.OriginID, messageJSON.DestinationID, messageJSON.Message);
+                        break;
                      }
                 case Status.contactListRequest:
                     {
@@ -93,11 +97,7 @@ namespace FP_Server
 
 
         
-        public ServerController()
-        {
-            _database = new ServerDatabase();
-            _chatRoom = new List<ChatRoom>();
-        }
+      
 
 
         /// <summary>
@@ -106,6 +106,7 @@ namespace FP_Server
         /// <param name="messageJSON"></param>
         private void Authentication(Packet messageJSON)
         {
+            string id = messageJSON.GetID;
 
             if (!_database.CheckUser(messageJSON.Username))
             {
@@ -116,7 +117,7 @@ namespace FP_Server
 
                 // Logins the user
                 Packet s1 = new Packet(Status.loginTrue);
-                Sessions.SendTo(messageJSON.GetID, JsonConvert.SerializeObject(s1));
+                Sessions.SendTo(JsonConvert.SerializeObject(s1), id);
 
 
 
@@ -130,13 +131,13 @@ namespace FP_Server
                 if (!_database.PasswordValidation(messageJSON.Username, messageJSON.Password))
                 {
                     //Password is incorrect
-                    Sessions.Broadcast(JsonConvert.SerializeObject(new Packet(Status.loginFalse)));
+                    Sessions.SendTo(JsonConvert.SerializeObject(new Packet(Status.loginFalse)),id);
 
                 }
                 else
                 {
                     //Password is correct
-                    Sessions.Broadcast(JsonConvert.SerializeObject(new Packet(Status.loginTrue)));
+                    Sessions.SendTo(JsonConvert.SerializeObject(new Packet(Status.loginTrue)),id);
                 }
 
             }
@@ -148,12 +149,14 @@ namespace FP_Server
         ///</summary>
         ///<param name="id">The id to send</param>
         ///<param name="d">The packet to send</param>
-        private void SendMessage(string id, Packet p)
+        private void SendMessage(string idOrigin, string idDestination, string message)
         {
             Packet temp = new Packet(Status.messageReceive);
-            temp.Message = p.Message;
+            temp.Message = message;
+            temp.OriginID = idOrigin;
+            temp.DestinationID = idDestination;
 
-            Sessions.SendTo(id, JsonConvert.SerializeObject(temp));
+            Sessions.SendTo(JsonConvert.SerializeObject(temp),idDestination);
         }
 
     
