@@ -31,7 +31,7 @@ namespace FP_Server
         {
            Packet p = new Packet(Status.connectionSuccess);
            p.GetID = ID;
-            MessageBox.Show("New user with Identification of: " + ID);
+           MessageBox.Show("New user with Identification of: " + ID);
            Sessions.SendTo(JsonConvert.SerializeObject(p), ID);
 
         }
@@ -76,7 +76,7 @@ namespace FP_Server
                         break;
                     }
                 case Status.connectionSuccess:
-                    Authentication(messageJSON);
+                    //Authentication(messageJSON);
                     break;
                 case Status.requestChatRoom:
                     {
@@ -129,7 +129,7 @@ namespace FP_Server
                 // Logins the user
                 Packet s1 = new Packet(Status.loginTrue);
                 s1.GetID = id;
-                //s1.GetStatus =
+               // s1.GetStatus = Status.loginTrue;
                 Sessions.SendTo(JsonConvert.SerializeObject(s1), id);
 
 
