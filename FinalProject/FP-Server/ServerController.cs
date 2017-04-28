@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WebSocketSharp;
 using ClassLibrary;
+using System.Windows.Forms;
 
 using WebSocketSharp.Server;
 
@@ -30,6 +31,7 @@ namespace FP_Server
         {
            Packet p = new Packet(Status.connectionSuccess);
            p.GetID = ID;
+            MessageBox.Show("New user with Identification of: " + ID);
            Sessions.SendTo(JsonConvert.SerializeObject(p), ID);
 
         }
@@ -69,14 +71,23 @@ namespace FP_Server
                         p.DestinationID = messageJSON.OriginID;
                         p.OriginID = "server";
 
-                        Sessions.SendTo(p.DestinationID, JsonConvert.SerializeObject(p));
+                        Sessions.SendTo(JsonConvert.SerializeObject(p), messageJSON.GetID);
 
                         break;
                     }
                 case Status.connectionSuccess:
                     Authentication(messageJSON);
                     break;
+                case Status.requestChatRoom:
+                    {
 
+                        //Makes a new Chatroom for the user
+                        NewChatRoom(messageJSON);
+                        break;
+
+                    }
+                 
+                    
 
              }
 
@@ -157,6 +168,20 @@ namespace FP_Server
             temp.DestinationID = idDestination;
 
             Sessions.SendTo(JsonConvert.SerializeObject(temp),idDestination);
+        }
+
+
+        private void NewChatRoom(Packet p)
+        {
+            ChatRoom c = new ChatRoom(_count);
+            c.AddUser(p.GetID);
+            c.AddUser(p.DestinationID);
+
+            _chatRoom.Add(c);
+
+            _count++;
+
+
         }
 
     
