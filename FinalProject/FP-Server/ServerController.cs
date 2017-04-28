@@ -128,6 +128,8 @@ namespace FP_Server
 
                 // Logins the user
                 Packet s1 = new Packet(Status.loginTrue);
+                s1.GetID = id;
+                //s1.GetStatus =
                 Sessions.SendTo(JsonConvert.SerializeObject(s1), id);
 
 
