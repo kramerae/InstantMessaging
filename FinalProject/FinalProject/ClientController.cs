@@ -98,6 +98,7 @@ namespace FinalProject
 
         public bool MessageEntered(Packet p)
         {
+            p.GetStatus = Status.onlineTrue;
             // Generate Packet
             string send = JsonConvert.SerializeObject(p);
 
@@ -143,6 +144,7 @@ namespace FinalProject
                 p1.Password = p;
                 p1.GetID = _id;
                 MessageEntered(p1);
+                
 
             }
         }
