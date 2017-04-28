@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WebSocketSharp;
 using ClassLibrary;
+
 using Newtonsoft.Json;
 
 namespace FinalProject
@@ -80,6 +81,7 @@ namespace FinalProject
             switch (p.GetStatus)
             {
                 case Status.loginTrue:
+                    
                     //MessageBox.Show("Works: Login Successful");
                     break;
                 case Status.loginFalse:
@@ -111,7 +113,7 @@ namespace FinalProject
             }
         }
 
-        /*
+        
         // Handles when a new message is entered by the user
         public bool MessageEntered(string message)
         {
@@ -129,7 +131,7 @@ namespace FinalProject
                 return false;
             }
         }
-        */
+        
         public void handle(object sender, string[] items)
         {
             if(sender.GetType() == typeof(FinalProject.LoginForm))
@@ -139,6 +141,7 @@ namespace FinalProject
                 Packet p1 = new Packet(Status.loginValidate);
                 p1.Username = u;
                 p1.Password = p;
+                p1.GetID = _id;
                 MessageEntered(p1);
 
             }
