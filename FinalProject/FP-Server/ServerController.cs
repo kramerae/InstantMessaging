@@ -46,6 +46,11 @@ namespace FP_Server
             Packet messageJSON = JsonConvert.DeserializeObject<Packet>(e.Data);
             Sessions.Broadcast(messageJSON.Message);
 
+            //int type = 
+
+
+
+
             switch (messageJSON.GetStatus)
              {
                  case Status.loginValidate:
@@ -77,6 +82,7 @@ namespace FP_Server
                     }
                 case Status.connectionSuccess:
                     //Authentication(messageJSON);
+                    MessageBox.Show("Incorrect =(");
                     break;
                 case Status.requestChatRoom:
                     {
@@ -86,6 +92,9 @@ namespace FP_Server
                         break;
 
                     }
+                case Status.loginTrue:
+                    MessageBox.Show("This is correct. =)");
+                    break;
                  
                     
 
