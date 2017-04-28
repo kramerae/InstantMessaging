@@ -98,7 +98,8 @@ namespace FinalProject
 
         public bool MessageEntered(Packet p)
         {
-            p.GetStatus = Status.onlineTrue;
+            
+            p.GetStatus = Status.loginValidate;
             // Generate Packet
             string send = JsonConvert.SerializeObject(p);
 
