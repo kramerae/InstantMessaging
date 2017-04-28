@@ -93,10 +93,31 @@ namespace FinalProject
 
             return true; 
         }
-        
+
+        public bool MessageEntered(Packet p)
+        {
+            // Generate Packet
+            string send = JsonConvert.SerializeObject(p);
+
+            // Send the message to the server if connection is alive
+            if (ws.IsAlive)
+            {
+                ws.Send(send);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        /*
         // Handles when a new message is entered by the user
         public bool MessageEntered(string message)
         {
+            // Generate Packet
+
+
             // Send the message to the server if connection is alive
             if (ws.IsAlive)
             {
@@ -106,6 +127,20 @@ namespace FinalProject
             else
             {
                 return false;
+            }
+        }
+        */
+        public void handle(object sender, string[] items)
+        {
+            if(sender.GetType() == typeof(FinalProject.LoginForm))
+            {
+                string u = items[0];
+                string p = items[1];
+                Packet p1 = new Packet(Status.loginValidate);
+                p1.Username = u;
+                p1.Password = p;
+                MessageEntered(p1);
+
             }
         }
         
