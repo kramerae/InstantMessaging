@@ -21,7 +21,8 @@ namespace ClassLibrary
             contactListRequest,//11
             contactListSend,//12
             requestChatRoom,//13
-            logout//24
+            logout,//14
+            undefined//15
     };
     
 }
