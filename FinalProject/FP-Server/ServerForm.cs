@@ -9,12 +9,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using WebSocketSharp;
 using WebSocketSharp.Server;
+using System.Threading;
 
 namespace FP_Server
 {
     public partial class ServerForm : Form
     {
+        
         WebSocketServer ws;
+        
         //rverController _sc;
         public ServerForm(WebSocketServer w)
         {
@@ -37,6 +40,32 @@ namespace FP_Server
             ws.Stop();
             uxBtnStopServer.Enabled = false;
             uxBtnStartServer.Enabled = true;
+        }
+
+        public void UpdateListEvents(string events)
+        {
+            this.
+
+            Updates(events);
+        }
+
+        private void Updates(string s)
+        {
+
+
+               uxEventListBox.EndUpdate();
+            if(uxEventListBox.InvokeRequired)
+            {
+                Invoke(new MethodInvoker(delegate () { uxEventListBox.Items.Add(s); }));
+            }
+            else
+               uxEventListBox.Items.Add(s);
+               uxEventListBox.EndUpdate();
+
+
+            
+           
+           // MessageBox.Show(events);
         }
     }
 }
