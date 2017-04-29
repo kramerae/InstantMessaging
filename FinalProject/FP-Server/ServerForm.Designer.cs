@@ -202,6 +202,7 @@
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "ServerForm";
             this.Text = "ServerForm";
             this.tableLayoutPanel1.ResumeLayout(false);

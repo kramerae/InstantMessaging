@@ -29,7 +29,7 @@ namespace FP_Server
         private void uxBtnStartServer_Click(object sender, EventArgs e)
         {
             ws.Start();
-            
+            Updates("Starting Server...");
             uxBtnStartServer.Enabled = false;
             uxBtnStopServer.Enabled = true;
 
@@ -37,6 +37,7 @@ namespace FP_Server
 
         private void uxBtnStopServer_Click(object sender, EventArgs e)
         {
+            Updates("Server Has Stopped...");
             ws.Stop();
             uxBtnStopServer.Enabled = false;
             uxBtnStartServer.Enabled = true;
@@ -44,7 +45,7 @@ namespace FP_Server
 
         public void UpdateListEvents(string events)
         {
-            this.
+            
 
             Updates(events);
         }

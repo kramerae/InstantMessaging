@@ -147,6 +147,7 @@ namespace FP_Server
         /// <param name="messageJSON"></param>
         private void Authentication(Packet messageJSON)
         {
+            _u("Request Authentication-- ID: " + messageJSON.GetID);
             string id = messageJSON.GetID;
 
             if (!_database.CheckUser(messageJSON.Username))
