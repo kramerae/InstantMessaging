@@ -28,11 +28,12 @@ namespace FP_Server
 
         private void uxBtnStartServer_Click(object sender, EventArgs e)
         {
-            ws.Start();
+           
             Updates("Starting Server...");
             uxBtnStartServer.Enabled = false;
             uxBtnStopServer.Enabled = true;
-
+            ws.Start();
+            Updates("Server has started at port: 2550");
         }
 
         private void uxBtnStopServer_Click(object sender, EventArgs e)
@@ -45,7 +46,6 @@ namespace FP_Server
 
         public void UpdateListEvents(string events)
         {
-            
 
             Updates(events);
         }
@@ -53,20 +53,25 @@ namespace FP_Server
         private void Updates(string s)
         {
 
-
+            string log = "["+DateTime.Now+"]" + ":: " + s;
                uxEventListBox.EndUpdate();
             if(uxEventListBox.InvokeRequired)
             {
-                Invoke(new MethodInvoker(delegate () { uxEventListBox.Items.Add(s); }));
+                Invoke(new MethodInvoker(delegate () { uxEventListBox.Items.Add(log); }));
             }
             else
-               uxEventListBox.Items.Add(s);
+               uxEventListBox.Items.Add(log);
                uxEventListBox.EndUpdate();
 
 
             
            
            // MessageBox.Show(events);
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

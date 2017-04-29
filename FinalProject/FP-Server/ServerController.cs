@@ -44,7 +44,7 @@ namespace FP_Server
          
             // MessageBox.Show("New user with Identification of: " + ID);
             Sessions.SendTo(JsonConvert.SerializeObject(p), ID);
-            _u("New user with Identification of: " + ID);
+            _u("New user with ID of: " + ID);
 
             // _u("New user with Identification of: "+ID);
 
@@ -136,7 +136,7 @@ namespace FP_Server
 
         }
 
-
+        
         
       
 
@@ -203,7 +203,10 @@ namespace FP_Server
             Sessions.SendTo(JsonConvert.SerializeObject(temp),idDestination);
         }
 
-
+        /// <summary>
+        /// Makes a new chatroom
+        /// </summary>
+        /// <param name="p"></param>
         private void NewChatRoom(Packet p)
         {
             ChatRoom c = new ChatRoom(_count);
@@ -217,6 +220,7 @@ namespace FP_Server
 
         }
 
+        
     
     }
 }
