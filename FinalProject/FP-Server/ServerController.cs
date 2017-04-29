@@ -6,45 +6,66 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WebSocketSharp;
-using ClassLibrary;
 using System.Windows.Forms;
+using ClassLibrary;
 
 using WebSocketSharp.Server;
 
 namespace FP_Server
 {
+   
     public class ServerController: WebSocketBehavior
     {
+
+        event UpdateEvent _u;
         //  private Status en = new Status();
         private ServerDatabase _database; //= new ServerDatabase();
         private List<ChatRoom> _chatRoom;
         private int _count = 0;
+        private ServerForm _sf;
+       
 
-        public ServerController()
+        public ServerController(UpdateEvent ue, ServerForm sf)
         {
+            _u = ue;
             _database = new ServerDatabase();
             _chatRoom = new List<ChatRoom>();
+            _sf = sf;
+
+           // sf.ShowDialog();
         }
 
 
         protected override void OnOpen()
         {
+
            Packet p = new Packet(Status.connectionSuccess);
            p.GetID = ID;
-           MessageBox.Show("New user with Identification of: " + ID);
-           Sessions.SendTo(JsonConvert.SerializeObject(p), ID);
+         
+            // MessageBox.Show("New user with Identification of: " + ID);
+            Sessions.SendTo(JsonConvert.SerializeObject(p), ID);
+            _u("New user with Identification of: " + ID);
+
+            // _u("New user with Identification of: "+ID);
 
         }
 
+        
 
 
         protected override void OnMessage(MessageEventArgs e)
         {
 
+            Status test = ConvertTos.ConvertToStatus(4);
+
 
             string msg = e.Data;
             Packet messageJSON = JsonConvert.DeserializeObject<Packet>(e.Data);
-            Sessions.Broadcast(messageJSON.Message);
+          
+            
+
+            int test2 = ConvertTos.ConvertToInt(messageJSON.GetStatus);
+           // Sessions.Broadcast(messageJSON.Message);
 
             //int type = 
 
@@ -138,7 +159,7 @@ namespace FP_Server
                 // Logins the user
                 Packet s1 = new Packet(Status.loginTrue);
                 s1.GetID = id;
-               // s1.GetStatus = Status.loginTrue;
+                s1.GetStatus = Status.loginTrue;
                 Sessions.SendTo(JsonConvert.SerializeObject(s1), id);
 
 

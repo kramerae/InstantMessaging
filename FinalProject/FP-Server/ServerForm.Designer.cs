@@ -40,10 +40,15 @@
             this.listView1 = new System.Windows.Forms.ListView();
             this.uxBtnStartServer = new System.Windows.Forms.Button();
             this.uxBtnStopServer = new System.Windows.Forms.Button();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.uxEventListBox = new System.Windows.Forms.ListBox();
+            this.panel5 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -144,9 +149,9 @@
             // uxBtnStartServer
             // 
             this.uxBtnStartServer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxBtnStartServer.Location = new System.Drawing.Point(13, 1);
+            this.uxBtnStartServer.Location = new System.Drawing.Point(3, 3);
             this.uxBtnStartServer.Name = "uxBtnStartServer";
-            this.uxBtnStartServer.Size = new System.Drawing.Size(125, 26);
+            this.uxBtnStartServer.Size = new System.Drawing.Size(198, 73);
             this.uxBtnStartServer.TabIndex = 2;
             this.uxBtnStartServer.Text = "Start Server";
             this.uxBtnStartServer.UseVisualStyleBackColor = true;
@@ -155,21 +160,46 @@
             // uxBtnStopServer
             // 
             this.uxBtnStopServer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxBtnStopServer.Location = new System.Drawing.Point(144, 1);
+            this.uxBtnStopServer.Location = new System.Drawing.Point(217, 3);
             this.uxBtnStopServer.Name = "uxBtnStopServer";
-            this.uxBtnStopServer.Size = new System.Drawing.Size(125, 26);
+            this.uxBtnStopServer.Size = new System.Drawing.Size(192, 73);
             this.uxBtnStopServer.TabIndex = 3;
             this.uxBtnStopServer.Text = "Stop Server";
             this.uxBtnStopServer.UseVisualStyleBackColor = true;
             this.uxBtnStopServer.Click += new System.EventHandler(this.uxBtnStopServer_Click);
             // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.uxEventListBox);
+            this.panel4.Location = new System.Drawing.Point(720, 30);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(412, 515);
+            this.panel4.TabIndex = 4;
+            // 
+            // uxEventListBox
+            // 
+            this.uxEventListBox.FormattingEnabled = true;
+            this.uxEventListBox.Location = new System.Drawing.Point(3, 27);
+            this.uxEventListBox.Name = "uxEventListBox";
+            this.uxEventListBox.Size = new System.Drawing.Size(406, 485);
+            this.uxEventListBox.TabIndex = 0;
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.uxBtnStartServer);
+            this.panel5.Controls.Add(this.uxBtnStopServer);
+            this.panel5.Location = new System.Drawing.Point(720, 552);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(412, 79);
+            this.panel5.TabIndex = 5;
+            // 
             // ServerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(725, 643);
-            this.Controls.Add(this.uxBtnStopServer);
-            this.Controls.Add(this.uxBtnStartServer);
+            this.ClientSize = new System.Drawing.Size(1136, 643);
+            this.Controls.Add(this.panel5);
+            this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "ServerForm";
@@ -181,6 +211,8 @@
             this.panel1.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -199,5 +231,8 @@
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.Button uxBtnStartServer;
         private System.Windows.Forms.Button uxBtnStopServer;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.ListBox uxEventListBox;
+        private System.Windows.Forms.Panel panel5;
     }
 }
