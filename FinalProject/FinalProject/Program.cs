@@ -7,9 +7,12 @@ using System.Windows.Forms;
 namespace FinalProject
 {
     public delegate bool Message(string message);
-    
+
+    public delegate void InputHandler(object sender, string[] items);
+
     static class Program
     {
+        
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -20,7 +23,9 @@ namespace FinalProject
             Application.SetCompatibleTextRenderingDefault(false);
             
             ClientController c = new ClientController();
-            LoginForm f = new LoginForm(c);
+            c.MessageEvent += c.MessageReceived;
+            //LoginForm f = new LoginForm(c);
+            LoginForm f = new LoginForm(c.handle);
             Application.Run(f);
         }
     }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ClassLibrary;
 
 namespace FP_Server.Model
 {
@@ -10,37 +11,15 @@ namespace FP_Server.Model
     {
         Status _status; // 101 = request loggin, 200 login succesfull, 403 loggin invalid, 201 send message
         string _message;
+        string _chatID;
         int _chatroom;
         string _username;
         string _password;
-
-        public Delivery(Status status, string username, string password)
-        {
-            _status = status;
-            _username = username;
-            _password = password;
-            _message = null;
-            _chatroom = -100;
-
-
-        }
-
+        //Packet
+        
         public Delivery(Status status)
         {
             _status = status;
-            _username = null;
-            _password = null;
-            _message = null;
-            _chatroom = -100;
-        }
-
-        public Delivery(Status status, string message, int chatroom)
-        {
-            _status = status;
-            _message = message;
-            _chatroom = chatroom;
-            _username = null;
-            _password = null;
         }
 
         public string Username
@@ -48,6 +27,9 @@ namespace FP_Server.Model
             get
             {
                 return _username;
+            }set
+            {
+                _username = value;
             }
         }
 
@@ -56,6 +38,10 @@ namespace FP_Server.Model
             get
             {
                 return _password;
+            }
+            set
+            {
+                _password = value;
             }
         }
 
@@ -72,6 +58,9 @@ namespace FP_Server.Model
             get
             {
                 return _message;
+            }set
+            {
+                _message = value;
             }
         }
 
@@ -80,6 +69,21 @@ namespace FP_Server.Model
             get
             {
                 return _chatroom;
+            }set
+            {
+                _chatroom = value;
+            }
+        }
+
+        public string ChatID
+        {
+            get
+            {
+                return _chatID;
+            }
+            set
+            {
+                _chatID = value;
             }
         }
 

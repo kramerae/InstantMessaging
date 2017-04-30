@@ -37,15 +37,16 @@
             this.uxTitleLabel = new System.Windows.Forms.Label();
             this.uxContactListBox = new System.Windows.Forms.ListBox();
             this.uxLogout = new System.Windows.Forms.Button();
+            this.uxRefresh = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // uxlabel1
             // 
             this.uxlabel1.AutoSize = true;
-            this.uxlabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxlabel1.Location = new System.Drawing.Point(12, 9);
+            this.uxlabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uxlabel1.Location = new System.Drawing.Point(12, 14);
             this.uxlabel1.Name = "uxlabel1";
-            this.uxlabel1.Size = new System.Drawing.Size(87, 18);
+            this.uxlabel1.Size = new System.Drawing.Size(105, 24);
             this.uxlabel1.TabIndex = 0;
             this.uxlabel1.Text = "Contact List";
             // 
@@ -104,14 +105,15 @@
             // uxContactListBox
             // 
             this.uxContactListBox.FormattingEnabled = true;
-            this.uxContactListBox.Location = new System.Drawing.Point(12, 33);
+            this.uxContactListBox.Location = new System.Drawing.Point(12, 46);
             this.uxContactListBox.Name = "uxContactListBox";
-            this.uxContactListBox.Size = new System.Drawing.Size(189, 355);
+            this.uxContactListBox.Size = new System.Drawing.Size(189, 342);
             this.uxContactListBox.TabIndex = 7;
             this.uxContactListBox.SelectedIndexChanged += new System.EventHandler(this.uxContactListBox_SelectedIndexChanged);
             // 
             // uxLogout
             // 
+            this.uxLogout.Cursor = System.Windows.Forms.Cursors.Hand;
             this.uxLogout.Location = new System.Drawing.Point(335, 12);
             this.uxLogout.Name = "uxLogout";
             this.uxLogout.Size = new System.Drawing.Size(81, 26);
@@ -120,11 +122,24 @@
             this.uxLogout.UseVisualStyleBackColor = true;
             this.uxLogout.Click += new System.EventHandler(this.uxLogout_Click);
             // 
+            // uxRefresh
+            // 
+            this.uxRefresh.BackColor = System.Drawing.SystemColors.Control;
+            this.uxRefresh.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.uxRefresh.Image = ((System.Drawing.Image)(resources.GetObject("uxRefresh.Image")));
+            this.uxRefresh.Location = new System.Drawing.Point(162, 6);
+            this.uxRefresh.Name = "uxRefresh";
+            this.uxRefresh.Size = new System.Drawing.Size(39, 38);
+            this.uxRefresh.TabIndex = 9;
+            this.uxRefresh.UseVisualStyleBackColor = false;
+            this.uxRefresh.Click += new System.EventHandler(this.uxRefresh_Click);
+            // 
             // ClientMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(428, 402);
+            this.Controls.Add(this.uxRefresh);
             this.Controls.Add(this.uxLogout);
             this.Controls.Add(this.uxContactListBox);
             this.Controls.Add(this.uxTitleLabel);
@@ -150,6 +165,7 @@
         private System.Windows.Forms.Label uxTitleLabel;
         private System.Windows.Forms.ListBox uxContactListBox;
         private System.Windows.Forms.Button uxLogout;
+        private System.Windows.Forms.Button uxRefresh;
     }
 }
 

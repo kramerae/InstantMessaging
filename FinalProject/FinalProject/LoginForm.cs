@@ -12,20 +12,29 @@ namespace FinalProject
 {
     public partial class LoginForm : Form
     {
-        private ClientController _c;
+        InputHandler h;
+        Message mh;
         private string username;
         private string password;
 
-  
-
-        public LoginForm(ClientController c)
+        public LoginForm(InputHandler han)
         {
-            _c = c;
+            h = han;
+            //mh = newMessageHandler;
             InitializeComponent();
 
             button1.Enabled = false;
             textBox2.Enabled = false;
         }
+
+        public string GetUsername
+        {
+            get
+            {
+                return username;
+            }
+        }
+
 
 
         private void button1_Click(object sender, EventArgs e)
@@ -40,14 +49,21 @@ namespace FinalProject
             }
             else
             {
-                bool login = _c.LoginValidate(username, password);
+                string[] arr = { username, password};
+                h(this, arr);
+                //bool login = _c.LoginValidate(username, password);
 
+                /*
                 if (login == false)
                 {
                     MessageBox.Show("Invalid username or password.");
                 }
                 else
                 {
+                    // test
+                    // Set username in controller
+
+                    _c.UserName = username;
                     using (ClientMenu cm = new ClientMenu(_c))
                     {
                         if (cm.ShowDialog() == DialogResult.OK)
@@ -57,9 +73,10 @@ namespace FinalProject
                         }
                     }
                 }
+                */
             }
-            
-            
+
+
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -71,5 +88,6 @@ namespace FinalProject
         {
             button1.Enabled = true;
         }
+        
     }
 }

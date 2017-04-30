@@ -16,20 +16,34 @@ namespace FP_Server
 
         public ServerDatabase()
         {
+            
             _userDatabase = new Dictionary<string, User_m>();
-            ReadFromFile();
-
+            AddPerson();
+            //  ReadFromFile();
+            WriteToFile();
+            
         }
 
         private void AddPerson()
         {
-            List<string> a = new List<string>();
+            Dictionary<string, bool> a = new Dictionary<string, bool>();
+            Dictionary<string, bool> m = new Dictionary<string, bool>();
 
-            a.Add("Matt");
-            a.Add("Jason");
-            a.Add("Steven");
+            a.Add("Matt", true);
+            a.Add("Jason", true);
+            a.Add("Steven", true);
+            m.Add("Shane", true);
+            m.Add("Jason", true);
+            m.Add("Steven", true);
             _userDatabase.Add("sriegodedios", new User_m("sriegodedios", "shaner26", a));
+            _userDatabase.Add("mhixon", new User_m("sriegodedios", "matt555", m));
 
+        }
+
+        public Dictionary<string,bool> GetContacts(string id)
+        {
+
+           return _userDatabase[id].GetContacts;
 
         }
 
@@ -55,7 +69,7 @@ namespace FP_Server
             using (StreamReader file = new StreamReader("users.json"))
             {
                 string jsonString = file.ReadToEnd();
-                _userDatabase = JsonConvert.DeserializeObject<Dictionary<string, User_m>>(jsonString);
+               // _userDatabase = JsonConvert.DeserializeObject<Dictionary<string, User_m>>(jsonString);
               
             }
         }
@@ -65,9 +79,11 @@ namespace FP_Server
         /// </summary>
         /// <param name="username"></param>
         /// <param name="password"></param>
-        public void AddUser(string username, string password)
+        public void AddUser(string username, string password, string Id)
         {
-            _userDatabase.Add(username, new User_m(username, password, new List<string>()));
+            User_m user = new User_m(username, password, new Dictionary<string,bool>());
+            user.GetID = Id;
+            _userDatabase.Add(Id, user);
 
         }
 

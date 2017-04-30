@@ -68,7 +68,7 @@ namespace FinalProject
             // Lauch chat form
             using (Chat ch = new Chat(_c.MessageEntered))
             {
-                _c.MessageReceived += ch.MessageReceived;
+                //_c.MessageReceived += ch.MessageReceived;
                 if (ch.ShowDialog() == DialogResult.OK)
                 {
                    
@@ -99,6 +99,11 @@ namespace FinalProject
         {
             uxRemoveContact.Enabled = true;
             uxStartChat.Enabled = true;
+        }
+
+        private void uxRefresh_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

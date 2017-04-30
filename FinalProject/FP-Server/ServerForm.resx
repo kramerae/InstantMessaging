@@ -117,29 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="uxInstructions.Text" xml:space="preserve">
-    <value>Select a contact from your list and hit the
-start chat button to begin your conversation!
-Or select a contact and press the remove
-contact button to delete them from your 
-contact list. Know a contact's name press 
-the add contact button to add them to 
-your contact list!</value>
-  </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="uxRefresh.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
-        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAHxSURBVEhLtdXPSxRhHMdxM/p5qC4SlohSKB6iW3QS
-        8WCXUOhv0IOCne0gehA9iNQp0CgSwYsnEYoi6ZQmKOglQRQJRDODIJB+iE7vz87zZR/Hmd0ZWD/wEvfZ
-        55nPzsyzs2VBEJy62MFSC/8kpxIdmMYadrGNRYziAYonoeQmevANmlDILNqQnJiSauhTRw9WzFOU42Qi
-        JfexjugBVqHL04t+zOAXovNe4WS8knP4An/RV7TjEqKpxQv48+Uxjscr6YM/eR668cXyCP5Z/cU95ONK
-        buCnXjobqELadMPWyhTycSXaSf6kh8gSXepl2PotXEYYV/JB/zo6owpkje6dHeMADQjjSnSDbcKcBlLk
-        PO6gDrehsz+EHacLNbhlJXuwN/XtThOVDEBr/uA3jtxr+Yd9HFqJrqG9+VEDKXMW47C1ccat5JM3+B3X
-        kCVDsPW+tyi3kkE3aBqRJTqj1/CP8RnhBnIl9dCOsAkL0LbMmmFo/SauaiAXV6I8h5XIJC4iSy7gGZpy
-        ryxeie7DD/hF73EXcTkDPafe4YoGEuOVKK2IPl21PfXUHcET6Ek8hiXYnDdI3iyREqUZ/nMsLX2A+MSU
-        KNoILxE9UJwddCL5kiWUWFowgRXoC6t7pqeDntL6KdAP2HUUjkpOW+xgaQVl/wHnXy6csBpQ9gAAAABJ
-        RU5ErkJggg==
-</value>
-  </data>
 </root>
