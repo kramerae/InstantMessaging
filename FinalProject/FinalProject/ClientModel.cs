@@ -6,15 +6,27 @@ using System.Threading.Tasks;
 
 namespace FinalProject
 {
-    public class ClientModel
+    public class ClientModel : IClientModel
     {
-        
+        private bool _loginStatus;
         private List<string> messages;
         
 
         public ClientModel()
         {
             
+        }
+
+        public bool LoginStatus
+        {
+            get
+            {
+                return _loginStatus;
+            }
+            set
+            {
+                _loginStatus = value;
+            }
         }
   
 

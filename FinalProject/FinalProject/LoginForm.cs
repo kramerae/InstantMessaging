@@ -12,14 +12,17 @@ namespace FinalProject
 {
     public partial class LoginForm : Form
     {
+        ClientModel _m;
         InputHandler h;
         Message mh;
+        LoginObserver l;
         private string username;
         private string password;
 
-        public LoginForm(InputHandler han)
+        public LoginForm(InputHandler han, ClientModel m)
         {
             h = han;
+            _m = m;
             //mh = newMessageHandler;
             InitializeComponent();
 
@@ -51,9 +54,13 @@ namespace FinalProject
             {
                 string[] arr = { username, password};
                 h(this, arr);
+                // bool login = l();
                 //bool login = _c.LoginValidate(username, password);
 
-                /*
+                Task.Delay(1000);
+                
+                bool login = _m.LoginStatus;
+                
                 if (login == false)
                 {
                     MessageBox.Show("Invalid username or password.");
@@ -63,8 +70,8 @@ namespace FinalProject
                     // test
                     // Set username in controller
 
-                    _c.UserName = username;
-                    using (ClientMenu cm = new ClientMenu(_c))
+                    //_c.UserName = username;
+                    using (ClientMenu cm = new ClientMenu())
                     {
                         if (cm.ShowDialog() == DialogResult.OK)
                         {
@@ -73,7 +80,7 @@ namespace FinalProject
                         }
                     }
                 }
-                */
+                
             }
 
 

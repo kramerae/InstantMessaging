@@ -10,19 +10,21 @@ using Newtonsoft.Json;
 
 namespace FinalProject
 {
-    public class ClientController
-    {
+    public class ClientController { 
         ClientModel _m;
         private string userName;
         private WebSocket ws;
         private Dictionary<string, bool> contacts;
         private string _id;
+        private List<Observer> observers = new List<Observer>();
+        private bool loginStatus = false; 
+
 
         public event Message MessageEvent;
 
-        public ClientController()
+        public ClientController(ClientModel m)
         {
-           // _m = m;
+            _m = m;
 
             contacts = new Dictionary<string, bool>();
             contacts.Add("Bob", true);
@@ -81,10 +83,11 @@ namespace FinalProject
             switch (p.GetStatus)
             {
                 case Status.loginTrue:
-                    
+                    _m.LoginStatus = true;
                     //MessageBox.Show("Works: Login Successful");
                     break;
                 case Status.loginFalse:
+                    _m.LoginStatus = false;
                    //MessageBox.Show("Login Invalid: Wrong Password");
                     break;
                 case Status.connectionSuccess:
@@ -149,6 +152,14 @@ namespace FinalProject
 
             }
         }
-        
+
+
+        public bool registerLogin()
+        {
+            return loginStatus;
+        }
+
+        // register(f) adds event-handler method  f  to the registry:
+        public void register(Observer f) { observers.Add(f); }
     }
 }

@@ -14,9 +14,9 @@ namespace FinalProject
     {
         private ClientController _c;
 
-        public ClientMenu(ClientController c)
+        public ClientMenu()
         {
-            _c = c;
+            //_c = c;
             InitializeComponent();
             uxRemoveContact.Enabled = false;
             uxStartChat.Enabled = false;
