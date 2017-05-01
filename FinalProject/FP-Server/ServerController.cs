@@ -16,21 +16,25 @@ namespace FP_Server
    
     public class ServerController: WebSocketBehavior
     {
-
+        event UserListUpdates _ule;
         event UpdateEvent _u;
+        event Logout _logout;
         //  private Status en = new Status();
         private ServerDatabase _database; //= new ServerDatabase();
         private List<ChatRoom> _chatRoom;
         private int _count = 0;
         private ServerForm _sf;
+        //private ServerDatabase _sd;
        
 
-        public ServerController(UpdateEvent ue, ServerForm sf)
+        public ServerController(UpdateEvent ue, UserListUpdates uel, ServerForm sf, ServerDatabase sd)
         {
             _u = ue;
-            _database = new ServerDatabase();
+            _ule = uel;
+            _database = sd;
             _chatRoom = new List<ChatRoom>();
             _sf = sf;
+            _logout = _sf.LogoutUser;
 
            // sf.ShowDialog();
         }
@@ -89,8 +93,9 @@ namespace FP_Server
                      }
                 case Status.contactListRequest:
                     {
+                        _u("Contact List Request USER: " + messageJSON.Username);
                         //Sends a message history from a specific client.
-                        Dictionary<string, bool> contacts = _database.GetContacts(messageJSON.OriginID);
+                        Dictionary<string, bool> contacts = _database.GetContacts(messageJSON.Username);
 
                         Packet p = new Packet(Status.contactListSend);
                         p.ContactList = contacts;
@@ -98,6 +103,9 @@ namespace FP_Server
                         p.OriginID = "server";
 
                         Sessions.SendTo(JsonConvert.SerializeObject(p), messageJSON.GetID);
+
+
+                        _u("Contact List Request USER: " + messageJSON.Username+ "[COMPLETED]");
 
                         break;
                     }
@@ -162,8 +170,8 @@ namespace FP_Server
                 s1.GetID = id;
                 s1.GetStatus = Status.loginTrue;
                 Sessions.SendTo(JsonConvert.SerializeObject(s1), id);
-
-
+                _ule(messageJSON.Username);
+                _u("Authentication new USER:" + messageJSON.Username);
 
 
 
@@ -176,12 +184,21 @@ namespace FP_Server
                 {
                     //Password is incorrect
                     Sessions.SendTo(JsonConvert.SerializeObject(new Packet(Status.loginFalse)),id);
-
+                    _u("Authentication failed USER:" + messageJSON.Username+" ID: "+messageJSON.GetID);
                 }
                 else
                 {
                     //Password is correct
-                    Sessions.SendTo(JsonConvert.SerializeObject(new Packet(Status.loginTrue)),id);
+                    Packet p = new Packet(Status.loginTrue);
+                    p.GetStatus = Status.loginTrue;
+                    p.Username = messageJSON.Username;
+                 
+                    
+
+
+                    Sessions.SendTo(JsonConvert.SerializeObject(p),id);
+                    _u("Authentication Successful USER:" + messageJSON.Username);
+
                 }
 
             }
@@ -217,6 +234,11 @@ namespace FP_Server
 
             _count++;
 
+
+        }
+
+        private void LogoutSession(Packet p)
+        {
 
         }
 
