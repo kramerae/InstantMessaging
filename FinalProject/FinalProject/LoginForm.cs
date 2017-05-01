@@ -14,15 +14,23 @@ namespace FinalProject
     {
         private ClientModel _model;
         private InputHandler _handle;
+        private ClientMenu cm;
         Message mh;
         LoginObserver l;
+
         private string username;
         private string password;
 
-        public LoginForm(InputHandler han, ClientModel m)
+        public LoginForm(InputHandler han, ClientModel m, ClientMenu menu)
         {
+
             _handle = han;
             _model = m;
+
+
+            cm = menu;
+
+
             //mh = newMessageHandler;
             InitializeComponent();
 
@@ -72,6 +80,11 @@ namespace FinalProject
                     // Set username in controller
 
                     //_c.UserName = username;
+
+
+
+                    /*
+                     * WORKS WITHOUT OBSERVER
                     using (ClientMenu cm = new ClientMenu(_handle, _model))
                     {
                         if (cm.ShowDialog() == DialogResult.OK)
@@ -79,6 +92,13 @@ namespace FinalProject
                             // ???????
                            
                         }
+                    }
+                    */
+
+                    if (cm.ShowDialog() == DialogResult.OK)
+                    {
+                        // ???????
+
                     }
                 }
                 

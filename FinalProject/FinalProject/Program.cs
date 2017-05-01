@@ -10,9 +10,11 @@ namespace FinalProject
 
     public delegate void InputHandler(object sender, string[] items);
 
-    public delegate bool LoginObserver(); 
+    public delegate void LoginObserver(); 
 
-    public delegate void Observer();
+    public delegate void MenuObserver();
+
+    public delegate void UpdateContactList();
 
     static class Program
     {
@@ -28,10 +30,20 @@ namespace FinalProject
 
             ClientModel cm = new ClientModel();
 
+
+       
+
             ClientController c = new ClientController(cm);
             c.MessageEvent += c.MessageReceived;
             //LoginForm f = new LoginForm(c);
-            LoginForm f = new LoginForm(c.handle, cm);
+
+            ClientMenu menu = new ClientMenu(c.handle, cm);
+
+            LoginForm f = new LoginForm(c.handle, cm, menu);
+            c.registerLogin(f.Update);
+            c.registerMenu(menu.UpdateListBox);
+
+
             Application.Run(f);
         }
     }
