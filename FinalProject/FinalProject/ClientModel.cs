@@ -8,13 +8,41 @@ namespace FinalProject
 {
     public class ClientModel : IClientModel
     {
+        private string _id;
+        private string _username;
         private bool _loginStatus;
+        private Dictionary<string, bool> _contactList;
         private List<string> messages;
+        
         
 
         public ClientModel()
         {
             
+        }
+
+        public string ID
+        {
+            get
+            {
+                return _id;
+            }
+            set
+            {
+                _id = value;
+            }
+        }
+
+        public string Username
+        {
+            get
+            {
+                return _username;
+            }
+            set
+            {
+                _username = value;
+            }
         }
 
         public bool LoginStatus
@@ -28,10 +56,21 @@ namespace FinalProject
                 _loginStatus = value;
             }
         }
-  
+
+        public Dictionary<string, bool> ContactList
+        {
+            get
+            {
+                return _contactList;
+            }
+            set
+            {
+                _contactList = value;
+            }
+        }
 
 
-
+         
 
     }
 }

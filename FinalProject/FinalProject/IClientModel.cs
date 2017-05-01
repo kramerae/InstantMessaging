@@ -8,11 +8,29 @@ namespace FinalProject
 {
     public interface IClientModel
     {
+        string ID
+        {
+            get;
+            set;
+        }
+
+        string Username
+        {
+            get;
+            set;
+        }
 
         bool LoginStatus
         {
             get;
             set;
         }
+
+        Dictionary<string, bool> ContactList
+        {
+            get;
+            set;
+        }
+       
     }
 }
