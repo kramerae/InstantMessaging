@@ -74,6 +74,7 @@
       <DependentUpon>ClientMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="ClientModel.cs" />
+    <Compile Include="IClientModel.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -47,9 +47,6 @@ namespace FP_Server
 
         }
 
-        
-
-
 
         private void WriteToFile()
         {

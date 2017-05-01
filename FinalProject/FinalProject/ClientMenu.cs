@@ -13,15 +13,18 @@ namespace FinalProject
     public partial class ClientMenu : Form
     {
         private ClientController _c;
+        private ClientModel _model;
+        private InputHandler _handle;
 
-        public ClientMenu(ClientController c)
+
+        public ClientMenu(InputHandler han, ClientModel m)
         {
-            _c = c;
+            _model = m;
+            _handle = han;
             InitializeComponent();
             uxRemoveContact.Enabled = false;
             uxStartChat.Enabled = false;
             UpdateContactList();
-
         }
 
         private void uxLogout_Click(object sender, EventArgs e)
@@ -42,14 +45,18 @@ namespace FinalProject
             if(result == DialogResult.Yes)
             {
                 // server remove contact
-                MessageBox.Show("Contact Removed!");
+                
+
                 // update contact list 
+                UpdateContactList();
+
+                MessageBox.Show("Contact Removed!");
             }
         }
 
         private void uxAddContact_Click(object sender, EventArgs e)
         {
-            using (AddContactForm ac = new AddContactForm())
+            using (AddContactForm ac = new AddContactForm(_handle, _model))
             {
                 if (ac.ShowDialog() == DialogResult.OK)
                 {
@@ -66,6 +73,7 @@ namespace FinalProject
             
             // Check to see if online
             // Lauch chat form
+            
             using (Chat ch = new Chat(_c.MessageEntered))
             {
                 //_c.MessageReceived += ch.MessageReceived;
@@ -75,11 +83,25 @@ namespace FinalProject
                     // ???????
                 }
             }
+            
         }
 
         public void UpdateContactList()
         {
-            Dictionary<string, bool> contacts = _c.GetContacts;
+            string[] arr = {"UCL"};
+            _handle(this, arr);
+
+           // Task.Delay(10000);
+
+            Dictionary<string, bool> contacts = _model.ContactList;
+
+            
+            /*
+            while (contacts == null)
+            {
+                Task.Delay(1000);
+            }
+            */
 
             foreach (string s in contacts.Keys)
             {
@@ -103,7 +125,7 @@ namespace FinalProject
 
         private void uxRefresh_Click(object sender, EventArgs e)
         {
-
+            UpdateContactList();
         }
     }
 }

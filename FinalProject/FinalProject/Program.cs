@@ -10,6 +10,10 @@ namespace FinalProject
 
     public delegate void InputHandler(object sender, string[] items);
 
+    public delegate bool LoginObserver(); 
+
+    public delegate void Observer();
+
     static class Program
     {
         
@@ -21,11 +25,13 @@ namespace FinalProject
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            
-            ClientController c = new ClientController();
+
+            ClientModel cm = new ClientModel();
+
+            ClientController c = new ClientController(cm);
             c.MessageEvent += c.MessageReceived;
             //LoginForm f = new LoginForm(c);
-            LoginForm f = new LoginForm(c.handle);
+            LoginForm f = new LoginForm(c.handle, cm);
             Application.Run(f);
         }
     }
