@@ -36,7 +36,7 @@ namespace FP_Server
             uxBtnStartServer.Enabled = false;
             uxBtnStopServer.Enabled = true;
             ws.Start();
-            Updates("Server has started at port: 2550");
+            Updates("Server has started at port: 8550");
         }
 
         private void uxBtnStopServer_Click(object sender, EventArgs e)

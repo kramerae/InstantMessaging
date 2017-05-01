@@ -105,7 +105,7 @@ namespace FP_Server
                         Sessions.SendTo(JsonConvert.SerializeObject(p), messageJSON.GetID);
 
 
-                        _u("Contact List Request USER: " + messageJSON.Username+ "[COMPLETED]");
+                        _u("Contact List Request USER: " + messageJSON.Username+ " [COMPLETED]");
 
                         break;
                     }
@@ -124,8 +124,15 @@ namespace FP_Server
                 case Status.loginTrue:
                     MessageBox.Show("This is correct. =)");
                     break;
-                 
+                default:
+
+
+                    //Unknown request
+                    Packet s = new Packet(Status.undefined);
+                    Sessions.SendTo(JsonConvert.SerializeObject(s), messageJSON.GetID);
+                    break;
                     
+
 
              }
 

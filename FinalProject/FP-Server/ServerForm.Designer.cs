@@ -43,10 +43,10 @@
             this.uxBtnStartServer = new System.Windows.Forms.Button();
             this.uxBtnStopServer = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.uxButtonClearServerLog = new System.Windows.Forms.Button();
             this.uxEventListBox = new System.Windows.Forms.ListBox();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.uxButtonClearServerLog = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -201,22 +201,15 @@
             this.panel4.Size = new System.Drawing.Size(526, 515);
             this.panel4.TabIndex = 4;
             // 
-            // uxEventListBox
+            // label2
             // 
-            this.uxEventListBox.FormattingEnabled = true;
-            this.uxEventListBox.Location = new System.Drawing.Point(4, 27);
-            this.uxEventListBox.Name = "uxEventListBox";
-            this.uxEventListBox.Size = new System.Drawing.Size(519, 485);
-            this.uxEventListBox.TabIndex = 0;
-            // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.uxBtnStartServer);
-            this.panel5.Controls.Add(this.uxBtnStopServer);
-            this.panel5.Location = new System.Drawing.Point(598, 552);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(534, 79);
-            this.panel5.TabIndex = 5;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(4, 7);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(84, 16);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Server Log";
             // 
             // uxButtonClearServerLog
             // 
@@ -229,15 +222,26 @@
             this.uxButtonClearServerLog.UseVisualStyleBackColor = true;
             this.uxButtonClearServerLog.Click += new System.EventHandler(this.uxButtonClearServerLog_Click);
             // 
-            // label2
+            // uxEventListBox
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(4, 7);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(84, 16);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Server Log";
+            this.uxEventListBox.BackColor = System.Drawing.Color.DarkBlue;
+            this.uxEventListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uxEventListBox.ForeColor = System.Drawing.SystemColors.Window;
+            this.uxEventListBox.FormattingEnabled = true;
+            this.uxEventListBox.ItemHeight = 15;
+            this.uxEventListBox.Location = new System.Drawing.Point(4, 27);
+            this.uxEventListBox.Name = "uxEventListBox";
+            this.uxEventListBox.Size = new System.Drawing.Size(519, 484);
+            this.uxEventListBox.TabIndex = 0;
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.uxBtnStartServer);
+            this.panel5.Controls.Add(this.uxBtnStopServer);
+            this.panel5.Location = new System.Drawing.Point(598, 552);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(534, 79);
+            this.panel5.TabIndex = 5;
             // 
             // ServerForm
             // 
