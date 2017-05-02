@@ -39,7 +39,7 @@ namespace FinalProject
 
            
 
-            LoginForm loginform = new LoginForm(c.handle, m);
+            LoginForm loginform = new LoginForm(c.handle, cm);
             c.register(loginform.LoginUpdate);
             loginform.ShowDialog();
 
