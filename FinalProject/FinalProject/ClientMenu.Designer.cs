@@ -41,12 +41,12 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.uxMenuTab = new System.Windows.Forms.TabPage();
             this.uxChatTab = new System.Windows.Forms.TabPage();
-            this.uxChatroomsLB = new System.Windows.Forms.ListBox();
-            this.uxMessagesLB = new System.Windows.Forms.ListBox();
-            this.uxChatroomsLabel = new System.Windows.Forms.Label();
-            this.uxMessagesLabel = new System.Windows.Forms.Label();
-            this.uxSend = new System.Windows.Forms.Button();
             this.uxText = new System.Windows.Forms.TextBox();
+            this.uxSend = new System.Windows.Forms.Button();
+            this.uxMessagesLabel = new System.Windows.Forms.Label();
+            this.uxChatroomsLabel = new System.Windows.Forms.Label();
+            this.uxMessagesLB = new System.Windows.Forms.ListBox();
+            this.uxChatroomsLB = new System.Windows.Forms.ListBox();
             this.tabControl1.SuspendLayout();
             this.uxMenuTab.SuspendLayout();
             this.uxChatTab.SuspendLayout();
@@ -191,41 +191,13 @@
             this.uxChatTab.Text = "Chat";
             this.uxChatTab.UseVisualStyleBackColor = true;
             // 
-            // uxChatroomsLB
+            // uxText
             // 
-            this.uxChatroomsLB.FormattingEnabled = true;
-            this.uxChatroomsLB.Location = new System.Drawing.Point(7, 44);
-            this.uxChatroomsLB.Name = "uxChatroomsLB";
-            this.uxChatroomsLB.Size = new System.Drawing.Size(121, 342);
-            this.uxChatroomsLB.TabIndex = 0;
-            // 
-            // uxMessagesLB
-            // 
-            this.uxMessagesLB.FormattingEnabled = true;
-            this.uxMessagesLB.Location = new System.Drawing.Point(135, 44);
-            this.uxMessagesLB.Name = "uxMessagesLB";
-            this.uxMessagesLB.Size = new System.Drawing.Size(277, 290);
-            this.uxMessagesLB.TabIndex = 1;
-            // 
-            // uxChatroomsLabel
-            // 
-            this.uxChatroomsLabel.AutoSize = true;
-            this.uxChatroomsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxChatroomsLabel.Location = new System.Drawing.Point(5, 18);
-            this.uxChatroomsLabel.Name = "uxChatroomsLabel";
-            this.uxChatroomsLabel.Size = new System.Drawing.Size(96, 20);
-            this.uxChatroomsLabel.TabIndex = 2;
-            this.uxChatroomsLabel.Text = "Chatrooms";
-            // 
-            // uxMessagesLabel
-            // 
-            this.uxMessagesLabel.AutoSize = true;
-            this.uxMessagesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxMessagesLabel.Location = new System.Drawing.Point(135, 18);
-            this.uxMessagesLabel.Name = "uxMessagesLabel";
-            this.uxMessagesLabel.Size = new System.Drawing.Size(90, 20);
-            this.uxMessagesLabel.TabIndex = 3;
-            this.uxMessagesLabel.Text = "Messages";
+            this.uxText.Location = new System.Drawing.Point(135, 340);
+            this.uxText.Name = "uxText";
+            this.uxText.Size = new System.Drawing.Size(277, 20);
+            this.uxText.TabIndex = 5;
+            this.uxText.TextChanged += new System.EventHandler(this.uxText_TextChanged);
             // 
             // uxSend
             // 
@@ -238,13 +210,45 @@
             this.uxSend.TabIndex = 4;
             this.uxSend.Text = "SEND";
             this.uxSend.UseVisualStyleBackColor = false;
+            this.uxSend.Click += new System.EventHandler(this.uxSend_Click);
             // 
-            // uxText
+            // uxMessagesLabel
             // 
-            this.uxText.Location = new System.Drawing.Point(135, 340);
-            this.uxText.Name = "uxText";
-            this.uxText.Size = new System.Drawing.Size(277, 20);
-            this.uxText.TabIndex = 5;
+            this.uxMessagesLabel.AutoSize = true;
+            this.uxMessagesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uxMessagesLabel.Location = new System.Drawing.Point(135, 18);
+            this.uxMessagesLabel.Name = "uxMessagesLabel";
+            this.uxMessagesLabel.Size = new System.Drawing.Size(90, 20);
+            this.uxMessagesLabel.TabIndex = 3;
+            this.uxMessagesLabel.Text = "Messages";
+            // 
+            // uxChatroomsLabel
+            // 
+            this.uxChatroomsLabel.AutoSize = true;
+            this.uxChatroomsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uxChatroomsLabel.Location = new System.Drawing.Point(5, 18);
+            this.uxChatroomsLabel.Name = "uxChatroomsLabel";
+            this.uxChatroomsLabel.Size = new System.Drawing.Size(96, 20);
+            this.uxChatroomsLabel.TabIndex = 2;
+            this.uxChatroomsLabel.Text = "Chatrooms";
+            // 
+            // uxMessagesLB
+            // 
+            this.uxMessagesLB.FormattingEnabled = true;
+            this.uxMessagesLB.Location = new System.Drawing.Point(135, 44);
+            this.uxMessagesLB.Name = "uxMessagesLB";
+            this.uxMessagesLB.Size = new System.Drawing.Size(277, 290);
+            this.uxMessagesLB.TabIndex = 1;
+            this.uxMessagesLB.SelectedIndexChanged += new System.EventHandler(this.uxMessagesLB_SelectedIndexChanged);
+            // 
+            // uxChatroomsLB
+            // 
+            this.uxChatroomsLB.FormattingEnabled = true;
+            this.uxChatroomsLB.Location = new System.Drawing.Point(7, 44);
+            this.uxChatroomsLB.Name = "uxChatroomsLB";
+            this.uxChatroomsLB.Size = new System.Drawing.Size(121, 342);
+            this.uxChatroomsLB.TabIndex = 0;
+            this.uxChatroomsLB.SelectedIndexChanged += new System.EventHandler(this.uxChatroomsLB_SelectedIndexChanged);
             // 
             // ClientMenu
             // 
