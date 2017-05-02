@@ -258,6 +258,7 @@
             this.Controls.Add(this.tabControl1);
             this.Name = "ClientMenu";
             this.Text = "501 Chat";
+            this.Load += new System.EventHandler(this.ClientMenu_Load);
             this.tabControl1.ResumeLayout(false);
             this.uxMenuTab.ResumeLayout(false);
             this.uxMenuTab.PerformLayout();

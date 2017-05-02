@@ -93,7 +93,10 @@ namespace FP_Server
 
             if (uxListViewUsers.InvokeRequired)
             {
-                Invoke(new MethodInvoker(delegate () { uxListViewUsers.Items.Add(s1); }));
+                Invoke(new MethodInvoker(delegate () {
+                    uxListViewUsers.Items.Add(s1);
+
+                }));
             }
             else
             {
