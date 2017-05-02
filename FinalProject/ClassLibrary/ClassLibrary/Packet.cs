@@ -8,16 +8,18 @@ namespace ClassLibrary
 {
     public class Packet
     {
-        Status _status;
-        string _username;
-        string _password;
-        string _message;
-        List<string> _messageHistory;
-        Dictionary<string,bool> _contactList;
-        string _destinationID;
-        string _destinationUsername;
-        string _originID;
-        string _ID;
+        private Status _status;
+        private string _username;
+        private string _password;
+        private string _message;
+        private List<string> _messageHistory;
+        private Dictionary<string,bool> _contactList;
+        private string _destinationID;
+        private string _destinationUsername;
+        private string _originID;
+        private string _ID;
+        private int _chatRoomID;
+        private Dictionary<int, KeyValuePair<List<string>, List<string>>>_chatData;
 
         public Packet(Status status)
         {
@@ -147,6 +149,34 @@ namespace ClassLibrary
                 _ID = value;
             }
         }
+
+        public int GetChatID
+        {
+
+            get
+            {
+                return _chatRoomID;
+
+            }set
+            {
+                _chatRoomID = value;
+            }
+
+        }
+
+        public Dictionary<int, KeyValuePair<List<string>, List<string>>> ChatData
+        {
+
+            get
+            {
+                return _chatData;
+            }set
+            {
+                _chatData = value;
+            }
+        }
+
+
 
 
 

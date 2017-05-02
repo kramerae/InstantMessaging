@@ -31,6 +31,15 @@ namespace FP_Server.Model
             _messageHistory.Add(message);
         }
 
+        public List<string> MessageHistory
+        {
+            get
+            {
+                return _messageHistory;
+            }
+
+        }
+
         
         public bool UserExsist(string username)
         {
