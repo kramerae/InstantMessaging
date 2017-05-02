@@ -91,12 +91,16 @@ namespace FinalProject
                     _model.Username = p.Username;
                     updateForms();
                     //MessageBox.Show("Works: Login Successful");
+                    clearObservers();
                     break;
                 case Status.contactListSend:
                     _model.ContactList = p.ContactList;
                     updateForms();
                     break;
+                
             }
+
+            
 
             return true;
         }
@@ -154,6 +158,7 @@ namespace FinalProject
             }
             else if (sender.GetType() == typeof(FinalProject.ClientMenu))
             {
+                // Update contact list
                 if (items[0] == "UCL")
                 {
                     Packet p2 = new ClassLibrary.Packet(Status.contactListRequest);
@@ -161,7 +166,27 @@ namespace FinalProject
                     p2.GetID = _model.ID;
                     MessageEntered(p2);
                 }
-                if (items[0] == "RC")
+                // Remove contact
+                else if (items[0] == "RC")
+                {
+
+                }
+                // Add contact
+                else if (items[0] == "AC")
+                {
+
+                }
+                // Verify online
+                else if (items[0] == "OV")
+                {
+                    Packet p5 = new ClassLibrary.Packet(Status.onlineValidate);
+                    p5.Username = _model.Username;
+                    p5.GetID = _model.ID;
+                    p5.DestinationUsername = items[1];
+                    MessageEntered(p5);
+                }
+                // Start Chat
+                else if (items[0] == "SC")
                 {
 
                 }
@@ -189,6 +214,11 @@ namespace FinalProject
             {
                 m();
             }
+        }
+
+        public void clearObservers()
+        {
+            observers = new List<Observer>();
         }
     }
 }

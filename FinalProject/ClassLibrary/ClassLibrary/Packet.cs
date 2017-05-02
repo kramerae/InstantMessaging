@@ -15,6 +15,7 @@ namespace ClassLibrary
         List<string> _messageHistory;
         Dictionary<string,bool> _contactList;
         string _destinationID;
+        string _destinationUsername;
         string _originID;
         string _ID;
 
@@ -121,6 +122,19 @@ namespace ClassLibrary
                 return _destinationID;
             }set{
                 _destinationID = value;
+            }
+        }
+
+
+        public string DestinationUsername
+        {
+            get
+            {
+                return _destinationUsername;
+            }
+            set
+            {
+                _destinationUsername = value;
             }
         }
 

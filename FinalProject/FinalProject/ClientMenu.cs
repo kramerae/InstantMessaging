@@ -24,7 +24,7 @@ namespace FinalProject
             InitializeComponent();
             uxRemoveContact.Enabled = false;
             uxStartChat.Enabled = false;
-            //UpdateContactList();
+            
         }
 
         private void uxLogout_Click(object sender, EventArgs e)
@@ -71,45 +71,29 @@ namespace FinalProject
 
         private void uxStartChat_Click(object sender, EventArgs e)
         {
-            
             // Check to see if online
+            VerifyOnline();
+
+
+
+
             // Lauch chat form
             
        
             
         }
 
+
+        public void VerifyOnline(string user)
+        {
+            string[] arr = { "OV", user };
+            _handle(this, arr);
+        }
+
         public void UpdateContactList()
         {
             string[] arr = {"UCL"};
             _handle(this, arr);
-
-            /*
-           // Task.Delay(10000);
-           //Update
-            Dictionary<string, bool> contacts = _model.ContactList;
-
-            
-            
-            while (_model.Update == false)
-            {
-                Task.Delay(1000);
-            }
-            
-
-            foreach (string s in contacts.Keys)
-            {
-                if(contacts[s] == true)
-                {
-                    uxContactListBox.Items.Add(string.Format("{0}  |  {1}", s, "ONLINE"));
-       
-                }
-                else
-                {
-                    uxContactListBox.Items.Add(string.Format("{0}    {1}", s, ""));
-                }
-            }
-            */
         }
 
         private void uxContactListBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -123,22 +107,46 @@ namespace FinalProject
             UpdateContactList();
         }
 
-        public void UpdateListBox()
+        public void UpdateContactListBox()
         {
             Dictionary<string, bool> contacts = _model.ContactList;
+        
+            uxContactListBox.EndUpdate();
             
-            foreach (string s in contacts.Keys)
+            foreach (KeyValuePair<string, bool> s in contacts)
             {
-                if (contacts[s] == true)
+                if (uxContactListBox.InvokeRequired)
                 {
-                    uxContactListBox.Items.Add(string.Format("{0}  |  {1}", s, "ONLINE"));
+                    Invoke(new MethodInvoker(delegate () {
 
+                        if (s.Value == true)
+                        {
+                            uxContactListBox.Items.Add(string.Format("{0}  |  {1}", s.Key, "ONLINE"));
+
+                        }
+                        else
+                        {
+                            uxContactListBox.Items.Add(string.Format("{0}    {1}", s.Key, ""));
+                        }
+
+                    }));
                 }
                 else
                 {
-                    uxContactListBox.Items.Add(string.Format("{0}    {1}", s, ""));
+
+                    if (s.Value == true)
+                    {
+                        uxContactListBox.Items.Add(string.Format("{0}  |  {1}", s.Key, "ONLINE"));
+
+                    }
+                    else
+                    {
+                        uxContactListBox.Items.Add(string.Format("{0}    {1}", s.Key, ""));
+                    }
                 }
             }
+
+            uxContactListBox.EndUpdate();
         }
 
         private void uxChatroomsLB_SelectedIndexChanged(object sender, EventArgs e)
@@ -159,6 +167,11 @@ namespace FinalProject
         private void uxSend_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void ClientMenu_Load(object sender, EventArgs e)
+        {
+            UpdateContactList();
         }
     }
 }

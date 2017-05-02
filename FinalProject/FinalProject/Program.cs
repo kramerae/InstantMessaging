@@ -29,10 +29,7 @@ namespace FinalProject
             Application.SetCompatibleTextRenderingDefault(false);
 
             ClientModel model = new ClientModel();
-
-
-       
-
+            
             ClientController c = new ClientController(model);
             c.MessageEvent += c.MessageReceived;
             //LoginForm f = new LoginForm(c);
@@ -47,6 +44,9 @@ namespace FinalProject
                 MessageBox.Show("WORKED");
 
                 ClientMenu menu = new ClientMenu(c.handle, model);
+                menu.Show();
+                c.register(menu.UpdateContactListBox);
+                Application.Run(menu);
             }
 
             // cOMMENT
