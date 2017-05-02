@@ -16,6 +16,9 @@ namespace FP_Server
    
     public class ServerController: WebSocketBehavior
     {
+        private List<Observer> _registry = new List<Observer>();
+
+
         event UserListUpdates _ule;
         event UpdateEvent _u;
         event Logout _logout;
@@ -27,8 +30,9 @@ namespace FP_Server
         //private ServerDatabase _sd;
        
 
-        public ServerController(UpdateEvent ue, UserListUpdates uel, ServerForm sf, ServerDatabase sd)
+        public ServerController(UpdateEvent ue, UserListUpdates uel, ServerForm sf, Observer o, ServerDatabase sd)
         {
+            _registry.Add(o);
             _u = ue;
             _ule = uel;
             _database = sd;
@@ -54,7 +58,7 @@ namespace FP_Server
 
         }
 
-        protected override void OnClose(CloseEventArgs e)
+       protected override void OnClose(CloseEventArgs e)
         {
             base.OnClose(e);
             _u("[LOGOUT] User has logged out ID: "+ID);
@@ -127,8 +131,15 @@ namespace FP_Server
 
                     }
                 case Status.loginTrue:
-                    MessageBox.Show("This is correct. =)");
-                    break;
+                    {
+                        MessageBox.Show("This is correct. =)");
+                        break;
+                    }
+                case Status.onlineValidate:
+                    {
+
+                        break;
+                    }   
                 default:
 
 
@@ -222,8 +233,8 @@ namespace FP_Server
         private void NewChatRoom(Packet p)
         {
             ChatRoom c = new ChatRoom(_count);
-            c.AddUser(p.GetID);
-            c.AddUser(p.DestinationID);
+            c.AddUser(_database.LookUpUserBaseOnID(p.GetID));
+          //  c.AddUser(( p.DestinationID));
 
             _chatRoom.Add(c);
 
@@ -232,6 +243,15 @@ namespace FP_Server
 
         }
 
+
+        private ValidateOnline()
+        {
+
+
+
+
+
+        }
         private void LogoutSession(Packet p)
         {
 

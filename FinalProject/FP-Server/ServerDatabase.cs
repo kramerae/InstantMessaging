@@ -17,10 +17,14 @@ namespace FP_Server
 
         Dictionary<string, User_m> _userDatabase;
 
+        Dictionary<string, bool> _onLine;
+
+
         public ServerDatabase()
         {
             
             _userDatabase = new Dictionary<string, User_m>();
+            _onLine = new Dictionary<string, bool>();
             AddPerson();
             //ReadFromFile();
             //WriteToFile();
@@ -50,6 +54,7 @@ namespace FP_Server
 
         }
 
+        
 
         private void WriteToFile()
         {
@@ -123,7 +128,7 @@ namespace FP_Server
             return false;
         }
 
-       public Dictionary<string, User_m> AllUsers
+        public Dictionary<string, User_m> AllUsers
        {
 
             get
@@ -133,6 +138,38 @@ namespace FP_Server
 
         }
 
+
+        public string LookUpUserBaseOnID(string s)
+        {
+
+            foreach(KeyValuePair<string, User_m> KVP in _userDatabase)
+            {
+
+                if(s == KVP.Value.GetID)
+                {
+                    return KVP.Key;
+                }
+
+
+            }
+            return null;
+
+
+
+        }
+
+        public void MakeUserOnline(string s)
+        {
+            _onLine.Add(s, true);
+        }
+
+        public void MakeUserOffline(string s)
+        {
+            _onLine[s] = false;
+
+        }
+
+        public bool 
 
 
     }

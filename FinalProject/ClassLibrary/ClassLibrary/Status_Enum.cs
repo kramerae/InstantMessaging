@@ -23,8 +23,9 @@ namespace ClassLibrary
             contactListUpdatedClient,   //13
             contactListExcuteCode,      //14
             requestChatRoom,            //15
-            logout,                     //16
-            undefined                   //17
+            chatroomSuccess,            //16
+            logout,                     //17
+            undefined                   //18
     };
     
 }
