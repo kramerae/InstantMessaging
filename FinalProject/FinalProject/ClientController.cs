@@ -97,7 +97,10 @@ namespace FinalProject
                     _model.ContactList = p.ContactList;
                     updateForms();
                     break;
-                
+                case Status.chatroomSuccess:
+
+                    updateForms();
+                    break;
             }
 
             
@@ -176,19 +179,14 @@ namespace FinalProject
                 {
 
                 }
-                // Verify online
-                else if (items[0] == "OV")
+                // Start Chat
+                else if (items[0] == "SC")
                 {
-                    Packet p5 = new ClassLibrary.Packet(Status.onlineValidate);
+                    Packet p5 = new ClassLibrary.Packet(Status.requestChatRoom);
                     p5.Username = _model.Username;
                     p5.GetID = _model.ID;
                     p5.DestinationUsername = items[1];
                     MessageEntered(p5);
-                }
-                // Start Chat
-                else if (items[0] == "SC")
-                {
-
                 }
 
             }
