@@ -40,7 +40,7 @@ namespace FinalProject
 
 
         }
-
+ 
 
         // REMOVE LATER
        public Dictionary<string, bool> GetContacts
