@@ -6,10 +6,17 @@ using System.Threading.Tasks;
 using WebSocketSharp;
 using WebSocketSharp.Server;
 using System.Windows.Forms;
+using FP_Server.Model;
 
 namespace FP_Server
 {
+    public delegate void UserListUpdates(string s);
     public delegate void UpdateEvent(string s);
+    public delegate void Logout(string s);
+    public delegate void UpdateContacts(Dictionary<string, User_m> d);
+ 
+    
+
 
     public interface UpdateDeligate
     {
@@ -22,7 +29,7 @@ namespace FP_Server
         {
             // Construct model
 
-            // ServerDatabase d = new ServerDatabase();
+             ServerDatabase d = new ServerDatabase();
 
             // Construct Server Controlller
             // ServerController c = new ServerController(d);
@@ -30,12 +37,19 @@ namespace FP_Server
             // Start a websocket server at port 8550
             //ServerForm sf = new ServerForm(wss);
             var wss = new WebSocketServer(8550);
-            ServerForm sf = new ServerForm(wss);
+            ServerForm sf = new ServerForm(wss, d);
             // Add the Echo websocket service
             //wss.AddWebSocketService<Echo>("/echo");
 
+            
+
+
+
+
+
+
             // Add the Chat websocket service
-            wss.AddWebSocketService<ServerController>("/chat", () => new ServerController(sf.UpdateListEvents, sf));
+            wss.AddWebSocketService<ServerController>("/chat", () => new ServerController(sf.UpdateListEvents, sf.UpdateUserLists, sf, d));
 
             sf.Show();
 
@@ -45,12 +59,7 @@ namespace FP_Server
 
 
             Application.Run();
-            
-           // Console.WriteLine("Press Enter to exit.");
-           // Console.ReadLine();
-
-            // Stop the server
-          //  wss.Stop();
+        
 
         }
     }
