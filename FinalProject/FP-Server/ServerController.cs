@@ -54,6 +54,11 @@ namespace FP_Server
 
         }
 
+        protected override void OnClose(CloseEventArgs e)
+        {
+            base.OnClose(e);
+            _u("[LOGOUT] User has logged out ID: "+ID);
+        }
         
 
 
@@ -191,7 +196,7 @@ namespace FP_Server
                 {
                     //Password is incorrect
                     Sessions.SendTo(JsonConvert.SerializeObject(new Packet(Status.loginFalse)),id);
-                    _u("Authentication failed USER:" + messageJSON.Username+" ID: "+messageJSON.GetID);
+                    _u("[FAILED] Authentication USER: " + messageJSON.Username+" ID: "+messageJSON.GetID);
                 }
                 else
                 {
@@ -204,7 +209,7 @@ namespace FP_Server
 
 
                     Sessions.SendTo(JsonConvert.SerializeObject(p),id);
-                    _u("Authentication Successful USER:" + messageJSON.Username);
+                    _u("[SUCCESS] Authentication USER: " + messageJSON.Username);
 
                 }
 

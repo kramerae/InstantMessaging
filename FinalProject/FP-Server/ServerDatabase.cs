@@ -12,6 +12,9 @@ namespace FP_Server
 {
     public class ServerDatabase
     {
+
+        List<Observer> _registry = new List<Observer>();
+
         Dictionary<string, User_m> _userDatabase;
 
         public ServerDatabase()

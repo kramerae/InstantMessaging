@@ -10,6 +10,7 @@ using FP_Server.Model;
 
 namespace FP_Server
 {
+    public delegate void Observer();
     public delegate void UserListUpdates(string s);
     public delegate void UpdateEvent(string s);
     public delegate void Logout(string s);
@@ -43,9 +44,10 @@ namespace FP_Server
             //ServerForm sf = new ServerForm(wss);
             var wss = new WebSocketServer(8550);
             ServerForm sf = new ServerForm(wss, d);
+
+            ServerController c = new ServerController(sf.UpdateListEvents, sf.UpdateUserLists, sf, d);
             // Add the Echo websocket service
             //wss.AddWebSocketService<Echo>("/echo");
-
             
 
 
@@ -53,8 +55,9 @@ namespace FP_Server
 
 
 
+
             // Add the Chat websocket service
-            wss.AddWebSocketService<ServerController>("/chat", () => new ServerController(sf.UpdateListEvents, sf.UpdateUserLists, sf, d));
+            wss.AddWebSocketService<ServerController>("/chat", () => c);
 
             sf.Show();
 
