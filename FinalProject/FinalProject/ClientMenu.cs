@@ -220,7 +220,7 @@ namespace FinalProject
 
         private void uxChatroomsLB_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            
         }
 
         private void uxMessagesLB_SelectedIndexChanged(object sender, EventArgs e)
@@ -235,7 +235,15 @@ namespace FinalProject
 
         private void uxSend_Click(object sender, EventArgs e)
         {
+            string message = uxText.Text;
 
+
+            int selected = uxChatroomsLB.SelectedIndex;
+            int chatID = _model.ChatRooms.Keys.ElementAt(selected);
+            
+
+            string[] arr = { "IM", chatID.ToString(), message};
+            _handle(this, arr);
         }
 
         private void ClientMenu_Load(object sender, EventArgs e)

@@ -194,6 +194,15 @@ namespace FinalProject
                     p5.DestinationUsername = items[1];
                     MessageEntered(p5);
                 }
+                else if (items[0] == "IM")
+                {
+                    Packet p6 = new ClassLibrary.Packet(Status.messageSend);
+                    p6.Username = _model.Username;
+                    p6.GetID = _model.ID;
+                    p6.GetChatID = Convert.ToInt32(items[1]);
+                    p6.Message = items[2];
+                    MessageEntered(p6);
+                }
 
             }
 
