@@ -28,25 +28,25 @@ namespace FinalProject
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            ClientModel cm = new ClientModel();
+            ClientModel model = new ClientModel();
 
 
        
 
-            ClientController c = new ClientController(cm);
+            ClientController c = new ClientController(model);
             c.MessageEvent += c.MessageReceived;
             //LoginForm f = new LoginForm(c);
 
            
-
-            LoginForm loginform = new LoginForm(c.handle, cm);
+            LoginForm loginform = new LoginForm(c.handle, model);
             c.register(loginform.LoginUpdate);
             loginform.ShowDialog();
 
             if (loginform.DialogResult != DialogResult.Cancel)
             {
                 MessageBox.Show("WORKED");
-                //ClientMenu menu = new ClientMenu();
+
+                ClientMenu menu = new ClientMenu(c.handle, model);
             }
 
             // cOMMENT
