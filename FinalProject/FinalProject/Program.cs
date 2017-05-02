@@ -37,14 +37,20 @@ namespace FinalProject
             c.MessageEvent += c.MessageReceived;
             //LoginForm f = new LoginForm(c);
 
-            ClientMenu menu = new ClientMenu(c.handle, cm);
+           
 
-            LoginForm f = new LoginForm(c.handle, cm, menu);
-            c.registerLogin(f.Update);
-            c.registerMenu(menu.UpdateListBox);
+            LoginForm loginform = new LoginForm(c.handle, m);
+            c.register(loginform.LoginUpdate);
+            loginform.ShowDialog();
 
+            if (loginform.DialogResult != DialogResult.Cancel)
+            {
+                MessageBox.Show("WORKED");
+                //ClientMenu menu = new ClientMenu();
+            }
 
-            Application.Run(f);
+            // cOMMENT
+            Application.Run(loginform);
         }
     }
 }
