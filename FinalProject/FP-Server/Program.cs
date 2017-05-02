@@ -24,10 +24,6 @@ namespace FP_Server
         event UpdateEvent UpdateEventList;
     }
 
-
-
-
-
     class Program
     {
         static void Main(string[] args)
@@ -40,7 +36,6 @@ namespace FP_Server
             // ServerController c = new ServerController(d);
 
             // Start a websocket server at port 8550
-
             //ServerForm sf = new ServerForm(wss);
             var wss = new WebSocketServer(8550);
             ServerForm sf = new ServerForm(wss, d);

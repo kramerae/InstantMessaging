@@ -138,27 +138,10 @@ namespace FP_Server
                     break;
                     
 
-
              }
-
-
-
-            
-
-
-
-
-
-
-
-
-
 
         }
 
-        
-        
-      
 
 
         /// <summary>
@@ -177,7 +160,7 @@ namespace FP_Server
                 _database.AddUser(messageJSON.Username, messageJSON.Password, messageJSON.GetID);
 
 
-                // Logins the user
+                // Logins the new user
                 Packet s1 = new Packet(Status.loginTrue);
                 s1.GetID = id;
                 s1.GetStatus = Status.loginTrue;
