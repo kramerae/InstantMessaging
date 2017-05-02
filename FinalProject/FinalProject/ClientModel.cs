@@ -14,7 +14,7 @@ namespace FinalProject
         private Dictionary<string, bool> _contactList;
         private List<string> messages;
         
-        
+        //test
 
         public ClientModel()
         {
