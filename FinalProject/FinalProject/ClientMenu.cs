@@ -71,24 +71,26 @@ namespace FinalProject
 
         private void uxStartChat_Click(object sender, EventArgs e)
         {
-            // Check to see if online
-            VerifyOnline();
-
-
-
-
-            // Lauch chat form
             
-       
+            string item = uxContactListBox.SelectedItem.ToString();
+            char[] delimiterChars = { ' ', '|', '\t' };
+            string[] words = item.Split(delimiterChars);
+
+            if (words[0] != null)
+            {
+                string[] arr = { "SC", words[0] };
+                _handle(this, arr);
+            }
+            else
+            {
+                MessageBox.Show("Error. Please try again.");
+            }
+           
             
-        }
 
 
-        public void VerifyOnline(string user)
-        {
-            string[] arr = { "OV", user };
-            _handle(this, arr);
         }
+        
 
         public void UpdateContactList()
         {
