@@ -101,6 +101,10 @@ namespace FinalProject
 
                     updateForms();
                     break;
+                case Status.onlineFalse:
+
+                    updateForms();
+                    break;
             }
 
             
