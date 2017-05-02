@@ -74,6 +74,7 @@ namespace FinalProject
             {
                 string[] arr = { "SC", words[0] };
                 _handle(this, arr);
+                MessageBox.Show("Creating Chat Room. ");
             }
             else
             {
@@ -140,6 +141,43 @@ namespace FinalProject
 
             uxContactListBox.EndUpdate();
         }
+
+
+        public void UpdateChatRoomListBox()
+        {
+            Dictionary<int, KeyValuePair<List<string>, List<string>>> chatrooms = _model.ChatRooms;
+
+            uxChatroomsLB.EndUpdate();
+
+            foreach (KeyValuePair<int, KeyValuePair<List<string>,List<string>>> r in chatrooms){
+                if (uxChatroomsLB.InvokeRequired)
+                {
+                    Invoke(new MethodInvoker(delegate () {
+
+                        StringBuilder sb = new StringBuilder();
+                        foreach(string name in r.Value.Key)
+                        {
+                            sb.Append(name).Append("|");
+                        }
+                       
+                        uxContactListBox.Items.Add(sb.ToString());
+                        
+
+                    }));
+                }
+                else
+                {
+                    StringBuilder sb2 = new StringBuilder();
+                    foreach (string name in r.Value.Key)
+                    {
+                        sb2.Append(name).Append("|");
+                    }
+
+                    uxContactListBox.Items.Add(sb2.ToString());
+                }
+            }
+        }
+
 
         private void uxChatroomsLB_SelectedIndexChanged(object sender, EventArgs e)
         {

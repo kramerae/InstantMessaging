@@ -46,6 +46,7 @@ namespace FinalProject
                 ClientMenu menu = new ClientMenu(c.handle, model);
                 menu.Show();
                 c.register(menu.UpdateContactListBox);
+                c.register(menu.UpdateChatRoomListBox);
                 Application.Run(menu);
             }
             

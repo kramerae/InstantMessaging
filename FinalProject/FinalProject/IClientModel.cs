@@ -31,6 +31,12 @@ namespace FinalProject
             get;
             set;
         }
-       
+
+        Dictionary<int, KeyValuePair<List<string>, List<string>>> ChatRooms
+        {
+            get;
+            set;
+        }
+
     }
 }

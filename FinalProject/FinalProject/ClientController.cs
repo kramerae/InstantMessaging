@@ -98,7 +98,7 @@ namespace FinalProject
                     updateForms();
                     break;
                 case Status.chatroomSuccess:
-
+                    //_model.ChatRooms = p.
                     updateForms();
                     break;
                 case Status.onlineFalse:
@@ -194,12 +194,6 @@ namespace FinalProject
                 }
 
             }
-            else if (sender.GetType() == typeof(FinalProject.AddContactForm))
-            {
-                string add = items[1];
-                // FINISH
-            }
-
 
 
         }
