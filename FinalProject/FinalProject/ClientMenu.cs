@@ -57,13 +57,7 @@ namespace FinalProject
 
         private void uxAddContact_Click(object sender, EventArgs e)
         {
-            using (AddContactForm ac = new AddContactForm(_handle, _model))
-            {
-                if (ac.ShowDialog() == DialogResult.OK)
-                {
-                    // ???????
-                }
-            }
+           
             // Check to see if user exists in server
             // If so add to contact list in server
             // Update ListBox
