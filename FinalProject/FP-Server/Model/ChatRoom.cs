@@ -52,5 +52,14 @@ namespace FP_Server.Model
             }
             return false;
         }
+
+        public List<string> GetUsers
+        {
+            get
+            {
+                return _usernames;
+            }
+           
+        }
     }
 }

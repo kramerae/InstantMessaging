@@ -36,7 +36,7 @@ namespace FP_Server
             _u = ue;
             _ule = uel;
             _database = sd;
-            _chatRoom = new List<ChatRoom>();
+            //_chatRoom = new List<ChatRoom>();
             _sf = sf;
             _logout = _sf.LogoutUser;
 
@@ -237,14 +237,18 @@ namespace FP_Server
             int i = _database.GetChatroomID;
             _database.MakeChatRoom(p.Username, p.DestinationUsername);
 
-
+           
             
             Packet temp = new Packet(Status.chatroomSuccess);
+            temp.ChatData = _database.GetChatRoomData(i);
+
+
+
             temp.GetStatus = Status.chatroomSuccess;
            
             Sessions.SendTo(JsonConvert.SerializeObject(temp), p.GetID);
 
-
+            _u("[COMPLETED] Chatroom created for: " + p.Username);
 
          
 
