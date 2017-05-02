@@ -40,7 +40,7 @@ namespace FP_Server
             var wss = new WebSocketServer(8550);
             ServerForm sf = new ServerForm(wss, d);
 
-            ServerController c = new ServerController(sf.UpdateListEvents, sf.UpdateUserLists, sf, d);
+          //  ServerController c = new ServerController(sf.UpdateListEvents, sf.UpdateUserLists, sf, d);
             // Add the Echo websocket service
             //wss.AddWebSocketService<Echo>("/echo");
             
@@ -52,7 +52,7 @@ namespace FP_Server
 
 
             // Add the Chat websocket service
-            wss.AddWebSocketService<ServerController>("/chat", () => c);
+            wss.AddWebSocketService<ServerController>("/chat", () => new ServerController(sf.UpdateListEvents, sf.UpdateUserLists, sf, sf.UpdateContacts, d));
 
             sf.Show();
 
