@@ -28,29 +28,27 @@ namespace FinalProject
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
+            // Create instance of model
             ClientModel model = new ClientModel();
             
+            // Create instance of controller
             ClientController c = new ClientController(model);
             c.MessageEvent += c.MessageReceived;
-            //LoginForm f = new LoginForm(c);
-
-           
+            
+            // Create instance of loginform 
             LoginForm loginform = new LoginForm(c.handle, model);
             c.register(loginform.LoginUpdate);
             loginform.ShowDialog();
-
             if (loginform.DialogResult != DialogResult.Cancel)
             {
                 MessageBox.Show("WORKED");
-
+                // Create instance of client menu
                 ClientMenu menu = new ClientMenu(c.handle, model);
                 menu.Show();
                 c.register(menu.UpdateContactListBox);
                 Application.Run(menu);
             }
-
-            // cOMMENT
-            Application.Run(loginform);
+            
         }
     }
 }
