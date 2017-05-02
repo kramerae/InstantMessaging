@@ -79,7 +79,7 @@ namespace FinalProject
             switch (p.GetStatus)
             {
                 case Status.connectionSuccess:
-                    _model.ID = p.GetID;
+                    _model.ID = p.GetID; 
                     break;
                 case Status.loginFalse:
                     _model.LoginStatus = false;
@@ -96,10 +96,12 @@ namespace FinalProject
                 case Status.contactListSend:
                     _model.ContactList = p.ContactList;
                     updateForms();
+                    //clearObservers();
                     break;
                 case Status.chatroomSuccess:
-                    //_model.ChatRooms = p.
+                    _model.ChatRooms = p.ChatData;
                     updateForms();
+                    clearObservers();
                     break;
                 case Status.onlineFalse:
 

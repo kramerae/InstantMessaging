@@ -105,7 +105,24 @@ namespace FinalProject
             Dictionary<string, bool> contacts = _model.ContactList;
         
             uxContactListBox.EndUpdate();
+
+            // Clear Items in List Box
+            if (uxContactListBox.InvokeRequired)
+            {
+
+                Invoke(new MethodInvoker(delegate ()
+                {
+
+                    uxContactListBox.Items.Clear();
+                }));
+            }
+            else
+            {
+                uxContactListBox.Items.Clear();
+            }
             
+
+            // Add Contacts in List Box
             foreach (KeyValuePair<string, bool> s in contacts)
             {
                 if (uxContactListBox.InvokeRequired)
@@ -148,32 +165,35 @@ namespace FinalProject
             Dictionary<int, KeyValuePair<List<string>, List<string>>> chatrooms = _model.ChatRooms;
 
             uxChatroomsLB.EndUpdate();
-
-            foreach (KeyValuePair<int, KeyValuePair<List<string>,List<string>>> r in chatrooms){
-                if (uxChatroomsLB.InvokeRequired)
+            if(chatrooms != null)
+            {
+                foreach (KeyValuePair<int, KeyValuePair<List<string>, List<string>>> r in chatrooms)
                 {
-                    Invoke(new MethodInvoker(delegate () {
-
-                        StringBuilder sb = new StringBuilder();
-                        foreach(string name in r.Value.Key)
-                        {
-                            sb.Append(name).Append("|");
-                        }
-                       
-                        uxContactListBox.Items.Add(sb.ToString());
-                        
-
-                    }));
-                }
-                else
-                {
-                    StringBuilder sb2 = new StringBuilder();
-                    foreach (string name in r.Value.Key)
+                    if (uxChatroomsLB.InvokeRequired)
                     {
-                        sb2.Append(name).Append("|");
-                    }
+                        Invoke(new MethodInvoker(delegate () {
 
-                    uxContactListBox.Items.Add(sb2.ToString());
+                            StringBuilder sb = new StringBuilder();
+                            foreach (string name in r.Value.Key)
+                            {
+                                sb.Append(name).Append(" | ");
+                            }
+
+                            uxChatroomsLB.Items.Add(sb.ToString());
+
+
+                        }));
+                    }
+                    else
+                    {
+                        StringBuilder sb2 = new StringBuilder();
+                        foreach (string name in r.Value.Key)
+                        {
+                            sb2.Append(name).Append(" | ");
+                        }
+
+                        uxChatroomsLB.Items.Add(sb2.ToString());
+                    }
                 }
             }
         }
