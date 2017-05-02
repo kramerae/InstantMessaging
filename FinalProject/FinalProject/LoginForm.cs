@@ -54,6 +54,7 @@ namespace FinalProject
             {
                 string[] arr = { username, password};
                 _handle(this, arr);
+                
                 // bool login = l();
                 //bool login = _c.LoginValidate(username, password);
                

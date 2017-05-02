@@ -31,6 +31,7 @@ namespace FinalProject
         {
             // Call server to update status to offline
             // Close form
+            
         }
 
         private void uxRemoveContact_Click(object sender, EventArgs e)
