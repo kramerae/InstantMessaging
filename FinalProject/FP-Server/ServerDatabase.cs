@@ -41,7 +41,7 @@ namespace FP_Server
             a.Add("Steven", true);
             m.Add("Shane", true);
             m.Add("Jason", true);
-            m.Add("Steven", true);
+            m.Add("Steven", false);
             _userDatabase.Add("sriegodedios", new User_m("sriegodedios", "shaner26", a));
             _userDatabase.Add("mhixon", new User_m("mhixon", "matt555", m));
 
@@ -169,7 +169,10 @@ namespace FP_Server
 
         }
 
-        public bool 
+        public bool IsUserOnline(string s)
+        {
+            return _onLine[s];
+        }
 
 
     }
