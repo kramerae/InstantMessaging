@@ -16,7 +16,8 @@ namespace FinalProject
         private WebSocket ws;
         private Dictionary<string, bool> contacts;
         //private string _id;
-        private List<Observer> observers = new List<Observer>();
+        private List<LoginObserver> observersLogin = new List<LoginObserver>();
+        private List<MenuObserver> observersMenu = new List<MenuObserver>();
         private bool loginStatus = false; 
 
 
@@ -89,7 +90,7 @@ namespace FinalProject
                 
                 
             }
-
+            
             return true; 
         }
 
@@ -170,12 +171,14 @@ namespace FinalProject
         }
 
 
-        public bool registerLogin()
+        public void registerLogin(LoginObserver f)
         {
-            return loginStatus;
+            observersLogin.Add(f);
         }
 
         // register(f) adds event-handler method  f  to the registry:
-        public void register(Observer f) { observers.Add(f); }
+        public void registerMenu(MenuObserver f) {
+            observersMenu.Add(f);
+        }
     }
 }

@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 namespace FP_Server.Model
 {
     [JsonObject]
-    class User_m
+    public class User_m
     {
         private string _user;
         private string _password;
