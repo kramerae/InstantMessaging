@@ -101,7 +101,7 @@ namespace FinalProject
                 case Status.chatroomSuccess:
                     _model.ChatRooms = p.ChatData;
                     updateForms();
-                    clearObservers();
+                    //clearObservers();
                     break;
                 case Status.onlineFalse:
 

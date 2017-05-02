@@ -165,7 +165,26 @@ namespace FinalProject
             Dictionary<int, KeyValuePair<List<string>, List<string>>> chatrooms = _model.ChatRooms;
 
             uxChatroomsLB.EndUpdate();
-            if(chatrooms != null)
+
+
+            // Clear Items in List Box
+            if (uxChatroomsLB.InvokeRequired)
+            {
+
+                Invoke(new MethodInvoker(delegate ()
+                {
+
+                    uxChatroomsLB.Items.Clear();
+                }));
+            }
+            else
+            {
+                uxChatroomsLB.Items.Clear();
+            }
+
+
+
+            if (chatrooms != null)
             {
                 foreach (KeyValuePair<int, KeyValuePair<List<string>, List<string>>> r in chatrooms)
                 {
