@@ -21,7 +21,11 @@ namespace FP_Server
 
         private Dictionary<string, bool> _onLine;
 
+        private Dictionary<int, KeyValuePair<List<string>, List<string>>> d;
+
         private int count = 0;
+
+       // private 
 
 
 
@@ -35,6 +39,7 @@ namespace FP_Server
             //ReadFromFile();
             //WriteToFile();
             _chatRoom = new List<ChatRoom>();
+            d = new Dictionary<int, KeyValuePair<List<string>, List<string>>>();
             
         }
 
@@ -43,11 +48,11 @@ namespace FP_Server
             Dictionary<string, bool> a = new Dictionary<string, bool>();
             Dictionary<string, bool> m = new Dictionary<string, bool>();
 
-            a.Add("Matt", true);
-            a.Add("Jason", true);
-            a.Add("Steven", true);
-            m.Add("Shane", true);
-            m.Add("Jason", true);
+            a.Add("mhixon", true);
+            a.Add("Jason", false);
+            a.Add("Steven", false);
+            m.Add("sriegodedios", true);
+            m.Add("Jason", false);
             m.Add("Steven", false);
             _userDatabase.Add("sriegodedios", new User_m("sriegodedios", "shaner26", a));
             _userDatabase.Add("mhixon", new User_m("mhixon", "matt555", m));
@@ -250,7 +255,7 @@ namespace FP_Server
 
         public Dictionary<int, KeyValuePair<List<string>, List<string>>> GetChatRoomData(int i)
         {
-            Dictionary<int, KeyValuePair<List<string>, List<string>>> d = new Dictionary<int, KeyValuePair<List<string>, List<string>>>();
+            //Dictionary<int, KeyValuePair<List<string>, List<string>>> d = new Dictionary<int, KeyValuePair<List<string>, List<string>>>();
 
             KeyValuePair<List<string>, List<string>> kvp = new KeyValuePair<List<string>, List<string>>(GetUsersChat(i), GetMessageHistory(i));
 
