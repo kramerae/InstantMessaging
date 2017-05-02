@@ -126,7 +126,7 @@ namespace FP_Server
                     {
 
                         //Makes a new Chatroom for the user
-                        NewChatRoom(messageJSON);
+                        ValidateOnline(messageJSON);
                         break;
 
                     }
@@ -234,20 +234,40 @@ namespace FP_Server
         {
             ChatRoom c = new ChatRoom(_count);
             c.AddUser(_database.LookUpUserBaseOnID(p.GetID));
-          //  c.AddUser(( p.DestinationID));
+            c.AddUser( p.DestinationUsername);
 
             _chatRoom.Add(c);
 
+            Packet temp = new Packet(Status.chatroomSuccess);
+            temp.GetStatus = Status.chatroomSuccess;
+            Sessions.SendTo(JsonConvert.SerializeObject(temp), p.GetID);
+
+
+
             _count++;
+
+
+            
+
 
 
         }
 
 
-        private ValidateOnline()
+        private void ValidateOnline(Packet p)
         {
+            _u("Chatroom Requested USER: " + p.GetID);
+            if (_database.IsUserOnline(p.DestinationUsername))
+            {
+                NewChatRoom(p);
+            }else
+            {
+                Packet temp = new Packet(Status.onlineFalse);
 
-
+                temp.GetStatus = Status.onlineFalse;
+                Sessions.SendTo(JsonConvert.SerializeObject(temp), p.GetID);
+                _u("[FAILED] Chatroom Requested:: User offline USER: " + p.GetID);
+            }
 
 
 

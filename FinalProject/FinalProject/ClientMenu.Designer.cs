@@ -47,6 +47,8 @@
             this.uxChatroomsLabel = new System.Windows.Forms.Label();
             this.uxMessagesLB = new System.Windows.Forms.ListBox();
             this.uxChatroomsLB = new System.Windows.Forms.ListBox();
+            this.uxAddNameText = new System.Windows.Forms.TextBox();
+            this.uxAddNameLabel = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.uxMenuTab.SuspendLayout();
             this.uxChatTab.SuspendLayout();
@@ -77,7 +79,7 @@
             // 
             // uxAddContact
             // 
-            this.uxAddContact.Location = new System.Drawing.Point(242, 200);
+            this.uxAddContact.Location = new System.Drawing.Point(243, 200);
             this.uxAddContact.Name = "uxAddContact";
             this.uxAddContact.Size = new System.Drawing.Size(119, 37);
             this.uxAddContact.TabIndex = 3;
@@ -98,9 +100,9 @@
             // uxInstructions
             // 
             this.uxInstructions.AutoSize = true;
-            this.uxInstructions.Location = new System.Drawing.Point(201, 92);
+            this.uxInstructions.Location = new System.Drawing.Point(200, 55);
             this.uxInstructions.Name = "uxInstructions";
-            this.uxInstructions.Size = new System.Drawing.Size(215, 91);
+            this.uxInstructions.Size = new System.Drawing.Size(216, 91);
             this.uxInstructions.TabIndex = 5;
             this.uxInstructions.Text = resources.GetString("uxInstructions.Text");
             // 
@@ -108,7 +110,7 @@
             // 
             this.uxTitleLabel.AutoSize = true;
             this.uxTitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxTitleLabel.Location = new System.Drawing.Point(218, 61);
+            this.uxTitleLabel.Location = new System.Drawing.Point(218, 35);
             this.uxTitleLabel.Name = "uxTitleLabel";
             this.uxTitleLabel.Size = new System.Drawing.Size(166, 20);
             this.uxTitleLabel.TabIndex = 6;
@@ -126,7 +128,7 @@
             // uxLogout
             // 
             this.uxLogout.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.uxLogout.Location = new System.Drawing.Point(277, 18);
+            this.uxLogout.Location = new System.Drawing.Point(331, 6);
             this.uxLogout.Name = "uxLogout";
             this.uxLogout.Size = new System.Drawing.Size(81, 26);
             this.uxLogout.TabIndex = 8;
@@ -158,6 +160,8 @@
             // 
             // uxMenuTab
             // 
+            this.uxMenuTab.Controls.Add(this.uxAddNameLabel);
+            this.uxMenuTab.Controls.Add(this.uxAddNameText);
             this.uxMenuTab.Controls.Add(this.uxLogout);
             this.uxMenuTab.Controls.Add(this.uxRefresh);
             this.uxMenuTab.Controls.Add(this.uxlabel1);
@@ -250,6 +254,23 @@
             this.uxChatroomsLB.TabIndex = 0;
             this.uxChatroomsLB.SelectedIndexChanged += new System.EventHandler(this.uxChatroomsLB_SelectedIndexChanged);
             // 
+            // uxAddNameText
+            // 
+            this.uxAddNameText.Location = new System.Drawing.Point(227, 174);
+            this.uxAddNameText.Name = "uxAddNameText";
+            this.uxAddNameText.Size = new System.Drawing.Size(157, 20);
+            this.uxAddNameText.TabIndex = 10;
+            // 
+            // uxAddNameLabel
+            // 
+            this.uxAddNameLabel.AutoSize = true;
+            this.uxAddNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uxAddNameLabel.Location = new System.Drawing.Point(224, 155);
+            this.uxAddNameLabel.Name = "uxAddNameLabel";
+            this.uxAddNameLabel.Size = new System.Drawing.Size(158, 16);
+            this.uxAddNameLabel.TabIndex = 11;
+            this.uxAddNameLabel.Text = "Contact Name to Add:";
+            // 
             // ClientMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -288,6 +309,8 @@
         private System.Windows.Forms.Label uxChatroomsLabel;
         private System.Windows.Forms.ListBox uxMessagesLB;
         private System.Windows.Forms.ListBox uxChatroomsLB;
+        private System.Windows.Forms.Label uxAddNameLabel;
+        private System.Windows.Forms.TextBox uxAddNameText;
     }
 }
 
