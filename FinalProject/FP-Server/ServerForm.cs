@@ -11,6 +11,7 @@ using WebSocketSharp;
 using WebSocketSharp.Server;
 using System.Threading;
 using FP_Server.Model;
+using System.IO;
 
 namespace FP_Server
 {
@@ -91,18 +92,7 @@ namespace FP_Server
 
             uxListViewUsers.EndUpdate();
 
-            if (uxListViewUsers.InvokeRequired)
-            {
-                Invoke(new MethodInvoker(delegate () {
-                    uxListViewUsers.Items.Add(s1);
-
-                }));
-            }
-            else
-            {
-                uxListViewUsers.Items.Add(s1);
-            }
-
+           
 
 
             //for(int i = 0; i < checkedListBoxUsers.Items.Count; i++)
@@ -146,6 +136,22 @@ namespace FP_Server
         {
             uxEventListBox.Items.Clear(); 
 
+        }
+
+        private void uxSaveLogBtn_Click(object sender, EventArgs e)
+        {
+            using(StreamWriter sw = new StreamWriter("log.txt"))
+            {
+
+                foreach(string s in uxEventListBox.Items)
+                {
+                    sw.WriteLine(s);
+
+                }
+
+                MessageBox.Show("Log written successfully");
+
+            }
         }
     }
 }

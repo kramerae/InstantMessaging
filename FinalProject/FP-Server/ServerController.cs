@@ -24,7 +24,7 @@ namespace FP_Server
         event Logout _logout;
         //  private Status en = new Status();
         private ServerDatabase _database; //= new ServerDatabase();
-        private List<ChatRoom> _chatRoom;
+       // private List<ChatRoom> _chatRoom;
         private int _count = 0;
         private ServerForm _sf;
         //private ServerDatabase _sd;
@@ -232,19 +232,21 @@ namespace FP_Server
         /// <param name="p"></param>
         private void NewChatRoom(Packet p)
         {
-            ChatRoom c = new ChatRoom(_count);
-            c.AddUser(_database.LookUpUserBaseOnID(p.GetID));
-            c.AddUser( p.DestinationUsername);
+            //Need to fix
 
-            _chatRoom.Add(c);
+            int i = _database.GetChatroomID;
+            _database.MakeChatRoom(p.Username, p.DestinationUsername);
 
+
+            
             Packet temp = new Packet(Status.chatroomSuccess);
             temp.GetStatus = Status.chatroomSuccess;
+           
             Sessions.SendTo(JsonConvert.SerializeObject(temp), p.GetID);
 
 
 
-            _count++;
+         
 
 
             

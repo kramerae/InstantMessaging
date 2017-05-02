@@ -47,6 +47,7 @@
             this.uxButtonClearServerLog = new System.Windows.Forms.Button();
             this.uxEventListBox = new System.Windows.Forms.ListBox();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.uxSaveLogBtn = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -193,6 +194,7 @@
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.uxSaveLogBtn);
             this.panel4.Controls.Add(this.label2);
             this.panel4.Controls.Add(this.uxButtonClearServerLog);
             this.panel4.Controls.Add(this.uxEventListBox);
@@ -243,6 +245,17 @@
             this.panel5.Size = new System.Drawing.Size(534, 79);
             this.panel5.TabIndex = 5;
             // 
+            // uxSaveLogBtn
+            // 
+            this.uxSaveLogBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uxSaveLogBtn.Location = new System.Drawing.Point(318, -1);
+            this.uxSaveLogBtn.Name = "uxSaveLogBtn";
+            this.uxSaveLogBtn.Size = new System.Drawing.Size(75, 23);
+            this.uxSaveLogBtn.TabIndex = 3;
+            this.uxSaveLogBtn.Text = "Save Log";
+            this.uxSaveLogBtn.UseVisualStyleBackColor = true;
+            this.uxSaveLogBtn.Click += new System.EventHandler(this.uxSaveLogBtn_Click);
+            // 
             // ServerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -290,5 +303,6 @@
         private System.Windows.Forms.ColumnHeader OnlineStatus;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button uxButtonClearServerLog;
+        private System.Windows.Forms.Button uxSaveLogBtn;
     }
 }

@@ -15,9 +15,15 @@ namespace FP_Server
 
         List<Observer> _registry = new List<Observer>();
 
-        Dictionary<string, User_m> _userDatabase;
+        private Dictionary<string, User_m> _userDatabase;
 
-        Dictionary<string, bool> _onLine;
+        private List<ChatRoom> _chatRoom;
+
+        private Dictionary<string, bool> _onLine;
+
+        private int count = 0;
+
+
 
 
         public ServerDatabase()
@@ -138,6 +144,7 @@ namespace FP_Server
 
         }
 
+        
 
         public string LookUpUserBaseOnID(string s)
         {
@@ -169,11 +176,66 @@ namespace FP_Server
 
         }
 
+        /// <summary>
+        /// Checks to see if the user is online
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
         public bool IsUserOnline(string s)
         {
             return _onLine[s];
         }
 
+        /// <summary>
+        /// Create a new chatroom
+        /// </summary>
+        /// <param name="user"></param>
+        /// <param name="destinationuser"></param>
+        public void MakeChatRoom(string user, string destinationuser)
+        {
+
+
+            ChatRoom c = new ChatRoom(count);
+
+            //Adds the users
+            c.AddUser(user);
+            c.AddUser(destinationuser);
+
+            _chatRoom.Add(c);
+            count++;
+
+        }
+
+        /// <summary>
+        /// Adds a message to the chatroom
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="message"></param>
+        public void AddMessageToChatRoom(int id, string message)
+        {
+            _chatRoom[id].AddMessage(message);
+
+        }
+
+
+        /// <summary>
+        /// Gets the message history of the chatroom
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public List<string> GetMessageHistory(int id)
+        {
+            return _chatRoom[id].MessageHistory;
+        }
+
+        public int GetChatroomID
+        {
+            get
+            {
+                return count;
+            }
+           
+        }
 
     }
 
