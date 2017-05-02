@@ -34,6 +34,7 @@ namespace FP_Server
             AddPerson();
             //ReadFromFile();
             //WriteToFile();
+            _chatRoom = new List<ChatRoom>();
             
         }
 
@@ -50,6 +51,11 @@ namespace FP_Server
             m.Add("Steven", false);
             _userDatabase.Add("sriegodedios", new User_m("sriegodedios", "shaner26", a));
             _userDatabase.Add("mhixon", new User_m("mhixon", "matt555", m));
+
+            _onLine.Add("Shane", true);
+            _onLine.Add("Jason", true);
+            _onLine.Add("Steven", false);
+
 
         }
 
@@ -237,6 +243,24 @@ namespace FP_Server
            
         }
 
+        public List<string> GetUsersChat(int i)
+        {
+            return _chatRoom[i].GetUsers;
+        }
+
+        public Dictionary<int, KeyValuePair<List<string>, List<string>>> GetChatRoomData(int i)
+        {
+            Dictionary<int, KeyValuePair<List<string>, List<string>>> d = new Dictionary<int, KeyValuePair<List<string>, List<string>>>();
+
+            KeyValuePair<List<string>, List<string>> kvp = new KeyValuePair<List<string>, List<string>>(GetUsersChat(i), GetMessageHistory(i));
+
+            d.Add(i, kvp);
+
+            return d;
+
+
+
+        }
     }
 
 }
