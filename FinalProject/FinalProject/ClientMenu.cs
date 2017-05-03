@@ -545,7 +545,9 @@ namespace FinalProject
         private void uxSend_Click(object sender, EventArgs e)
         {
             string txt = uxText.Text;
-            string message = _model.Username + ": " + txt; 
+            string message = _model.Username + ": " + txt;
+
+            
 
 
             int selected = uxChatroomsLB.SelectedIndex;
@@ -555,8 +557,11 @@ namespace FinalProject
             }
             else
             {
-                int chatID = _model.ChatRooms.Keys.ElementAt(selected);
+                string line = uxChatroomsLB.SelectedItem.ToString();
 
+                string[] things = line.Split(':');
+
+                int chatID = Convert.ToInt32(things[0]);
 
                 string[] arr = { "IM", chatID.ToString(), message };
                 _handle(this, arr);
