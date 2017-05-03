@@ -417,6 +417,13 @@ namespace FP_Server
 
         }
 
+        public List<string> GetChatRoomUsers(int i)
+        {
+            return _chatRoom[i].GetUsers;
+        }
+
+
+
         public int GetChatRoomUserCount(int id)
         {
             return _chatRoom[id].NumberOfUsers;
@@ -426,6 +433,14 @@ namespace FP_Server
         public string GetID(string username)
         {
             return _userPairing[username];
+        }
+
+        public List<ChatRoom> GetChatRoom
+        {
+            get
+            {
+                return _chatRoom;
+            }
         }
 
         public string GetUsername(string id)

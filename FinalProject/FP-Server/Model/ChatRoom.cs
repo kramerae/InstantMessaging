@@ -28,6 +28,14 @@ namespace FP_Server.Model
             _usernames.Add(username);
         }
 
+        public int ChatRoomID
+        {
+            get
+            {
+                return _roomID;
+            }
+        }
+
         //Adds message to messageHistory
         public void AddMessage(string message)
         {

@@ -26,6 +26,7 @@ namespace FP_Server
         private ServerDatabase _database; 
         private int _count = 0;
         private ServerForm _sf;
+        private UpdateChatRooms _uc;
        
        
         /// <summary>
@@ -45,6 +46,8 @@ namespace FP_Server
            
             _sf = sf;
             _logout = _sf.LogoutUser;
+
+            _uc = _sf.UpdateChatrooms;
 
            
         }
@@ -201,8 +204,10 @@ namespace FP_Server
                 s1.GetStatus = Status.loginTrue;
                 s1.Username = messageJSON.Username;
                 Sessions.SendTo(JsonConvert.SerializeObject(s1), id);
-                _ule(messageJSON.Username);
+                
                 _database.MakeUserOnline(messageJSON.Username);
+
+                _ule(_database.GetOnline);
                 _u("Authentication new USER:" + messageJSON.Username);
 
 
@@ -225,9 +230,9 @@ namespace FP_Server
                     Packet p = new Packet(Status.loginTrue);
                     p.GetStatus = Status.loginTrue;
                     p.Username = messageJSON.Username;
-                    _ule(messageJSON.Username.ToString());
+                   
                     _database.MakeUserOnline(messageJSON.Username);
-
+                    _ule(_database.GetOnline);
 
                     Sessions.SendTo(JsonConvert.SerializeObject(p),id);
                     _u("[SUCCESS] Authentication USER: " + messageJSON.Username);
@@ -301,9 +306,10 @@ namespace FP_Server
             temp.GetStatus = Status.chatroomSuccess;
            
             Sessions.SendTo(JsonConvert.SerializeObject(temp), p.GetID);
-
+            _uc(_database.GetChatRoom);
             _u("[COMPLETED] Chatroom created for: " + p.Username);
 
+            
          
 
 
@@ -435,7 +441,7 @@ namespace FP_Server
             //string username = _database.GetUsername();
             _u("[LOGGING OUT IN PROGRESS] User:" + p.Username);
             _database.LogoutUser(p.Username);
-
+            _ule(_database.GetOnline);
             Dictionary<string, bool> d = _database.GetContacts(p.Username);
 
             foreach(string s in d.Keys)

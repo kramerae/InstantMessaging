@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.uxListBoxUsersInChatRoom = new System.Windows.Forms.ListBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.uxListBoxUserNames = new System.Windows.Forms.ListBox();
             this.usersLabel = new System.Windows.Forms.Label();
@@ -36,8 +39,8 @@
             this.uxListBoxContacts = new System.Windows.Forms.ListBox();
             this.uxLabelContacts = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.uxListBoxChatRooms = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.listView1 = new System.Windows.Forms.ListView();
             this.uxBtnStartServer = new System.Windows.Forms.Button();
             this.uxBtnStopServer = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -47,6 +50,7 @@
             this.uxEventListBox = new System.Windows.Forms.ListBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -57,16 +61,46 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.74271F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.25729F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.91424F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.08576F));
+            this.tableLayoutPanel1.Controls.Add(this.panel6, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel2, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.panel3, 0, 1);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(13, 30);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(583, 350);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 265F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(583, 601);
             this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.uxListBoxUsersInChatRoom);
+            this.panel6.Controls.Add(this.label3);
+            this.panel6.Location = new System.Drawing.Point(294, 339);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(283, 259);
+            this.panel6.TabIndex = 3;
+            // 
+            // uxListBoxUsersInChatRoom
+            // 
+            this.uxListBoxUsersInChatRoom.FormattingEnabled = true;
+            this.uxListBoxUsersInChatRoom.Location = new System.Drawing.Point(3, 20);
+            this.uxListBoxUsersInChatRoom.Name = "uxListBoxUsersInChatRoom";
+            this.uxListBoxUsersInChatRoom.Size = new System.Drawing.Size(277, 238);
+            this.uxListBoxUsersInChatRoom.TabIndex = 3;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(188, 16);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Current Users in Chatroom";
             // 
             // panel1
             // 
@@ -74,7 +108,7 @@
             this.panel1.Controls.Add(this.usersLabel);
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(283, 344);
+            this.panel1.Size = new System.Drawing.Size(283, 330);
             this.panel1.TabIndex = 0;
             // 
             // uxListBoxUserNames
@@ -100,9 +134,9 @@
             // 
             this.panel2.Controls.Add(this.uxListBoxContacts);
             this.panel2.Controls.Add(this.uxLabelContacts);
-            this.panel2.Location = new System.Drawing.Point(292, 3);
+            this.panel2.Location = new System.Drawing.Point(294, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(274, 344);
+            this.panel2.Size = new System.Drawing.Size(286, 330);
             this.panel2.TabIndex = 1;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
@@ -111,7 +145,7 @@
             this.uxListBoxContacts.FormattingEnabled = true;
             this.uxListBoxContacts.Location = new System.Drawing.Point(7, 25);
             this.uxListBoxContacts.Name = "uxListBoxContacts";
-            this.uxListBoxContacts.Size = new System.Drawing.Size(261, 303);
+            this.uxListBoxContacts.Size = new System.Drawing.Size(273, 303);
             this.uxListBoxContacts.TabIndex = 1;
             // 
             // uxLabelContacts
@@ -126,30 +160,31 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.uxListBoxChatRooms);
             this.panel3.Controls.Add(this.label1);
-            this.panel3.Controls.Add(this.listView1);
-            this.panel3.Location = new System.Drawing.Point(13, 384);
+            this.panel3.Location = new System.Drawing.Point(3, 339);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(583, 247);
-            this.panel3.TabIndex = 1;
+            this.panel3.Size = new System.Drawing.Size(283, 259);
+            this.panel3.TabIndex = 2;
+            // 
+            // uxListBoxChatRooms
+            // 
+            this.uxListBoxChatRooms.FormattingEnabled = true;
+            this.uxListBoxChatRooms.Location = new System.Drawing.Point(3, 20);
+            this.uxListBoxChatRooms.Name = "uxListBoxChatRooms";
+            this.uxListBoxChatRooms.Size = new System.Drawing.Size(277, 238);
+            this.uxListBoxChatRooms.TabIndex = 3;
+            this.uxListBoxChatRooms.SelectedIndexChanged += new System.EventHandler(this.uxListBoxChatRooms_SelectedIndexChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(260, 0);
+            this.label1.Location = new System.Drawing.Point(4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(92, 16);
             this.label1.TabIndex = 2;
             this.label1.Text = "Chat Rooms";
-            // 
-            // listView1
-            // 
-            this.listView1.Location = new System.Drawing.Point(7, 19);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(570, 214);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
             // 
             // uxBtnStartServer
             // 
@@ -245,13 +280,15 @@
             this.ClientSize = new System.Drawing.Size(1141, 643);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel4);
-            this.Controls.Add(this.panel3);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "ServerForm";
             this.Text = "ServerForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ServerForm_FormClosing);
+            this.Load += new System.EventHandler(this.ServerForm_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -273,9 +310,7 @@
         private System.Windows.Forms.Label uxLabelContacts;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label usersLabel;
-        private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.Button uxBtnStartServer;
         private System.Windows.Forms.Button uxBtnStopServer;
         private System.Windows.Forms.Panel panel4;
@@ -285,5 +320,10 @@
         private System.Windows.Forms.Button uxButtonClearServerLog;
         private System.Windows.Forms.Button uxSaveLogBtn;
         private System.Windows.Forms.ListBox uxListBoxUserNames;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.ListBox uxListBoxUsersInChatRoom;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.ListBox uxListBoxChatRooms;
     }
 }
