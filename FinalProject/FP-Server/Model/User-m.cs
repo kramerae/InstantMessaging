@@ -47,6 +47,13 @@ namespace FP_Server.Model
             _contacts.Add(name, isOnline);
         }
 
+
+        public void RemoveContact(string name)
+        {
+            _contacts.Remove(name);
+
+        }
+
         public Dictionary<string, bool> GetContacts
         {
             get

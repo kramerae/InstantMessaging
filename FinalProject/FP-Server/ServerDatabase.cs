@@ -44,8 +44,8 @@ namespace FP_Server
             
             _userDatabase = new Dictionary<string, User_m>();
             _onLine = new Dictionary<string, bool>();
-            AddPerson();
-            //ReadFromFile();
+            //AddPerson();
+            ReadFromFile();
             //WriteToFile();
             _chatRoom = new List<ChatRoom>();
             _userPairing = new Dictionary<string, string>();
@@ -60,20 +60,20 @@ namespace FP_Server
             Dictionary<string, bool> a = new Dictionary<string, bool>();
             Dictionary<string, bool> m = new Dictionary<string, bool>();
 
-            a.Add("mhixon", true);
+            a.Add("mhixon", false);
             a.Add("Jason", false);
             a.Add("Steven", false);
-            m.Add("sriegodedios", true);
+            m.Add("sriegodedios", false);
             m.Add("Jason", false);
             m.Add("Steven", false);
             _userDatabase.Add("sriegodedios", new User_m("sriegodedios", "shaner26", a));
             _userDatabase.Add("mhixon", new User_m("mhixon", "matt555", m));
-
-            _onLine.Add("sriegodedios", true);
-            _onLine.Add("Jason", true);
+            _userDatabase.Add("Austin", new User_m("Austin", "stuff", a));
+            _onLine.Add("sriegodedios", false);
+            _onLine.Add("Jason", false);
             _onLine.Add("Steven", false);
-            _onLine.Add("mhixon", true);
-
+            _onLine.Add("mhixon", false);
+            _onLine.Add("Austin", false);
 
         }
 
@@ -86,9 +86,51 @@ namespace FP_Server
 
         public bool RemoveContact(string username, string contact)
         {
-            return false;
+            if (!_userDatabase.ContainsKey(contact))
+            {
+                return false;
+            }
+
+            //_userDatabase[username].
+
+
+            return true;
         }
 
+        public void UpdateStatusOfAllUsers()
+        {
+            foreach(KeyValuePair<string, bool> kvp in _onLine)
+            {
+                string s = kvp.Key;
+                bool on = kvp.Value;
+
+                foreach(KeyValuePair<string,User_m> u in _userDatabase)
+                {
+
+                    if (u.Value.GetContacts.ContainsKey(s))
+                    {
+                        u.Value.GetContacts[s] = on;
+                    }
+
+
+                   /* foreach(KeyValuePair<string, bool> i in u.Value.GetContacts)
+                    {
+                        if(s == i.Key)
+                        {
+
+                        }
+
+                    } */
+                }
+
+
+
+
+
+
+            }
+
+        }
 
         public bool AddContact(string username, string contact)
         {
@@ -331,6 +373,30 @@ namespace FP_Server
             return _userPairing[username];
         }
 
+        public string GetUsername(string id)
+        {
+            if (_userPairing.ContainsValue(id))
+            {
+                foreach(KeyValuePair<string,string> kvp in _userPairing)
+                {
+                    if(id == kvp.Value)
+                    {
+                        return kvp.Key;
+                    }
+                }
+            }
+
+            return null;
+        }
+
+        public void LogoutUser(string s)
+        {
+
+            _onLine[s] = false;
+            UpdateStatusOfAllUsers();
+            _userPairing.Remove(s);
+
+        }
       
     }
 
