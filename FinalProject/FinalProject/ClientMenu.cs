@@ -354,14 +354,23 @@ namespace FinalProject
             string txt = uxText.Text;
             string message = _model.Username + ": " + txt; 
 
+
             int selected = uxChatroomsLB.SelectedIndex;
-            int chatID = _model.ChatRooms.Keys.ElementAt(selected);
+            if(selected == -1)
+            {
+                MessageBox.Show("You must select a chat on the left.");
+            }
+            else
+            {
+                int chatID = _model.ChatRooms.Keys.ElementAt(selected);
+
+
+                string[] arr = { "IM", chatID.ToString(), message };
+                _handle(this, arr);
+
+                uxText.Text = "";
+            }
             
-
-            string[] arr = { "IM", chatID.ToString(), message};
-            _handle(this, arr);
-
-            uxText.Text = "";
         }
 
         private void ClientMenu_Load(object sender, EventArgs e)
