@@ -40,6 +40,8 @@
             this.uxRefresh = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.uxMenuTab = new System.Windows.Forms.TabPage();
+            this.uxAddNameLabel = new System.Windows.Forms.Label();
+            this.uxAddNameText = new System.Windows.Forms.TextBox();
             this.uxChatTab = new System.Windows.Forms.TabPage();
             this.uxText = new System.Windows.Forms.TextBox();
             this.uxSend = new System.Windows.Forms.Button();
@@ -47,8 +49,6 @@
             this.uxChatroomsLabel = new System.Windows.Forms.Label();
             this.uxMessagesLB = new System.Windows.Forms.ListBox();
             this.uxChatroomsLB = new System.Windows.Forms.ListBox();
-            this.uxAddNameText = new System.Windows.Forms.TextBox();
-            this.uxAddNameLabel = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.uxMenuTab.SuspendLayout();
             this.uxChatTab.SuspendLayout();
@@ -179,6 +179,24 @@
             this.uxMenuTab.Text = "Menu";
             this.uxMenuTab.UseVisualStyleBackColor = true;
             // 
+            // uxAddNameLabel
+            // 
+            this.uxAddNameLabel.AutoSize = true;
+            this.uxAddNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uxAddNameLabel.Location = new System.Drawing.Point(224, 155);
+            this.uxAddNameLabel.Name = "uxAddNameLabel";
+            this.uxAddNameLabel.Size = new System.Drawing.Size(158, 16);
+            this.uxAddNameLabel.TabIndex = 11;
+            this.uxAddNameLabel.Text = "Contact Name to Add:";
+            // 
+            // uxAddNameText
+            // 
+            this.uxAddNameText.Location = new System.Drawing.Point(227, 174);
+            this.uxAddNameText.Name = "uxAddNameText";
+            this.uxAddNameText.Size = new System.Drawing.Size(157, 20);
+            this.uxAddNameText.TabIndex = 10;
+            this.uxAddNameText.TextChanged += new System.EventHandler(this.uxAddNameText_TextChanged);
+            // 
             // uxChatTab
             // 
             this.uxChatTab.Controls.Add(this.uxText);
@@ -253,23 +271,6 @@
             this.uxChatroomsLB.Size = new System.Drawing.Size(121, 342);
             this.uxChatroomsLB.TabIndex = 0;
             this.uxChatroomsLB.SelectedIndexChanged += new System.EventHandler(this.uxChatroomsLB_SelectedIndexChanged);
-            // 
-            // uxAddNameText
-            // 
-            this.uxAddNameText.Location = new System.Drawing.Point(227, 174);
-            this.uxAddNameText.Name = "uxAddNameText";
-            this.uxAddNameText.Size = new System.Drawing.Size(157, 20);
-            this.uxAddNameText.TabIndex = 10;
-            // 
-            // uxAddNameLabel
-            // 
-            this.uxAddNameLabel.AutoSize = true;
-            this.uxAddNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxAddNameLabel.Location = new System.Drawing.Point(224, 155);
-            this.uxAddNameLabel.Name = "uxAddNameLabel";
-            this.uxAddNameLabel.Size = new System.Drawing.Size(158, 16);
-            this.uxAddNameLabel.TabIndex = 11;
-            this.uxAddNameLabel.Text = "Contact Name to Add:";
             // 
             // ClientMenu
             // 

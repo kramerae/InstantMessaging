@@ -187,7 +187,7 @@ namespace FinalProject
                 // Add contact
                 else if (items[0] == "AC")
                 {
-
+                    Packet p4 = new ClassLibrary.Packet(Status.)
                 }
                 // Start Chat
                 else if (items[0] == "SC")
