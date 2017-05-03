@@ -228,6 +228,17 @@ namespace FinalProject
                     p6.Message = items[2];
                     MessageEntered(p6);
                 }
+                else if(items[0] == "NU")
+                {
+                    
+                }
+                else if(items[0] == "OUT")
+                {
+                    Packet p8 = new ClassLibrary.Packet(Status.logout);
+                    p8.Username = _model.Username;
+                    p8.GetID = _model.ID;
+                    MessageEntered(p8);
+                }
 
             }
 

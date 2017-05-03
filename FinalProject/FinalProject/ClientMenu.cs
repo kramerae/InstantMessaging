@@ -26,35 +26,46 @@ namespace FinalProject
             uxRemoveContact.Enabled = false;
             uxStartChat.Enabled = false;
             uxAddContact.Enabled = false;
+            uxAddChatMember.Enabled = false;
             
         }
 
         private void uxLogout_Click(object sender, EventArgs e)
         {
             // Call server to update status to offline
+            string[] arr = { "OUT" };
+            _handle(this, arr);
+
             // Close form
+            Application.Exit();
             
         }
 
         private void uxRemoveContact_Click(object sender, EventArgs e)
         {
-            string item = uxContactListBox.SelectedItem.ToString();
-            // Update contact list in server
-            // Update Model
-            // Update ListBox
-            const string message = "Are you sure that you would like to remove contact?";
-            const string caption = "Remove Contact";
-            var result = MessageBox.Show(message, caption,MessageBoxButtons.YesNo,MessageBoxIcon.Question);
-
-            if(result == DialogResult.Yes)
+            if(uxContactListBox.SelectedIndex != -1)
             {
-                // server remove contact
-                string[] arr = { "RC", item };
-                _handle(this, arr);
-                
+                string item = uxContactListBox.SelectedItem.ToString();
 
-               // MessageBox.Show("Contact Removed!");
+                const string message = "Are you sure that you would like to remove contact?";
+                const string caption = "Remove Contact";
+                var result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    // server remove contact
+                    string[] arr = { "RC", item };
+                    _handle(this, arr);
+
+
+                    // MessageBox.Show("Contact Removed!");
+                }
             }
+            else
+            {
+                MessageBox.Show("You must select a contact on the left.");
+            }
+            
         }
 
         private void uxAddContact_Click(object sender, EventArgs e)
@@ -70,9 +81,6 @@ namespace FinalProject
             {
                 MessageBox.Show("Must enter username to add!");
             }
-            // Check to see if user exists in server
-            // If so add to contact list in server
-            // Update ListBox
         }
 
         private void uxStartChat_Click(object sender, EventArgs e)
@@ -361,6 +369,7 @@ namespace FinalProject
         private void uxChatroomsLB_SelectedIndexChanged(object sender, EventArgs e)
         {
             _selected = uxChatroomsLB.SelectedIndex;
+            uxAddChatMember.Enabled = true;
             UpdateMessageListBox();
         }
 
@@ -406,6 +415,24 @@ namespace FinalProject
         private void uxAddNameText_TextChanged(object sender, EventArgs e)
         {
             uxAddContact.Enabled = true;
+        }
+
+        private void uxAddChatMember_Click(object sender, EventArgs e)
+        {
+            if(uxContactListBox.SelectedIndex != -1)
+            {
+                int selectedChat = uxChatroomsLB.SelectedIndex;
+                int selectedUser = uxContactListBox.SelectedIndex;
+                string username = _model.ContactList.Keys.ElementAt(selectedUser);
+                int chatID = _model.ChatRooms.Keys.ElementAt(selectedChat);
+
+                string[] arr = { "NU", chatID.ToString(), username };
+                _handle(this, arr);
+            }
+            else
+            {
+                MessageBox.Show("You must select a contact from your contact list to add to the chat.");
+            }
         }
     }
 }

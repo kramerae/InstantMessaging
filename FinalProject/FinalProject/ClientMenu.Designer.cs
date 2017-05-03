@@ -49,6 +49,7 @@
             this.uxChatroomsLabel = new System.Windows.Forms.Label();
             this.uxMessagesLB = new System.Windows.Forms.ListBox();
             this.uxChatroomsLB = new System.Windows.Forms.ListBox();
+            this.uxAddChatMember = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.uxMenuTab.SuspendLayout();
             this.uxChatTab.SuspendLayout();
@@ -199,6 +200,7 @@
             // 
             // uxChatTab
             // 
+            this.uxChatTab.Controls.Add(this.uxAddChatMember);
             this.uxChatTab.Controls.Add(this.uxText);
             this.uxChatTab.Controls.Add(this.uxSend);
             this.uxChatTab.Controls.Add(this.uxMessagesLabel);
@@ -272,6 +274,16 @@
             this.uxChatroomsLB.TabIndex = 0;
             this.uxChatroomsLB.SelectedIndexChanged += new System.EventHandler(this.uxChatroomsLB_SelectedIndexChanged);
             // 
+            // uxAddChatMember
+            // 
+            this.uxAddChatMember.Location = new System.Drawing.Point(348, 18);
+            this.uxAddChatMember.Name = "uxAddChatMember";
+            this.uxAddChatMember.Size = new System.Drawing.Size(63, 26);
+            this.uxAddChatMember.TabIndex = 6;
+            this.uxAddChatMember.Text = "Add User";
+            this.uxAddChatMember.UseVisualStyleBackColor = true;
+            this.uxAddChatMember.Click += new System.EventHandler(this.uxAddChatMember_Click);
+            // 
             // ClientMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -312,6 +324,7 @@
         private System.Windows.Forms.ListBox uxChatroomsLB;
         private System.Windows.Forms.Label uxAddNameLabel;
         private System.Windows.Forms.TextBox uxAddNameText;
+        private System.Windows.Forms.Button uxAddChatMember;
     }
 }
 
