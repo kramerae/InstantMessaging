@@ -153,5 +153,25 @@ namespace FP_Server
 
             }
         }
+
+
+
+        private void ServerForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            
+            using (StreamWriter sw = new StreamWriter("log.txt"))
+            {
+                foreach (string s in uxEventListBox.Items)
+                {
+                    sw.WriteLine(s);
+                }
+                MessageBox.Show("Log written successfully");
+            }
+
+            sd.WriteToFile();
+            Application.ExitThread();
+           
+
+        }
     }
 }

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.IO;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.Windows.Forms;
 
 namespace FP_Server
 {
@@ -158,7 +159,7 @@ namespace FP_Server
         }
         
 
-        private void WriteToFile()
+        public void WriteToFile()
         {
             string jsonString = JsonConvert.SerializeObject(_userDatabase);
 
@@ -180,7 +181,6 @@ namespace FP_Server
             {
                 string jsonString = file.ReadToEnd();
                 _userDatabase = JsonConvert.DeserializeObject<Dictionary<string, User_m>>(jsonString);
-              
             }
         }
 
