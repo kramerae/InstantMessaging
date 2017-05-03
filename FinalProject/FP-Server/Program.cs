@@ -15,6 +15,7 @@ namespace FP_Server
     public delegate void UpdateEvent(string s);
     public delegate void Logout(string s);
     public delegate void UpdateContacts(Dictionary<string, User_m> d);
+    public delegate void UpdateChatRooms(List<ChatRoom> c);
  
     
 

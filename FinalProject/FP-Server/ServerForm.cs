@@ -278,6 +278,62 @@ namespace FP_Server
             Application.ExitThread();
         }
 
+        public void UpdateChatrooms(List<ChatRoom> c)
+        {
+
+
+
+
+            if (uxListBoxChatRooms.InvokeRequired)
+            {
+                Invoke(new MethodInvoker(delegate ()
+                {
+
+                    uxListBoxChatRooms.Items.Clear();
+
+
+
+                }));
+            }
+            else
+            {
+                uxListBoxChatRooms.Items.Clear();
+
+
+            }
+
+            uxListBoxChatRooms.EndUpdate();
+            for (int i = 0; i < c.Count; i++)
+            {
+                int roomId = c[i].ChatRoomID;
+
+                if (uxListBoxChatRooms.InvokeRequired)
+                {
+                    Invoke(new MethodInvoker(delegate ()
+                    {
+
+                        uxListBoxChatRooms.Items.Add(roomId);
+
+
+
+                    }));
+                }
+                else
+                {
+                    uxListBoxChatRooms.Items.Add(roomId);
+                }
+
+            }
+            
+
+
+        }
+
+
+
+
+   
+
         private void uxListBoxUserNames_SelectedIndexChanged(object sender, EventArgs e)
         {
             int selected = uxListBoxUserNames.SelectedIndex;
@@ -286,7 +342,7 @@ namespace FP_Server
             string[] items = item.Split(' ');
 
             Dictionary<string, bool> d = sd.GetContacts(items[0]);
-
+            uxListBoxContacts.Items.Clear();
             uxListBoxContacts.EndUpdate();
 
             foreach(string name in d.Keys)
@@ -299,6 +355,27 @@ namespace FP_Server
 
         }
 
-     
+        private void ServerForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void uxListBoxChatRooms_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int selected = uxListBoxChatRooms.SelectedIndex;
+
+            List<string> list = sd.GetChatRoomUsers(selected);
+            uxListBoxUsersInChatRoom.Items.Clear();
+            uxListBoxUsersInChatRoom.EndUpdate();
+            for(int i = 0; i < list.Count; i++)
+            {
+                uxListBoxUsersInChatRoom.Items.Add(list[i]);
+
+
+            }
+
+            uxListBoxUsersInChatRoom.EndUpdate();
+
+        }
     }
 }
