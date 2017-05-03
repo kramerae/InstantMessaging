@@ -49,7 +49,11 @@ namespace FinalProject
             Application.Exit();           
         }
 
-        //Remove Conctact button click
+        /// <summary>
+        /// Remove contact button click 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void uxRemoveContact_Click(object sender, EventArgs e)
         {
             if(uxContactListBox.SelectedIndex != -1)
@@ -81,7 +85,11 @@ namespace FinalProject
             
         }
 
-        //Add contact button click
+        /// <summary>
+        /// Add contact button click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void uxAddContact_Click(object sender, EventArgs e)
         {
             string name = uxAddNameText.Text;
@@ -96,7 +104,11 @@ namespace FinalProject
             }
         }
 
-        //Start Chat button click
+        /// <summary>
+        /// start chat button click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void uxStartChat_Click(object sender, EventArgs e)
         {
             
@@ -115,28 +127,40 @@ namespace FinalProject
                 MessageBox.Show("Error. Please try again.");
             }
         }
-        
-        //Updates the contact list on the form
+
+        /// <summary>
+        /// Updates the contact list on the form
+        /// </summary>
         public void UpdateContactList()
         {
             string[] arr = {"UCL"};
             _handle(this, arr);
         }
 
-        //
+        /// <summary>
+        /// Functionality for selecting a contact from the list box
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void uxContactListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             uxRemoveContact.Enabled = true;
             uxStartChat.Enabled = true;
         }
 
-        //Refresh button clicked
+        /// <summary>
+        /// Refresh button click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void uxRefresh_Click(object sender, EventArgs e)
         {
             UpdateContactList();
         }
 
-        //Updates the contact list box on the form
+        /// <summary>
+        /// Updates the contact list box on the form
+        /// </summary>
         public void UpdateContactListBox()
         {
             if(_model.AddContact == false)

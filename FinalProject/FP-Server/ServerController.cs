@@ -441,7 +441,7 @@ namespace FP_Server
             //string username = _database.GetUsername();
             _u("[LOGGING OUT IN PROGRESS] User:" + p.Username);
             _database.LogoutUser(p.Username);
-            _ule(_database.GetOnline);
+            _database.MakeUserOffline(p.Username);
             Dictionary<string, bool> d = _database.GetContacts(p.Username);
 
             foreach(string s in d.Keys)
@@ -461,6 +461,14 @@ namespace FP_Server
 
 
 
+            }
+
+
+            _ule(_database.GetOnline);
+
+            foreach(bool s in _database.GetOnline.Values)
+            {
+                
             }
 
 
