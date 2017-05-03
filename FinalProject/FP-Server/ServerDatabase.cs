@@ -66,7 +66,7 @@ namespace FP_Server
             _userDatabase.Add("sriegodedios", new User_m("sriegodedios", "shaner26", a));
             _userDatabase.Add("mhixon", new User_m("mhixon", "matt555", m));
 
-            _onLine.Add("Shane", true);
+            _onLine.Add("sriegodedios", true);
             _onLine.Add("Jason", true);
             _onLine.Add("Steven", false);
             _onLine.Add("mhixon", true);
@@ -274,8 +274,17 @@ namespace FP_Server
             //Dictionary<int, KeyValuePair<List<string>, List<string>>> d = new Dictionary<int, KeyValuePair<List<string>, List<string>>>();
 
             KeyValuePair<List<string>, List<string>> kvp = new KeyValuePair<List<string>, List<string>>(GetUsersChat(i), GetMessageHistory(i));
+            if (d.ContainsKey(i))
+            {
 
-            d.Add(i, kvp);
+                d[i] = kvp;
+
+            }
+            else
+            {
+                d.Add(i, kvp);
+            }
+           
 
             return d;
 

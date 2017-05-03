@@ -101,7 +101,7 @@ namespace FP_Server
 
                         //Send message to all users in the chatroom
 
-
+                        SendMessage(messageJSON);
 
 
 
