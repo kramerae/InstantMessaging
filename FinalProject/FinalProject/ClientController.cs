@@ -120,6 +120,10 @@ namespace FinalProject
                     updateForms();
                     _model.AddContact = true;
                     break;
+                case Status.contactRemovedSuccess:
+                    _model.ContactList = p.ContactList;
+                    updateForms();
+                    break;
             }
 
             
@@ -191,7 +195,7 @@ namespace FinalProject
                 // Remove contact
                 else if (items[0] == "RC")
                 {
-                    Packet p3 = new ClassLibrary.Packet(Status.);
+                    Packet p3 = new ClassLibrary.Packet(Status.removeContactRequest);
                     p3.Username = _model.Username;
                     p3.GetID = _model.ID;
                     p3.DestinationUsername = items[1];
