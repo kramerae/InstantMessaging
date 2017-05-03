@@ -84,6 +84,11 @@ namespace FP_Server
 
         }
 
+        public bool RemoveContact(string username, string contact)
+        {
+            return false;
+        }
+
 
         public bool AddContact(string username, string contact)
         {

@@ -113,20 +113,7 @@ namespace FP_Server
                      }
                 case Status.contactListRequest:
                     {
-                        _u("Contact List Request USER: " + messageJSON.Username);
-                        //Sends a message history from a specific client.
-                        Dictionary<string, bool> contacts = _database.GetContacts(messageJSON.Username);
-
-                        Packet p = new Packet(Status.contactListSend);
-                        p.ContactList = contacts;
-                        p.DestinationID = messageJSON.OriginID;
-                        p.OriginID = "server";
-
-                        Sessions.SendTo(JsonConvert.SerializeObject(p), messageJSON.GetID);
-
-
-                        _u("Contact List Request USER: " + messageJSON.Username+ " [COMPLETED]");
-
+                        SendContactList(messageJSON);
                         break;
                     }
                 case Status.connectionSuccess:
@@ -216,8 +203,8 @@ namespace FP_Server
                     Packet p = new Packet(Status.loginTrue);
                     p.GetStatus = Status.loginTrue;
                     p.Username = messageJSON.Username;
-                    
-                    
+                    _ule(messageJSON.Username.ToString());
+
 
 
                     Sessions.SendTo(JsonConvert.SerializeObject(p),id);
@@ -332,20 +319,54 @@ namespace FP_Server
         private void AddContact(Packet p)
         {
 
-            Packet
-
+            Packet temp = new Packet(Status.addContact);
+            temp.DestinationUsername = p.DestinationUsername;
 
 
             if (_database.AddContact(p.Username, p.DestinationUsername))
             {
+                temp.GetStatus = Status.contactAdded;
+                Dictionary<string, bool> contacts = _database.GetContacts(p.Username);
+
+                temp.ContactList = contacts;
 
 
+            }
+            else
+            {
+                temp.GetStatus = Status.contactDenied;
+                
 
-                Sessions.SendTo()
+
 
             }
 
+            Sessions.SendTo(JsonConvert.SerializeObject(temp), temp.GetID);
 
+
+
+        }
+
+        private void RemoveContact(Packet p)
+        {
+
+        }
+
+        public void SendContactList(Packet messageJSON)
+        {
+            _u("Contact List Request USER: " + messageJSON.Username);
+            //Sends a message history from a specific client.
+            Dictionary<string, bool> contacts = _database.GetContacts(messageJSON.Username);
+
+            Packet p = new Packet(Status.contactListSend);
+            p.ContactList = contacts;
+            p.DestinationID = messageJSON.OriginID;
+            p.OriginID = "server";
+
+            Sessions.SendTo(JsonConvert.SerializeObject(p), messageJSON.GetID);
+
+
+            _u("Contact List Request USER: " + messageJSON.Username + " [COMPLETED]");
 
 
 

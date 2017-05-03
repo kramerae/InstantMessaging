@@ -25,10 +25,13 @@ namespace ClassLibrary
             addContact,                 //15
             contactAdded,               //16
             contactDenied,              //17
-            requestChatRoom,            //18
-            chatroomSuccess,            //19
-            logout,                     //20
-            undefined                   //21
+            removeContactRequest,       //18
+            contactRemovedSuccess,      //19
+            contactRemovedDenied,       //20
+            requestChatRoom,            //21
+            chatroomSuccess,            //22
+            logout,                     //23
+            undefined                   //24
     };
     
 }
