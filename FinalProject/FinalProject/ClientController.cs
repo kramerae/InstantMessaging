@@ -230,7 +230,11 @@ namespace FinalProject
                 }
                 else if(items[0] == "NU")
                 {
-                    
+                    Packet p7 = new ClassLibrary.Packet(Status.addContactChatRequest);
+                    p7.Username = _model.Username;
+                    p7.GetID = _model.ID;
+                    p7.GetChatID = Convert.ToInt32(items[1]);
+                    p7.DestinationUsername = items[2];
                 }
                 else if(items[0] == "OUT")
                 {
