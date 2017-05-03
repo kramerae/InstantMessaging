@@ -20,7 +20,7 @@ namespace FP_Server
     {
         
         WebSocketServer ws;
-        ServerDatabase sd;
+        private ServerDatabase sd;
         
         //rverController _sc;
 

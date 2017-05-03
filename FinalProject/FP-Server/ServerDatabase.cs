@@ -79,8 +79,13 @@ namespace FP_Server
 
         public Dictionary<string, bool> GetContacts(string username)
         {
+            if (_userDatabase.ContainsKey(username))
+            {
+                return _userDatabase[username].GetContacts;
+            }
 
-            return _userDatabase[username].GetContacts;
+            return null;
+           
 
         }
 
@@ -158,7 +163,7 @@ namespace FP_Server
         }
 
 
-        private void WriteToFile()
+        public void WriteToFile()
         {
             string jsonString = JsonConvert.SerializeObject(_userDatabase);
 

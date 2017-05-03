@@ -434,7 +434,7 @@ namespace FP_Server
             {
                 Dictionary<string, bool> d1 = _database.GetContacts(s);
 
-              
+                
                 Packet p1 = new Packet(Status.contactListSend);
                 p1.ContactList = d1;
 
