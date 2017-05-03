@@ -347,6 +347,10 @@ namespace FP_Server
 
         }
 
+        private void RemoveContact(Packet p)
+        {
+
+        }
 
         public void SendContactList(Packet messageJSON)
         {
