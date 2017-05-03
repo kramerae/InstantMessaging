@@ -47,6 +47,7 @@ namespace FinalProject
                 menu.Show();
                 c.register(menu.UpdateContactListBox);
                 c.register(menu.UpdateChatRoomListBox);
+                c.register(menu.UpdateMessageListBox);
                 Application.Run(menu);
             }
             

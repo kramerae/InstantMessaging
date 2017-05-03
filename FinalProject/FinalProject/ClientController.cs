@@ -107,6 +107,10 @@ namespace FinalProject
 
                     updateForms();
                     break;
+                case Status.messageReceive:
+                    _model.ChatRooms = p.ChatData;
+                    updateForms();
+                    break;
             }
 
             
