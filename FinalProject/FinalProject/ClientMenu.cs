@@ -16,6 +16,7 @@ namespace FinalProject
         private ClientModel _model;
         private InputHandler _handle;
 
+        private int _selected; 
 
         public ClientMenu(InputHandler han, ClientModel m)
         {
@@ -249,15 +250,22 @@ namespace FinalProject
                 {
                     Invoke(new MethodInvoker(delegate ()
                     {
-
-                        int selected = uxChatroomsLB.SelectedIndex;
-
-
-                        if (selected != -1)
+                        int selected;
+                        if(_selected != null)
                         {
-                            int chatID = _model.ChatRooms.Keys.ElementAt(selected);
+                            selected = _selected;
+                        }
+                        else
+                        {
+                            selected = uxChatroomsLB.SelectedIndex;
+                        }
 
-                            List<string> messages = chatrooms.Values.ElementAt(selected).Value;
+
+                        if (_selected != -1)
+                        {
+                            int chatID = _model.ChatRooms.Keys.ElementAt(_selected);
+
+                            List<string> messages = chatrooms.Values.ElementAt(_selected).Value;
 
                             if (uxMessagesLB.InvokeRequired)
                             {
@@ -336,6 +344,7 @@ namespace FinalProject
 
         private void uxChatroomsLB_SelectedIndexChanged(object sender, EventArgs e)
         {
+            _selected = uxChatroomsLB.SelectedIndex;
             UpdateMessageListBox();
         }
 
