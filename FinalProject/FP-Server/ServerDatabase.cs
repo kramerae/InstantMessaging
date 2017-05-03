@@ -63,7 +63,7 @@ namespace FP_Server
         }
 
         ///<summary>
-        /// 
+        /// Temporary 
         ///</summary>
         private void AddPerson()
         {
@@ -276,6 +276,10 @@ namespace FP_Server
             return false;
         }
 
+
+        /// <summary>
+        /// Returns a master list of all the users in the database.
+        /// </summary>
         public Dictionary<string, User_m> AllUsers
         {
 
@@ -287,7 +291,11 @@ namespace FP_Server
         }
 
 
-
+        /// <summary>
+        /// Looks up the user and returns a string of the username
+        /// </summary>
+        /// <param name="s">A string of the user ID.</param>
+        /// <returns>A string of the username.</returns>
         public string LookUpUserBaseOnID(string s)
         {
 
@@ -307,6 +315,11 @@ namespace FP_Server
 
         }
 
+
+        /// <summary>
+        /// This method changes the staus of the user to online.
+        /// </summary>
+        /// <param name="s">A string of the username.</param>
         public void MakeUserOnline(string s)
         {
             if (_onLine.ContainsKey(s))
@@ -322,6 +335,11 @@ namespace FP_Server
 
         }
 
+
+        /// <summary>
+        /// This method makes the user go offline.
+        /// </summary>
+        /// <param name="s"></param>
         public void MakeUserOffline(string s)
         {
             _onLine[s] = false;
@@ -463,6 +481,7 @@ namespace FP_Server
         {
 
             _onLine[s] = false;
+            MakeUserOffline(s);
             UpdateStatusOfAllUsers();
             _userPairing.Remove(s);
             

@@ -126,17 +126,23 @@ namespace FP_Server
                 Invoke(new MethodInvoker(delegate ()
                 {
                     uxListBoxUserNames.Items.Clear();
-
+                    uxListBoxUserNames.EndUpdate();
 
                 }));
             }
             else
             {
                 uxListBoxUserNames.Items.Clear();
+                uxListBoxUserNames.EndUpdate();
             }
 
+
+
+
+
+
                 
-            uxListBoxUserNames.EndUpdate();
+          //  uxListBoxUserNames.EndUpdate();
             foreach(KeyValuePair<string, bool> kvp in d)
             {
                 string s = kvp.Key;
