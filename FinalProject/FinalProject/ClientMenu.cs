@@ -215,6 +215,8 @@ namespace FinalProject
                     }
                 }
             }
+
+            uxChatroomsLB.EndUpdate();
         }
 
         public void UpdateMessageListBox()
@@ -301,7 +303,7 @@ namespace FinalProject
 
                                 for (int i = 0; i < messages.Count; i++)
                                 {
-                                    uxContactListBox.Items.Add(messages.ElementAt(i));
+                                    uxMessagesLB.Items.Add(messages.ElementAt(i));
                                 }
                                 /*
                             foreach (string s in m.Value.Value)
@@ -316,7 +318,7 @@ namespace FinalProject
                         {
                             for (int i = 0; i < messages.Count; i++)
                             {
-                                uxContactListBox.Items.Add(messages.ElementAt(i));
+                                uxMessagesLB.Items.Add(messages.ElementAt(i));
                             }
                         }
 
@@ -324,6 +326,8 @@ namespace FinalProject
 
 
                 }
+
+                uxChatroomsLB.EndUpdate();
 
 
             }
