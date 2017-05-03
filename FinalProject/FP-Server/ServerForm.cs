@@ -85,21 +85,34 @@ namespace FP_Server
             ListViewItem s1 = new ListViewItem(s + " | Online");
 
             s1.SubItems.Add("s");
-            // s1.SubItems.Add("Online");
+            s1.SubItems.Add("Online");
 
+            if (uxListViewUsers.InvokeRequired)
+            {
+                Invoke(new MethodInvoker(delegate () { uxListViewUsers.Items.Add(s1); }));
+
+
+            }else
+            {
+                uxListViewUsers.Items.Add(s1);
+            }
+
+              
             uxListViewUsers.EndUpdate();
 
-            //for(int i = 0; i < checkedListBoxUsers.Items.Count; i++)
-            //{
-            //    if(s == (string)checkedListBoxUsers.Items[i])
-            //    {
-            //        checkedListBoxUsers.CheckedItems[i] = true;
-            //        break;
-            //    }
 
-            //}
 
-            //checkedListBoxUsers.EndUpdate();
+            /*for(int i = 0; i < uxListViewUsers.Items.Count; i++)
+            {
+                if(s == (string)uxListViewUsers.Items[i].Name)
+              {
+                    checkedListBoxUsers.CheckedItems[i] = true;
+                    break;
+                }
+
+            }*/
+
+            uxListBoxUsers.EndUpdate();
         }
 
         //Updates the Contacts
