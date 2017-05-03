@@ -28,7 +28,14 @@ namespace FP_Server
         private ServerForm _sf;
        
        
-
+        /// <summary>
+        /// This constructor constructs the ServerController
+        /// </summary>
+        /// <param name="ue"></param>
+        /// <param name="uel"></param>
+        /// <param name="sf"></param>
+        /// <param name="o"></param>
+        /// <param name="sd"></param>
         public ServerController(UpdateEvent ue, UserListUpdates uel, ServerForm sf, Observer o, ServerDatabase sd)
         {
             _registry.Add(o);
@@ -43,6 +50,9 @@ namespace FP_Server
         }
 
 
+        /// <summary>
+        /// This method detects the OnOpen 
+        /// </summary>
         protected override void OnOpen()
         {
 
@@ -392,6 +402,10 @@ namespace FP_Server
 
         }
 
+        /// <summary>
+        /// This method sends a contact list based on the specific user.
+        /// </summary>
+        /// <param name="messageJSON">The packet</param>
         public void SendContactList(Packet messageJSON)
         {
             _u("Contact List Request USER: " + messageJSON.Username);
@@ -412,6 +426,10 @@ namespace FP_Server
 
         }
 
+        /// <summary>
+        /// Logout the user and makes them go off offline.
+        /// </summary>
+        /// <param name="p">The packet</param>
         private void LogoutSession(Packet p)
         {
             //string username = _database.GetUsername();
