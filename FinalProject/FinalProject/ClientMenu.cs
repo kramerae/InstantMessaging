@@ -292,13 +292,130 @@ namespace FinalProject
 
 
 
-
-
-
-
-
-            /////////////////
             if (chatrooms != null)
+            {
+                if (uxMessagesLB.InvokeRequired)
+                {
+                    Invoke(new MethodInvoker(delegate ()
+                    {
+                        int selected = uxChatroomsLB.SelectedIndex;
+
+
+                        if (selected != -1)
+                        {
+                            string line = uxChatroomsLB.SelectedItem.ToString();
+
+                            string[] things = line.Split(':');
+
+                            int chatID = Convert.ToInt32(things[0]);
+
+                            List<string> messages  = chatrooms[chatID].Value;
+                            
+                            if (uxMessagesLB.InvokeRequired)
+                            {
+                                Invoke(new MethodInvoker(delegate ()
+                                {
+
+                                    for (int i = 0; i < messages.Count; i++)
+                                    {
+                                        uxMessagesLB.Items.Add(messages.ElementAt(i));
+                                    }
+                                    /*
+                                foreach (string s in m.Value.Value)
+                                {
+                                    uxContactListBox.Items.Add(string.Format("{0}  |  {1}", s.Key, "ONLINE"));
+                                }
+                                */
+
+                                }));
+                            }
+                            else
+                            {
+                                for (int i = 0; i < messages.Count; i++)
+                                {
+                                    uxMessagesLB.Items.Add(messages.ElementAt(i));
+                                }
+                            }
+                        }
+                        else
+                        {
+                            uxMessagesLB.Items.Add("You must select a chat room to see messages.");
+                        }
+                    }));
+                }
+                else
+                {
+                    Invoke(new MethodInvoker(delegate ()
+                    {
+                        int selected = uxChatroomsLB.SelectedIndex;
+
+
+                        if (selected != -1)
+                        {
+                            string line = uxChatroomsLB.SelectedItem.ToString();
+
+                            string[] things = line.Split(':');
+
+                            int chatID = Convert.ToInt32(things[0]);
+
+                            List<string> messages = chatrooms[chatID].Value;
+
+                            if (uxMessagesLB.InvokeRequired)
+                            {
+                                Invoke(new MethodInvoker(delegate ()
+                                {
+
+                                    for (int i = 0; i < messages.Count; i++)
+                                    {
+                                        uxMessagesLB.Items.Add(messages.ElementAt(i));
+                                    }
+                                    /*
+                                foreach (string s in m.Value.Value)
+                                {
+                                    uxContactListBox.Items.Add(string.Format("{0}  |  {1}", s.Key, "ONLINE"));
+                                }
+                                */
+
+                                }));
+                            }
+                            else
+                            {
+                                for (int i = 0; i < messages.Count; i++)
+                                {
+                                    uxMessagesLB.Items.Add(messages.ElementAt(i));
+                                }
+                            }
+                        }
+                        else
+                        {
+                            uxMessagesLB.Items.Add("You must select a chat room to see messages.");
+                        }
+                    }));
+                }
+
+
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                /*
+                ///////////////////////////
+                if (chatrooms != null)
             {
                 if (uxMessagesLB.InvokeRequired)
                 {
@@ -330,12 +447,6 @@ namespace FinalProject
                                     {
                                         uxMessagesLB.Items.Add(messages.ElementAt(i));
                                     }
-                                    /*
-                                foreach (string s in m.Value.Value)
-                                {
-                                    uxContactListBox.Items.Add(string.Format("{0}  |  {1}", s.Key, "ONLINE"));
-                                }
-                                */
 
                                 }));
                             }
@@ -367,12 +478,6 @@ namespace FinalProject
                                 {
                                     uxMessagesLB.Items.Add(messages.ElementAt(i));
                                 }
-                                /*
-                            foreach (string s in m.Value.Value)
-                            {
-                                uxContactListBox.Items.Add(string.Format("{0}  |  {1}", s.Key, "ONLINE"));
-                            }
-                            */
 
                             }));
                         }
@@ -388,11 +493,11 @@ namespace FinalProject
 
 
                 }
-
+                */
                 uxChatroomsLB.EndUpdate();
+                
 
-
-            }
+            
         }
 
 
