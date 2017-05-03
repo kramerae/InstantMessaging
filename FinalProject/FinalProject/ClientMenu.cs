@@ -12,7 +12,7 @@ namespace FinalProject
 {
     public partial class ClientMenu : Form
     {
-        private ClientController _c;
+       // private ClientController _c;
         private ClientModel _model;
         private InputHandler _handle;
 
@@ -45,7 +45,13 @@ namespace FinalProject
         {
             if(uxContactListBox.SelectedIndex != -1)
             {
-                string item = uxContactListBox.SelectedItem.ToString();
+                int index = uxContactListBox.SelectedIndex;
+                string item = _model.ContactList.Keys.ElementAt(index);
+
+
+
+          
+                //string item = uxContactListBox.SelectedItem.ToString();
 
                 const string message = "Are you sure that you would like to remove contact?";
                 const string caption = "Remove Contact";
@@ -146,13 +152,29 @@ namespace FinalProject
                 uxContactListBox.Items.Clear();
             }
             
-
-            // Add Contacts in List Box
-            foreach (KeyValuePair<string, bool> s in contacts)
+            if(contacts != null)
             {
-                if (uxContactListBox.InvokeRequired)
+                // Add Contacts in List Box
+                foreach (KeyValuePair<string, bool> s in contacts)
                 {
-                    Invoke(new MethodInvoker(delegate () {
+                    if (uxContactListBox.InvokeRequired)
+                    {
+                        Invoke(new MethodInvoker(delegate () {
+
+                            if (s.Value == true)
+                            {
+                                uxContactListBox.Items.Add(string.Format("{0}  |  {1}", s.Key, "ONLINE"));
+
+                            }
+                            else
+                            {
+                                uxContactListBox.Items.Add(string.Format("{0}    {1}", s.Key, ""));
+                            }
+
+                        }));
+                    }
+                    else
+                    {
 
                         if (s.Value == true)
                         {
@@ -163,23 +185,12 @@ namespace FinalProject
                         {
                             uxContactListBox.Items.Add(string.Format("{0}    {1}", s.Key, ""));
                         }
-
-                    }));
-                }
-                else
-                {
-
-                    if (s.Value == true)
-                    {
-                        uxContactListBox.Items.Add(string.Format("{0}  |  {1}", s.Key, "ONLINE"));
-
-                    }
-                    else
-                    {
-                        uxContactListBox.Items.Add(string.Format("{0}    {1}", s.Key, ""));
                     }
                 }
             }
+
+
+            
 
             uxContactListBox.EndUpdate();
         }

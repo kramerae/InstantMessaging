@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 
 namespace FP_Server.Model
 {
+    //User_m class
     [JsonObject]
     public class User_m
     {
@@ -17,7 +18,7 @@ namespace FP_Server.Model
         private string _id;
        // private _currentW
 
-
+        //constructor for the User_m
         public User_m(string user, string password, Dictionary<string, bool> contacts)
         {
             _contacts = new Dictionary<string, bool>();
@@ -28,6 +29,7 @@ namespace FP_Server.Model
             _contacts = contacts;
         }
 
+        //Returns the user name
         public string User
         {
             get
@@ -36,6 +38,7 @@ namespace FP_Server.Model
             }
         }
 
+        //returns the password
         public string Password
         {
             get
@@ -44,18 +47,20 @@ namespace FP_Server.Model
             }
         }
 
+        //adds a contact to the user's contact list
         public void AddContact(string name, bool isOnline)
         {
             _contacts.Add(name, isOnline);
         }
 
-
+        //removes the contact from user's contact list
         public void RemoveContact(string name)
         {
             _contacts.Remove(name);
 
         }
 
+        //returns the dictionary of the user's contacts
         public Dictionary<string, bool> GetContacts
         {
             get
@@ -67,6 +72,7 @@ namespace FP_Server.Model
             }
         }
 
+        //returns true/false if online. also sets value of _isOnline
         public bool IsOnline
         {
             get
@@ -78,6 +84,7 @@ namespace FP_Server.Model
             }
         }
 
+        //gets/sets the user id
         public string GetID
         {
             get

@@ -43,11 +43,11 @@
             this.uxBtnStartServer = new System.Windows.Forms.Button();
             this.uxBtnStopServer = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.uxSaveLogBtn = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.uxButtonClearServerLog = new System.Windows.Forms.Button();
             this.uxEventListBox = new System.Windows.Forms.ListBox();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.uxSaveLogBtn = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -203,6 +203,17 @@
             this.panel4.Size = new System.Drawing.Size(526, 515);
             this.panel4.TabIndex = 4;
             // 
+            // uxSaveLogBtn
+            // 
+            this.uxSaveLogBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uxSaveLogBtn.Location = new System.Drawing.Point(318, -1);
+            this.uxSaveLogBtn.Name = "uxSaveLogBtn";
+            this.uxSaveLogBtn.Size = new System.Drawing.Size(75, 23);
+            this.uxSaveLogBtn.TabIndex = 3;
+            this.uxSaveLogBtn.Text = "Save Log";
+            this.uxSaveLogBtn.UseVisualStyleBackColor = true;
+            this.uxSaveLogBtn.Click += new System.EventHandler(this.uxSaveLogBtn_Click);
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -245,17 +256,6 @@
             this.panel5.Size = new System.Drawing.Size(534, 79);
             this.panel5.TabIndex = 5;
             // 
-            // uxSaveLogBtn
-            // 
-            this.uxSaveLogBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxSaveLogBtn.Location = new System.Drawing.Point(318, -1);
-            this.uxSaveLogBtn.Name = "uxSaveLogBtn";
-            this.uxSaveLogBtn.Size = new System.Drawing.Size(75, 23);
-            this.uxSaveLogBtn.TabIndex = 3;
-            this.uxSaveLogBtn.Text = "Save Log";
-            this.uxSaveLogBtn.UseVisualStyleBackColor = true;
-            this.uxSaveLogBtn.Click += new System.EventHandler(this.uxSaveLogBtn_Click);
-            // 
             // ServerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -268,6 +268,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "ServerForm";
             this.Text = "ServerForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ServerForm_FormClosing);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
