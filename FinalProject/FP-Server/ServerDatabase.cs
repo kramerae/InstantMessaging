@@ -54,7 +54,9 @@ namespace FP_Server
         }
 
 
-
+        ///<summary>
+        /// 
+        ///</summary>
         private void AddPerson()
         {
             Dictionary<string, bool> a = new Dictionary<string, bool>();
@@ -77,6 +79,11 @@ namespace FP_Server
 
         }
 
+
+        ///<summary>
+        /// This method returns the contacts of the specfic username
+        ///</summary>
+        ///<param>string of a username that is used to find a user in the dictionary</param>
         public Dictionary<string, bool> GetContacts(string username)
         {
             if (_userDatabase.ContainsKey(username))
@@ -89,6 +96,11 @@ namespace FP_Server
 
         }
 
+        ///<summary>
+        /// This method removes a contact from a user's contact list
+        ///</summary>
+        ///<param>string of the username used to get the contact</param>
+        ///<param>string of the contact name to be removed</param>
         public void RemoveContact(string username, string contact)
         {
 
@@ -97,7 +109,11 @@ namespace FP_Server
 
 
         }
-
+        
+        ///<summary>
+        /// This method updates the status of all users weither they are
+        /// offline or not.
+        ///</summary>
         public void UpdateStatusOfAllUsers()
         {
             foreach (KeyValuePair<string, bool> kvp in _onLine)
@@ -113,15 +129,6 @@ namespace FP_Server
                         u.Value.GetContacts[s] = on;
                     }
 
-
-                    /* foreach(KeyValuePair<string, bool> i in u.Value.GetContacts)
-                     {
-                         if(s == i.Key)
-                         {
-
-                         }
-
-                     } */
                 }
 
 
@@ -133,6 +140,11 @@ namespace FP_Server
 
         }
 
+        ///<summary>
+        /// This method adds a contact to the specific user.
+        ///</summary>
+        ///<param name="username">A strung of the username</param>
+        ///<param name="contact">A string of the contact name</param>
         public bool AddContact(string username, string contact)
         {
             if (!_userDatabase.ContainsKey(contact))
@@ -149,13 +161,33 @@ namespace FP_Server
 
         }
 
+
+        ///<summary>
+        /// This method makes a specific user online by changing 
+        /// the boolean of offline to true.
+        ///</summary>
+        ///<param name="username">A string of a username</param>
         public void MakeOnline(string username)
         {
-            _onLine.Add(username, true);
+            if(_onLine.ContainsKey(username))
+            {
+                // The first login of that specific user
+                  _onLine.Add(username, true);
+            }else
+            {
+                // After the first login of that user
+                _onLine[username] = true;
+            }
+          
         }
 
 
-
+        ///<summary>
+        /// Logs in user by adding their name and id to a dictionary that
+        /// pairs with each other.
+        ///</summary>
+        ///<param name="username">A string of the username</param>
+        ///<param name="id">A string of the id of the user</param>
         public void LoginUser(string username, string id)
         {
 

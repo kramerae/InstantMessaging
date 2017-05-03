@@ -22,12 +22,11 @@ namespace FP_Server
         event UserListUpdates _ule;
         event UpdateEvent _u;
         event Logout _logout;
-        //  private Status en = new Status();
-        private ServerDatabase _database; //= new ServerDatabase();
-       // private List<ChatRoom> _chatRoom;
+        
+        private ServerDatabase _database; 
         private int _count = 0;
         private ServerForm _sf;
-        //private ServerDatabase _sd;
+       
        
 
         public ServerController(UpdateEvent ue, UserListUpdates uel, ServerForm sf, Observer o, ServerDatabase sd)
@@ -36,11 +35,11 @@ namespace FP_Server
             _u = ue;
             _ule = uel;
             _database = sd;
-            //_chatRoom = new List<ChatRoom>();
+           
             _sf = sf;
             _logout = _sf.LogoutUser;
 
-           // sf.ShowDialog();
+           
         }
 
 
@@ -50,11 +49,11 @@ namespace FP_Server
            Packet p = new Packet(Status.connectionSuccess);
            p.GetID = ID;
          
-            // MessageBox.Show("New user with Identification of: " + ID);
+           
             Sessions.SendTo(JsonConvert.SerializeObject(p), ID);
             _u("New user with ID of: " + ID);
 
-            // _u("New user with Identification of: "+ID);
+            
 
         }
 
@@ -96,11 +95,7 @@ namespace FP_Server
                  case Status.messageSend:
                      {
                         //Send message to a specific client
-                        //string id = messageJSON.DestinationID;
-                        //SendMessage(messageJSON.OriginID, messageJSON.DestinationID, messageJSON.Message);
-
-                        //Send message to all users in the chatroom
-
+                      
                         SendMessage(messageJSON);
 
 
@@ -245,12 +240,7 @@ namespace FP_Server
 
             int chatid = p.GetChatID;
             //Packet temp = new Packet(Status.messageReceive);
-            // temp.Message = message;
-            // temp.OriginID = idOrigin;
-            // temp.DestinationID = idDestination;
-
-            // Sessions.SendTo(JsonConvert.SerializeObject(temp),idDestination);
-
+            
             _database.AddMessageToChatRoom(chatid, p.Message);
 
             List<string> list = _database.GetUsersChat(chatid);
