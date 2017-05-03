@@ -23,7 +23,7 @@ namespace FinalProject
 
         // private List<LoginObserver> observersLogin = new List<LoginObserver>();
         //private List<MenuObserver> observersMenu = new List<MenuObserver>();
-        private bool loginStatus = false;
+      //  private bool loginStatus = false;
 
         //UpdateContactList del1 = new UpdateContactList(); 
 

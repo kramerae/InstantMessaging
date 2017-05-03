@@ -12,7 +12,7 @@ namespace FinalProject
 {
     public partial class ClientMenu : Form
     {
-        private ClientController _c;
+       // private ClientController _c;
         private ClientModel _model;
         private InputHandler _handle;
 
