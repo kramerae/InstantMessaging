@@ -140,6 +140,7 @@ namespace FP_Server
                     }
                 case Status.addContact:
                     {
+                        AddContact(messageJSON);
 
 
                         break;
@@ -313,7 +314,7 @@ namespace FP_Server
             }
 
 
-
+            _database.UpdateStatusOfAllUsers();
         }
 
         private void AddContact(Packet p)
@@ -327,23 +328,23 @@ namespace FP_Server
             {
                 temp.GetStatus = Status.contactAdded;
                 Dictionary<string, bool> contacts = _database.GetContacts(p.Username);
+                _u("[SUCCESS] Add Contact : " + p.DestinationUsername + " to USER: " + p.Username);
 
                 temp.ContactList = contacts;
-
+               
 
             }
             else
             {
                 temp.GetStatus = Status.contactDenied;
-                
+                _u("[FAILED] Cannot Add Contact : " + p.DestinationUsername + " to USER: " + p.Username + " That user does not exsist...");
 
 
 
             }
 
-            Sessions.SendTo(JsonConvert.SerializeObject(temp), temp.GetID);
-
-
+            Sessions.SendTo(JsonConvert.SerializeObject(temp), p.GetID);
+           
 
         }
 
@@ -372,8 +373,13 @@ namespace FP_Server
 
         }
 
-        private void LogoutSession(Packet p)
+        private void LogoutSession(string id)
         {
+            string username = _database.GetUsername(id);
+
+            _database.LogoutUser(username);
+
+
 
         }
 

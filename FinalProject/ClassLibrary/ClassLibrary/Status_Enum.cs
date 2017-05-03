@@ -28,10 +28,13 @@ namespace ClassLibrary
             removeContactRequest,       //18
             contactRemovedSuccess,      //19
             contactRemovedDenied,       //20
-            requestChatRoom,            //21
-            chatroomSuccess,            //22
-            logout,                     //23
-            undefined                   //24
+            addContactChatRequest,      //21
+            addContactChatSuccess,      //22
+            addContactChatDenied,       //23
+            requestChatRoom,            //24
+            chatroomSuccess,            //25
+            logout,                     //26
+            undefined                   //27
     };
     
 }
