@@ -145,6 +145,20 @@ namespace FP_Server
 
                         break;
                     }
+                case Status.removeContactRequest:
+                    {
+                        RemoveContact(messageJSON);
+                        break;
+                    }
+                case Status.logout:
+                    {
+
+                        LogoutSession(messageJSON);
+
+
+
+                        break;
+                    }
                 default:
 
 
@@ -174,14 +188,16 @@ namespace FP_Server
                 //User does not exsist
 
                 _database.AddUser(messageJSON.Username, messageJSON.Password, messageJSON.GetID);
-
+             //   _database.
 
                 // Logins the new user
                 Packet s1 = new Packet(Status.loginTrue);
                 s1.GetID = id;
                 s1.GetStatus = Status.loginTrue;
+                s1.Username = messageJSON.Username;
                 Sessions.SendTo(JsonConvert.SerializeObject(s1), id);
                 _ule(messageJSON.Username);
+                _database.MakeUserOnline(messageJSON.Username);
                 _u("Authentication new USER:" + messageJSON.Username);
 
 
@@ -205,7 +221,7 @@ namespace FP_Server
                     p.GetStatus = Status.loginTrue;
                     p.Username = messageJSON.Username;
                     _ule(messageJSON.Username.ToString());
-
+                    _database.MakeUserOnline(messageJSON.Username);
 
 
                     Sessions.SendTo(JsonConvert.SerializeObject(p),id);
@@ -326,9 +342,19 @@ namespace FP_Server
 
             if (_database.AddContact(p.Username, p.DestinationUsername))
             {
+                _database.AddContact(p.DestinationUsername, p.Username);
                 temp.GetStatus = Status.contactAdded;
                 Dictionary<string, bool> contacts = _database.GetContacts(p.Username);
+                Dictionary<string, bool> contacts2 = _database.GetContacts(p.DestinationUsername);
                 _u("[SUCCESS] Add Contact : " + p.DestinationUsername + " to USER: " + p.Username);
+
+                Packet p2 = new Packet(Status.contactListSend);
+
+                p2.ContactList = contacts2;
+
+                Sessions.SendTo(JsonConvert.SerializeObject(p2), _database.GetID(p.DestinationUsername));
+
+
 
                 temp.ContactList = contacts;
                
@@ -350,6 +376,29 @@ namespace FP_Server
 
         private void RemoveContact(Packet p)
         {
+            string username = p.Username;
+            string contactToRemove = p.DestinationUsername;
+
+            _database.RemoveContact(username, contactToRemove);
+            _database.RemoveContact(contactToRemove, username);
+
+            Dictionary<string, bool> d1 = _database.GetContacts(username);
+            Dictionary<string, bool> d2 = _database.GetContacts(contactToRemove);
+
+            Packet origin = new Packet(Status.contactRemovedSuccess);
+            Packet removedContact = new Packet(Status.contactListSend);
+
+            origin.ContactList = d1;
+            removedContact.ContactList = d2;
+
+            Sessions.SendTo(JsonConvert.SerializeObject(origin), p.GetID);
+            Sessions.SendTo(JsonConvert.SerializeObject(removedContact), _database.GetID(contactToRemove));
+
+            _u("[SUCCESS] User: " + contactToRemove + " has been removed from contact list of: " + username);
+
+
+
+
 
         }
 
@@ -373,12 +422,38 @@ namespace FP_Server
 
         }
 
-        private void LogoutSession(string id)
+        private void LogoutSession(Packet p)
         {
-            string username = _database.GetUsername(id);
+            //string username = _database.GetUsername();
+            _u("[LOGGING OUT IN PROGRESS] User:" + p.Username);
+            _database.LogoutUser(p.Username);
 
-            _database.LogoutUser(username);
+            Dictionary<string, bool> d = _database.GetContacts(p.Username);
 
+            foreach(string s in d.Keys)
+            {
+                Dictionary<string, bool> d1 = _database.GetContacts(s);
+
+              
+                Packet p1 = new Packet(Status.contactListSend);
+                p1.ContactList = d1;
+
+                Sessions.SendTo(JsonConvert.SerializeObject(p1), _database.GetID(s));
+
+
+                
+
+              
+
+
+
+            }
+
+
+
+
+
+            _u("[LOGOUT OK] User:" + p.Username);
 
 
         }

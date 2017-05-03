@@ -77,24 +77,20 @@ namespace FP_Server
 
         }
 
-        public Dictionary<string,bool> GetContacts(string id)
+        public Dictionary<string,bool> GetContacts(string username)
         {
-
-           return _userDatabase[id].GetContacts;
+            
+           return _userDatabase[username].GetContacts;
 
         }
 
-        public bool RemoveContact(string username, string contact)
+        public void RemoveContact(string username, string contact)
         {
-            if (!_userDatabase.ContainsKey(contact))
-            {
-                return false;
-            }
+            
 
-            //_userDatabase[username].
+            _userDatabase[username].RemoveContact(contact);
 
-
-            return true;
+            
         }
 
         public void UpdateStatusOfAllUsers()
@@ -148,6 +144,10 @@ namespace FP_Server
 
         }
 
+        public void MakeOnline(string username)
+        {
+            _onLine.Add(username, true);
+        }
 
 
 
@@ -264,7 +264,16 @@ namespace FP_Server
 
         public void MakeUserOnline(string s)
         {
-            _onLine.Add(s, true);
+            if (_onLine.ContainsKey(s))
+            {
+                _onLine[s] = true;
+            }else
+            {
+                _onLine.Add(s, true);
+            }
+
+            UpdateStatusOfAllUsers();
+           
         }
 
         public void MakeUserOffline(string s)
@@ -397,6 +406,27 @@ namespace FP_Server
             _userPairing.Remove(s);
 
         }
+
+        public Dictionary<string,bool> GetUserContacts(string username)
+        {
+            if (_userDatabase.ContainsKey(username))
+            {
+                if (_userDatabase[username].GetContacts.ContainsKey(username))
+                {
+                    return _userDatabase[username].GetContacts;
+
+                }
+
+
+
+            }
+          
+
+            return null;
+
+        }
+
+        
       
     }
 

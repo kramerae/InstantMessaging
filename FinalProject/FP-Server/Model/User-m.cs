@@ -20,6 +20,8 @@ namespace FP_Server.Model
 
         public User_m(string user, string password, Dictionary<string, bool> contacts)
         {
+            _contacts = new Dictionary<string, bool>();
+            //_contacts 
             //_id = id;
             _user = user;
             _password = password;
@@ -59,6 +61,9 @@ namespace FP_Server.Model
             get
             {
                 return _contacts;
+            }set
+            {
+                _contacts = value;
             }
         }
 
