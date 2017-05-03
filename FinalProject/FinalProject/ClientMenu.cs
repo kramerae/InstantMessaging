@@ -267,7 +267,7 @@ namespace FinalProject
                                     sb.Append(name).Append(" | ");
                                 }
 
-                                uxChatroomsLB.Items.Add(sb.ToString());
+                                uxChatroomsLB.Items.Add(r.Key.ToString() + ": " + sb.ToString());
 
 
                             }));
@@ -316,6 +316,12 @@ namespace FinalProject
 
 
 
+
+
+
+
+
+            /////////////////
             if (chatrooms != null)
             {
                 if (uxMessagesLB.InvokeRequired)
