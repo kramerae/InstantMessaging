@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace FinalProject
 {
+    //ClientModel class
     public class ClientModel : IClientModel
     {
         private string _id;
@@ -18,14 +19,14 @@ namespace FinalProject
         private Dictionary<int, KeyValuePair<List<string>, List<string>>> _chatRooms; // Dictionary <chatroomid, KeyValuePair<usernames, messages>>
         private List<string> messages;
         
-        //test
-
+        
+        //Client Model constructor
         public ClientModel()
         {
             
         }
         
-    
+        //Gets and sets the ID
         public string ID
         {
             get
@@ -38,6 +39,7 @@ namespace FinalProject
             }
         }
 
+        //Gets and sets the Username
         public string Username
         {
             get
@@ -50,6 +52,7 @@ namespace FinalProject
             }
         }
 
+        //Gets and sets the login status
         public bool LoginStatus
         {
             get
@@ -62,6 +65,7 @@ namespace FinalProject
             }
         }
 
+        //Gets and sets the contact list
         public Dictionary<string, bool> ContactList
         {
             get
@@ -74,6 +78,7 @@ namespace FinalProject
             }
         }
 
+        //gets and sets the dictionary of chat rooms
         public Dictionary<int, KeyValuePair<List<string>, List<string>>> ChatRooms
         {
             get
@@ -86,6 +91,7 @@ namespace FinalProject
             }
         }
 
+        //gets and sets add contact field
         public bool AddContact
         {
             get
