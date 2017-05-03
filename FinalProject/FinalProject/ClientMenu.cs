@@ -25,6 +25,7 @@ namespace FinalProject
             InitializeComponent();
             uxRemoveContact.Enabled = false;
             uxStartChat.Enabled = false;
+            uxAddContact.Enabled = false;
             
         }
 
@@ -58,7 +59,16 @@ namespace FinalProject
 
         private void uxAddContact_Click(object sender, EventArgs e)
         {
-           
+
+            string name = uxAddNameText.Text; 
+            if(name.Count() > 0)
+            {
+                string[] arr = { "AC", name };
+                _handle(this, arr);
+            else
+            {
+                MessageBox.Show("Must enter username to add!");
+            }
             // Check to see if user exists in server
             // If so add to contact list in server
             // Update ListBox
@@ -385,6 +395,11 @@ namespace FinalProject
         private void ClientMenu_Load(object sender, EventArgs e)
         {
             UpdateContactList();
+        }
+
+        private void uxAddNameText_TextChanged(object sender, EventArgs e)
+        {
+            uxAddContact.Enabled = true;
         }
     }
 }
