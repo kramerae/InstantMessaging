@@ -10,14 +10,15 @@ using System.Windows.Forms;
 
 namespace FinalProject
 {
+    //Client Menu Form
     public partial class ClientMenu : Form
     {
        // private ClientController _c;
         private ClientModel _model;
         private InputHandler _handle;
-
         private int _selected; 
 
+        //ClientMenu Constructor
         public ClientMenu(InputHandler han, ClientModel m)
         {
             _model = m;
@@ -26,10 +27,10 @@ namespace FinalProject
             uxRemoveContact.Enabled = false;
             uxStartChat.Enabled = false;
             uxAddContact.Enabled = false;
-            uxAddChatMember.Enabled = false;
-            
+            uxAddChatMember.Enabled = false;          
         }
 
+        //Logout button click
         private void uxLogout_Click(object sender, EventArgs e)
         {
             // Call server to update status to offline
@@ -37,10 +38,10 @@ namespace FinalProject
             _handle(this, arr);
 
             // Close form
-            Application.Exit();
-            
+            Application.Exit();           
         }
 
+        //Remove Conctact button click
         private void uxRemoveContact_Click(object sender, EventArgs e)
         {
             if(uxContactListBox.SelectedIndex != -1)
@@ -48,9 +49,7 @@ namespace FinalProject
                 int index = uxContactListBox.SelectedIndex;
                 string item = _model.ContactList.Keys.ElementAt(index);
 
-
-
-          
+      
                 //string item = uxContactListBox.SelectedItem.ToString();
 
                 const string message = "Are you sure that you would like to remove contact?";
@@ -74,9 +73,9 @@ namespace FinalProject
             
         }
 
+        //Add contact button click
         private void uxAddContact_Click(object sender, EventArgs e)
         {
-
             string name = uxAddNameText.Text;
             if (name.Count() > 0)
             {
@@ -89,6 +88,7 @@ namespace FinalProject
             }
         }
 
+        //Start Chat button click
         private void uxStartChat_Click(object sender, EventArgs e)
         {
             
@@ -108,24 +108,27 @@ namespace FinalProject
             }
         }
         
-
+        //Updates the contact list on the form
         public void UpdateContactList()
         {
             string[] arr = {"UCL"};
             _handle(this, arr);
         }
 
+        //
         private void uxContactListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             uxRemoveContact.Enabled = true;
             uxStartChat.Enabled = true;
         }
 
+        //Refresh button clicked
         private void uxRefresh_Click(object sender, EventArgs e)
         {
             UpdateContactList();
         }
 
+        //Updates the contact list box on the form
         public void UpdateContactListBox()
         {
             if(_model.AddContact == false)
@@ -189,13 +192,10 @@ namespace FinalProject
                 }
             }
 
-
-            
-
             uxContactListBox.EndUpdate();
         }
 
-
+        //Updates the chat room list box
         public void UpdateChatRoomListBox()
         {
             Dictionary<int, KeyValuePair<List<string>, List<string>>> chatrooms = _model.ChatRooms;
@@ -217,7 +217,6 @@ namespace FinalProject
             {
                 uxChatroomsLB.Items.Clear();
             }
-
 
 
             if (chatrooms != null)
@@ -255,6 +254,7 @@ namespace FinalProject
             uxChatroomsLB.EndUpdate();
         }
 
+        //
         public void UpdateMessageListBox()
         {
             Dictionary<int, KeyValuePair<List<string>, List<string>>> chatrooms = _model.ChatRooms;

@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace FinalProject
 {
+    //IClientModel interface
     public interface IClientModel
     {
+        
         string ID
         {
             get;
