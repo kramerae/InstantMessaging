@@ -16,9 +16,13 @@ namespace FinalProject
        // private ClientController _c;
         private ClientModel _model;
         private InputHandler _handle;
-        private int _selected; 
+        private int _selected;
 
-        //ClientMenu Constructor
+        /// <summary>
+        /// ClientMenu Constructor
+        /// </summary>
+        /// <param name="han">input handler</param>
+        /// <param name="m">class model</param>
         public ClientMenu(InputHandler han, ClientModel m)
         {
             _model = m;
@@ -30,7 +34,11 @@ namespace FinalProject
             uxAddChatMember.Enabled = false;          
         }
 
-        //Logout button click
+        /// <summary>
+        /// Logout button click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void uxLogout_Click(object sender, EventArgs e)
         {
             // Call server to update status to offline
