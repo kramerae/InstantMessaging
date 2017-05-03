@@ -206,10 +206,11 @@ namespace FP_Server
                 else
                 {
                     //Password is correct
+                    _database.LoginUser(messageJSON.Username, messageJSON.GetID);
                     Packet p = new Packet(Status.loginTrue);
                     p.GetStatus = Status.loginTrue;
                     p.Username = messageJSON.Username;
-                 
+                    
                     
 
 

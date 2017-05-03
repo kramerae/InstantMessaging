@@ -69,6 +69,7 @@ namespace FP_Server
             _onLine.Add("Shane", true);
             _onLine.Add("Jason", true);
             _onLine.Add("Steven", false);
+            _onLine.Add("mhixon", true);
 
 
         }
@@ -80,6 +81,11 @@ namespace FP_Server
 
         }
 
+        public void LoginUser(string username, string id)
+        {
+
+            _userPairing.Add(username, id);
+        }
         
 
         private void WriteToFile()
