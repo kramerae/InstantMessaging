@@ -23,6 +23,12 @@ namespace FP_Server
 
         private Dictionary<int, KeyValuePair<List<string>, List<string>>> d;
 
+        private Dictionary<string, string> _userPairing;
+
+
+
+
+
         private int count = 0;
 
        // private 
@@ -39,9 +45,12 @@ namespace FP_Server
             //ReadFromFile();
             //WriteToFile();
             _chatRoom = new List<ChatRoom>();
+            _userPairing = new Dictionary<string, string>();
             d = new Dictionary<int, KeyValuePair<List<string>, List<string>>>();
             
         }
+
+        
 
         private void AddPerson()
         {
@@ -108,6 +117,7 @@ namespace FP_Server
         {
             User_m user = new User_m(username, password, new Dictionary<string,bool>());
             user.GetID = Id;
+            _userPairing.Add(username, Id);
             _userDatabase.Add(username, user);
 
         }
@@ -266,6 +276,19 @@ namespace FP_Server
 
 
         }
+
+        public int GetChatRoomUserCount(int id)
+        {
+            return _chatRoom[id].NumberOfUsers;
+        }
+
+
+        public string GetID(string username)
+        {
+            return _userPairing[username];
+        }
+
+      
     }
 
 }

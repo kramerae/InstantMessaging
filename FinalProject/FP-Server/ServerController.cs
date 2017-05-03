@@ -96,8 +96,19 @@ namespace FP_Server
                  case Status.messageSend:
                      {
                         //Send message to a specific client
-                        string id = messageJSON.DestinationID;
-                        SendMessage(messageJSON.OriginID, messageJSON.DestinationID, messageJSON.Message);
+                        //string id = messageJSON.DestinationID;
+                        //SendMessage(messageJSON.OriginID, messageJSON.DestinationID, messageJSON.Message);
+
+                        //Send message to all users in the chatroom
+
+
+
+
+
+
+
+
+
                         break;
                      }
                 case Status.contactListRequest:
@@ -216,14 +227,46 @@ namespace FP_Server
         ///</summary>
         ///<param name="id">The id to send</param>
         ///<param name="d">The packet to send</param>
-        private void SendMessage(string idOrigin, string idDestination, string message)
-        {
-            Packet temp = new Packet(Status.messageReceive);
-            temp.Message = message;
-            temp.OriginID = idOrigin;
-            temp.DestinationID = idDestination;
+        ///string idOrigin, string idDestination, string message
 
-            Sessions.SendTo(JsonConvert.SerializeObject(temp),idDestination);
+        private void SendMessage(Packet p)
+        {
+
+            int chatid = p.GetChatID;
+            //Packet temp = new Packet(Status.messageReceive);
+            // temp.Message = message;
+            // temp.OriginID = idOrigin;
+            // temp.DestinationID = idDestination;
+
+            // Sessions.SendTo(JsonConvert.SerializeObject(temp),idDestination);
+
+            _database.AddMessageToChatRoom(chatid, p.Message);
+
+            List<string> list = _database.GetUsersChat(chatid);
+
+            Dictionary<int, KeyValuePair<List<string>, List<string>>> data = _database.GetChatRoomData(chatid);
+            Packet temp = new Packet(Status.messageReceive);
+            temp.GetStatus = Status.messageReceive;
+
+            temp.ChatData = data;
+
+
+            for(int i = 0; i < list.Count; i++)
+            {
+                string id = _database.GetID(list[i]);
+                Sessions.SendTo(JsonConvert.SerializeObject(temp), id);
+
+
+
+            }
+
+            _u("[MESSAGE SENT] On chat room: "+chatid);
+
+
+
+
+
+
         }
 
         /// <summary>

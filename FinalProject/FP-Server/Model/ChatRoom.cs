@@ -11,6 +11,7 @@ namespace FP_Server.Model
         private List<string> _usernames;
         private List<string> _messageHistory;
         private int _roomID;
+        private Dictionary<string, string> _idRef;
 
 
 
@@ -61,5 +62,14 @@ namespace FP_Server.Model
             }
            
         }
+
+        public int NumberOfUsers
+        {
+            get
+            {
+                return _usernames.Count;
+            }
+        }
+
     }
 }
