@@ -7,11 +7,9 @@ using System.Threading.Tasks;
 using System.IO;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using System.Windows.Forms;
 
 namespace FP_Server
 {
-    //Server database class
     public class ServerDatabase
     {
 
@@ -27,11 +25,23 @@ namespace FP_Server
 
         private Dictionary<string, string> _userPairing;
 
+
+
+
+
         private int count = 0;
 
-        //Constructor for the Server database
+        // private 
+
+
+
+
+
+
+
         public ServerDatabase()
-        {           
+        {
+
             _userDatabase = new Dictionary<string, User_m>();
             _onLine = new Dictionary<string, bool>();
             //AddPerson();
@@ -39,11 +49,12 @@ namespace FP_Server
             //WriteToFile();
             _chatRoom = new List<ChatRoom>();
             _userPairing = new Dictionary<string, string>();
-            d = new Dictionary<int, KeyValuePair<List<string>, List<string>>>();          
+            d = new Dictionary<int, KeyValuePair<List<string>, List<string>>>();
+
         }
 
-        
-        //Adds the person to database
+
+
         private void AddPerson()
         {
             Dictionary<string, bool> a = new Dictionary<string, bool>();
@@ -63,95 +74,113 @@ namespace FP_Server
             _onLine.Add("Steven", false);
             _onLine.Add("mhixon", false);
             _onLine.Add("Austin", false);
+
         }
 
-        public Dictionary<string,bool> GetContacts(string id)
+        public Dictionary<string, bool> GetContacts(string username)
         {
 
-           return _userDatabase[id].GetContacts;
+            return _userDatabase[username].GetContacts;
 
         }
 
-        public bool RemoveContact(string username, string contact)
+        public void RemoveContact(string username, string contact)
         {
-            if (!_userDatabase.ContainsKey(contact))
-            {
-                return false;
-            }
-
-            //_userDatabase[username].
 
 
-            return true;
+            _userDatabase[username].RemoveContact(contact);
+
+
         }
 
-        //Updates the status of all users
         public void UpdateStatusOfAllUsers()
         {
-            foreach(KeyValuePair<string, bool> kvp in _onLine)
+            foreach (KeyValuePair<string, bool> kvp in _onLine)
             {
                 string s = kvp.Key;
                 bool on = kvp.Value;
-                foreach(KeyValuePair<string,User_m> u in _userDatabase)
+
+                foreach (KeyValuePair<string, User_m> u in _userDatabase)
                 {
+
                     if (u.Value.GetContacts.ContainsKey(s))
                     {
                         u.Value.GetContacts[s] = on;
                     }
 
-                   /* foreach(KeyValuePair<string, bool> i in u.Value.GetContacts)
-                    {
-                        if(s == i.Key)
-                        {
 
-                        }
+                    /* foreach(KeyValuePair<string, bool> i in u.Value.GetContacts)
+                     {
+                         if(s == i.Key)
+                         {
 
-                    } */
+                         }
+
+                     } */
                 }
 
+
+
+
+
+
             }
+
         }
 
-        //Adds a given contact to the user's contatct list
         public bool AddContact(string username, string contact)
         {
             if (!_userDatabase.ContainsKey(contact))
             {
                 return false;
             }
+
             _userDatabase[username].AddContact(contact, true);
+
             return true;
+
+
+
+
         }
 
+        public void MakeOnline(string username)
+        {
+            _onLine.Add(username, true);
+        }
 
 
 
         public void LoginUser(string username, string id)
         {
+
             _userPairing.Add(username, id);
         }
-        
-        //Writes everything to the json file
-        public void WriteToFile()
+
+
+        private void WriteToFile()
         {
             string jsonString = JsonConvert.SerializeObject(_userDatabase);
+
             using (StreamWriter sw = new StreamWriter("users.json"))
             {
                 sw.Write(jsonString);
-            }           
-           // Dictionary<string, User_m> m = JsonConvert.DeserializeObject<Dictionary<string, User_m>>(jsonString);
+            }
+
+            // Dictionary<string, User_m> m = JsonConvert.DeserializeObject<Dictionary<string, User_m>>(jsonString);
+
         }
 
-
-       /// <summary>
-       /// This method reads from the jsonfile and adds it to the database.
-       /// </summary>
+        /// <summary>
+        /// This method reads from the jsonfile and adds it to the database.
+        /// </summary>
         private void ReadFromFile()
         {
             using (StreamReader file = new StreamReader("users.json"))
             {
                 string jsonString = file.ReadToEnd();
                 _userDatabase = JsonConvert.DeserializeObject<Dictionary<string, User_m>>(jsonString);
+
             }
         }
 
@@ -162,11 +191,14 @@ namespace FP_Server
         /// <param name="password"></param>
         public void AddUser(string username, string password, string Id)
         {
-            User_m user = new User_m(username, password, new Dictionary<string,bool>());
+            User_m user = new User_m(username, password, new Dictionary<string, bool>());
             user.GetID = Id;
             _userPairing.Add(username, Id);
             _userDatabase.Add(username, user);
+
         }
+
+
 
 
         /// <summary>
@@ -179,6 +211,8 @@ namespace FP_Server
             return _userDatabase.ContainsKey(username);
         }
 
+
+
         /// <summary>
         /// Checks if the password is correct
         /// </summary>
@@ -188,45 +222,60 @@ namespace FP_Server
         public bool PasswordValidation(string username, string password)
         {
             string dbPassword = _userDatabase[username].Password;
-            if(password == dbPassword)
+
+            if (password == dbPassword)
             {
                 return true;
             }
+
             return false;
         }
 
         public Dictionary<string, User_m> AllUsers
-       {
+        {
+
             get
             {
                 return _userDatabase;
             }
+
         }
 
-        
+
 
         public string LookUpUserBaseOnID(string s)
         {
-            foreach(KeyValuePair<string, User_m> KVP in _userDatabase)
+
+            foreach (KeyValuePair<string, User_m> KVP in _userDatabase)
             {
-                if(s == KVP.Value.GetID)
+
+                if (s == KVP.Value.GetID)
                 {
                     return KVP.Key;
                 }
+
+
             }
             return null;
+
+
+
         }
 
-        //Takes a given user and makes their status online
         public void MakeUserOnline(string s)
         {
             if (_onLine.ContainsKey(s))
             {
                 _onLine[s] = true;
-            }else
+            }
+            else
             {
                 _onLine.Add(s, true);
             }
+
+            UpdateStatusOfAllUsers();
+
+        }
 
         public void MakeUserOffline(string s)
         {
@@ -251,10 +300,14 @@ namespace FP_Server
         /// <param name="destinationuser"></param>
         public void MakeChatRoom(string user, string destinationuser)
         {
+
+
             ChatRoom c = new ChatRoom(count);
+
             //Adds the users
             c.AddUser(user);
             c.AddUser(destinationuser);
+
             _chatRoom.Add(c);
             count++;
 
@@ -282,23 +335,20 @@ namespace FP_Server
             return _chatRoom[id].MessageHistory;
         }
 
-        //returns the chatroom id
         public int GetChatroomID
         {
             get
             {
                 return count;
             }
-           
+
         }
 
-        //Gets the users in the given chatroom
         public List<string> GetUsersChat(int i)
         {
             return _chatRoom[i].GetUsers;
         }
 
-        //returns all the data associated with a given chatroom
         public Dictionary<int, KeyValuePair<List<string>, List<string>>> GetChatRoomData(int i)
         {
             //Dictionary<int, KeyValuePair<List<string>, List<string>>> d = new Dictionary<int, KeyValuePair<List<string>, List<string>>>();
@@ -306,52 +356,59 @@ namespace FP_Server
             KeyValuePair<List<string>, List<string>> kvp = new KeyValuePair<List<string>, List<string>>(GetUsersChat(i), GetMessageHistory(i));
             if (d.ContainsKey(i))
             {
+
                 d[i] = kvp;
+
             }
             else
             {
                 d.Add(i, kvp);
             }
+
+
             return d;
+
+
+
         }
 
-        //Returns the number of users in a given chatroom
         public int GetChatRoomUserCount(int id)
         {
             return _chatRoom[id].NumberOfUsers;
         }
 
-        //Gets the user's id
+
         public string GetID(string username)
         {
             return _userPairing[username];
         }
 
-        //Gets the user name based on the given id
         public string GetUsername(string id)
         {
             if (_userPairing.ContainsValue(id))
             {
-                foreach(KeyValuePair<string,string> kvp in _userPairing)
+                foreach (KeyValuePair<string, string> kvp in _userPairing)
                 {
-                    if(id == kvp.Value)
+                    if (id == kvp.Value)
                     {
                         return kvp.Key;
                     }
                 }
             }
+
             return null;
         }
 
-        //Logs out the given user
         public void LogoutUser(string s)
         {
+
             _onLine[s] = false;
             UpdateStatusOfAllUsers();
             _userPairing.Remove(s);
+
         }
 
-        public Dictionary<string,bool> GetUserContacts(string username)
+        public Dictionary<string, bool> GetUserContacts(string username)
         {
             if (_userDatabase.ContainsKey(username))
             {
@@ -364,13 +421,14 @@ namespace FP_Server
 
                 //
             }
-          
+
 
             return null;
 
         }
 
-        
-      
+
+
     }
+
 }
