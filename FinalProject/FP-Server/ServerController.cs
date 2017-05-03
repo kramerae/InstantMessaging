@@ -167,6 +167,11 @@ namespace FP_Server
 
                         break;
                     }
+                case Status.addContactChatRequest:
+                    {
+                        AddUserToChatRoom(messageJSON);
+                        break;
+                    }
                 default:
 
 
@@ -320,12 +325,19 @@ namespace FP_Server
         }
 
 
-        private void ValidateOnline(Packet p)
+        private void ValidateOnline(Packet p, int d)
         {
             _u("Chatroom Requested USER: " + p.GetID);
             if (_database.IsUserOnline(p.DestinationUsername))
             {
-                NewChatRoom(p);
+                if(d == 1)
+                {
+                    NewChatRoom(p);
+                }else
+                {
+                    AddUserToChatRoom(p);
+                }
+                
             }else
             {
                 Packet temp = new Packet(Status.onlineFalse);
@@ -430,6 +442,23 @@ namespace FP_Server
 
 
 
+        }
+
+
+
+        private void AddUserToChatRoom(Packet p)
+        {
+            _database.AddUserToChatRoom(p.GetChatID, p.DestinationUsername);
+
+            Packet temp = new Packet(Status.addContactChatSuccess);
+            temp.ChatData = _database.GetChatRoomData(p.GetChatID);
+
+/*############################################################ NEED TO WRITE ##############################*/
+
+            for()
+
+
+            _u("User " + p.DestinationUsername + " added to chatroom " + p.GetChatID);
         }
 
         /// <summary>

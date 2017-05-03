@@ -104,6 +104,13 @@ namespace FP_Server
 
         }
 
+        public void AddUserToChatRoom(int i, string user)
+        {
+
+            _chatRoom[i].AddUser(user);
+
+
+        }
         ///<summary>
         /// This method removes a contact from a user's contact list
         ///</summary>
@@ -198,8 +205,18 @@ namespace FP_Server
         ///<param name="id">A string of the id of the user</param>
         public void LoginUser(string username, string id)
         {
+            if (_userPairing.ContainsKey(username))
+            {
 
-            _userPairing.Add(username, id);
+                _userPairing[username] = id;
+
+
+            }
+            else{
+                _userPairing.Add(username, id);
+            }
+
+            
         }
 
 
@@ -450,7 +467,12 @@ namespace FP_Server
 
         public string GetID(string username)
         {
-            return _userPairing[username];
+            if (_userPairing.ContainsKey(username))
+            {
+                return _userPairing[username];
+            }
+
+            return null;
         }
 
         public List<ChatRoom> GetChatRoom
