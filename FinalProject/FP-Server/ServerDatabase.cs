@@ -33,6 +33,9 @@ namespace FP_Server
 
        // private 
 
+        
+        
+
 
 
 
@@ -80,6 +83,26 @@ namespace FP_Server
            return _userDatabase[id].GetContacts;
 
         }
+
+
+        public bool AddContact(string username, string contact)
+        {
+            if (!_userDatabase.ContainsKey(contact))
+            {
+                return false;
+            }
+
+            _userDatabase[username].AddContact(contact, true);
+
+            return true;
+
+
+
+
+        }
+
+
+
 
         public void LoginUser(string username, string id)
         {

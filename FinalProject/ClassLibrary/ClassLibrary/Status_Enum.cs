@@ -22,10 +22,13 @@ namespace ClassLibrary
             contactListSend,            //12
             contactListUpdatedClient,   //13
             contactListExcuteCode,      //14
-            requestChatRoom,            //15
-            chatroomSuccess,            //16
-            logout,                     //17
-            undefined                   //18
+            addContact,                 //15
+            contactAdded,               //16
+            contactDenied,              //17
+            requestChatRoom,            //18
+            chatroomSuccess,            //19
+            logout,                     //20
+            undefined                   //21
     };
     
 }

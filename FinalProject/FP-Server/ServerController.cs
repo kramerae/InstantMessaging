@@ -150,7 +150,13 @@ namespace FP_Server
                     {
 
                         break;
-                    }   
+                    }
+                case Status.addContact:
+                    {
+
+
+                        break;
+                    }
                 default:
 
 
@@ -322,6 +328,29 @@ namespace FP_Server
 
 
         }
+
+        private void AddContact(Packet p)
+        {
+
+            Packet
+
+
+
+            if (_database.AddContact(p.Username, p.DestinationUsername))
+            {
+
+
+
+                Sessions.SendTo()
+
+            }
+
+
+
+
+
+        }
+
         private void LogoutSession(Packet p)
         {
 
