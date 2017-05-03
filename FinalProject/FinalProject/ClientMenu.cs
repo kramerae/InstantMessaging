@@ -45,7 +45,13 @@ namespace FinalProject
         {
             if(uxContactListBox.SelectedIndex != -1)
             {
-                string item = uxContactListBox.SelectedItem.ToString();
+                int index = uxContactListBox.SelectedIndex;
+                string item = _model.ContactList.Keys.ElementAt(index);
+
+
+
+          
+                //string item = uxContactListBox.SelectedItem.ToString();
 
                 const string message = "Are you sure that you would like to remove contact?";
                 const string caption = "Remove Contact";
