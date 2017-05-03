@@ -38,33 +38,34 @@ namespace FinalProject
 
         private void uxRemoveContact_Click(object sender, EventArgs e)
         {
+            string item = uxContactListBox.SelectedItem.ToString();
             // Update contact list in server
             // Update Model
             // Update ListBox
-            const string message = "Are you sure that you would like to remove the contact?";
+            const string message = "Are you sure that you would like to remove contact?";
             const string caption = "Remove Contact";
             var result = MessageBox.Show(message, caption,MessageBoxButtons.YesNo,MessageBoxIcon.Question);
 
             if(result == DialogResult.Yes)
             {
                 // server remove contact
+                string[] arr = { "RC", item };
+                _handle(this, arr);
                 
 
-                // update contact list 
-                UpdateContactList();
-
-                MessageBox.Show("Contact Removed!");
+               // MessageBox.Show("Contact Removed!");
             }
         }
 
         private void uxAddContact_Click(object sender, EventArgs e)
         {
 
-            string name = uxAddNameText.Text; 
-            if(name.Count() > 0)
+            string name = uxAddNameText.Text;
+            if (name.Count() > 0)
             {
                 string[] arr = { "AC", name };
                 _handle(this, arr);
+            }
             else
             {
                 MessageBox.Show("Must enter username to add!");
@@ -113,6 +114,11 @@ namespace FinalProject
 
         public void UpdateContactListBox()
         {
+            if(_model.AddContact == false)
+            {
+                MessageBox.Show("Contact does not exist!");
+            }
+
             Dictionary<string, bool> contacts = _model.ContactList;
         
             uxContactListBox.EndUpdate();

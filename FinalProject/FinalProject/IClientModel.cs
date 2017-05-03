@@ -38,5 +38,11 @@ namespace FinalProject
             set;
         }
 
+        bool AddContact
+        {
+            get;
+            set;
+        }
+
     }
 }

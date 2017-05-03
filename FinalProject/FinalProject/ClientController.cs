@@ -111,6 +111,19 @@ namespace FinalProject
                     _model.ChatRooms = p.ChatData;
                     updateForms();
                     break;
+                case Status.contactAdded:
+                    _model.ContactList = p.ContactList;
+                    updateForms();
+                    break;
+                case Status.contactDenied:
+                    _model.AddContact = false;
+                    updateForms();
+                    _model.AddContact = true;
+                    break;
+                case Status.contactRemovedSuccess:
+                    _model.ContactList = p.ContactList;
+                    updateForms();
+                    break;
             }
 
             
@@ -182,12 +195,20 @@ namespace FinalProject
                 // Remove contact
                 else if (items[0] == "RC")
                 {
-
+                    Packet p3 = new ClassLibrary.Packet(Status.removeContactRequest);
+                    p3.Username = _model.Username;
+                    p3.GetID = _model.ID;
+                    p3.DestinationUsername = items[1];
+                    MessageEntered(p3);
                 }
                 // Add contact
                 else if (items[0] == "AC")
                 {
-                    Packet p4 = new ClassLibrary.Packet(Status.)
+                    Packet p4 = new ClassLibrary.Packet(Status.addContact);
+                    p4.Username = _model.Username;
+                    p4.GetID = _model.ID;
+                    p4.DestinationUsername = items[1];
+                    MessageEntered(p4);
                 }
                 // Start Chat
                 else if (items[0] == "SC")

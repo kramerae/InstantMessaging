@@ -12,6 +12,7 @@ namespace FinalProject
         private string _username;
         private bool _loginStatus;
         private Dictionary<string, bool> _contactList;
+        private bool _addcontact = true;
 
         
         private Dictionary<int, KeyValuePair<List<string>, List<string>>> _chatRooms; // Dictionary <chatroomid, KeyValuePair<usernames, messages>>
@@ -85,6 +86,17 @@ namespace FinalProject
             }
         }
 
+        public bool AddContact
+        {
+            get
+            {
+                return _addcontact;
+            }
+            set
+            {
+                _addcontact = value;
+            }
+        }
 
          
 
