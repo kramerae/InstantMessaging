@@ -223,31 +223,36 @@ namespace FinalProject
             {
                 foreach (KeyValuePair<int, KeyValuePair<List<string>, List<string>>> r in chatrooms)
                 {
-                    if (uxChatroomsLB.InvokeRequired)
+                    if (r.Value.Key.Contains(_model.Username))
                     {
-                        Invoke(new MethodInvoker(delegate () {
+                        if (uxChatroomsLB.InvokeRequired)
+                        {
+                            Invoke(new MethodInvoker(delegate () {
 
-                            StringBuilder sb = new StringBuilder();
+                                StringBuilder sb = new StringBuilder();
+                                foreach (string name in r.Value.Key)
+                                {
+                                    sb.Append(name).Append(" | ");
+                                }
+
+                                uxChatroomsLB.Items.Add(sb.ToString());
+
+
+                            }));
+                        }
+                        else
+                        {
+                            StringBuilder sb2 = new StringBuilder();
                             foreach (string name in r.Value.Key)
                             {
-                                sb.Append(name).Append(" | ");
+                                sb2.Append(name).Append(" | ");
                             }
 
-                            uxChatroomsLB.Items.Add(sb.ToString());
-
-
-                        }));
-                    }
-                    else
-                    {
-                        StringBuilder sb2 = new StringBuilder();
-                        foreach (string name in r.Value.Key)
-                        {
-                            sb2.Append(name).Append(" | ");
+                            uxChatroomsLB.Items.Add(sb2.ToString());
                         }
-
-                        uxChatroomsLB.Items.Add(sb2.ToString());
                     }
+
+                   
                 }
             }
 
