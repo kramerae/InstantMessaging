@@ -124,6 +124,10 @@ namespace FinalProject
                     _model.ContactList = p.ContactList;
                     updateForms();
                     break;
+
+                case Status.addContactChatSuccess:
+                    _model.ChatRooms = p.ChatData;
+                    break;
             }
 
             

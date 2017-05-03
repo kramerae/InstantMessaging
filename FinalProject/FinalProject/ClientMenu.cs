@@ -344,12 +344,6 @@ namespace FinalProject
                                     {
                                         uxMessagesLB.Items.Add(messages.ElementAt(i));
                                     }
-                                    /*
-                                foreach (string s in m.Value.Value)
-                                {
-                                    uxContactListBox.Items.Add(string.Format("{0}  |  {1}", s.Key, "ONLINE"));
-                                }
-                                */
 
                                 }));
                             }
@@ -393,12 +387,6 @@ namespace FinalProject
                                     {
                                         uxMessagesLB.Items.Add(messages.ElementAt(i));
                                     }
-                                    /*
-                                foreach (string s in m.Value.Value)
-                                {
-                                    uxContactListBox.Items.Add(string.Format("{0}  |  {1}", s.Key, "ONLINE"));
-                                }
-                                */
 
                                 }));
                             }
@@ -420,105 +408,8 @@ namespace FinalProject
 
             }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                /*
-                ///////////////////////////
-                if (chatrooms != null)
-            {
-                if (uxMessagesLB.InvokeRequired)
-                {
-                    Invoke(new MethodInvoker(delegate ()
-                    {
-                        int selected;
-                        if(_selected != null)
-                        {
-                            selected = _selected;
-                        }
-                        else
-                        {
-                            selected = uxChatroomsLB.SelectedIndex;
-                        }
-
-
-                        if (_selected != -1)
-                        {
-                            int chatID = _model.ChatRooms.Keys.ElementAt(_selected);
-
-                            List<string> messages = chatrooms.Values.ElementAt(_selected).Value;
-
-                            if (uxMessagesLB.InvokeRequired)
-                            {
-                                Invoke(new MethodInvoker(delegate ()
-                                {
-
-                                    for (int i = 0; i < messages.Count; i++)
-                                    {
-                                        uxMessagesLB.Items.Add(messages.ElementAt(i));
-                                    }
-
-                                }));
-                            }
-                            else
-                            {
-                                for (int i = 0; i < messages.Count; i++)
-                                {
-                                    uxMessagesLB.Items.Add(messages.ElementAt(i));
-                                }
-                            }
-                        }
-                    }));
-                }
-                else
-                {
-                    int selected = uxChatroomsLB.SelectedIndex;
-
-                    if (selected != -1)
-                    {
-                        int chatID = _model.ChatRooms.Keys.ElementAt(selected);
-
-                        List<string> messages = chatrooms.Values.ElementAt(selected).Value;
-
-                        if (uxMessagesLB.InvokeRequired)
-                        {
-                            Invoke(new MethodInvoker(delegate () {
-
-                                for (int i = 0; i < messages.Count; i++)
-                                {
-                                    uxMessagesLB.Items.Add(messages.ElementAt(i));
-                                }
-
-                            }));
-                        }
-                        else
-                        {
-                            for (int i = 0; i < messages.Count; i++)
-                            {
-                                uxMessagesLB.Items.Add(messages.ElementAt(i));
-                            }
-                        }
-
-                    }
-
-
-                }
-                */
-                uxChatroomsLB.EndUpdate();
+            
+            uxChatroomsLB.EndUpdate();
                 
 
             
@@ -585,10 +476,15 @@ namespace FinalProject
         {
             if(uxContactListBox.SelectedIndex != -1)
             {
-                int selectedChat = uxChatroomsLB.SelectedIndex;
+
+                string line = uxChatroomsLB.SelectedItem.ToString();
+
+                string[] things = line.Split(':');
+
+                int chatID = Convert.ToInt32(things[0]);
+
                 int selectedUser = uxContactListBox.SelectedIndex;
                 string username = _model.ContactList.Keys.ElementAt(selectedUser);
-                int chatID = _model.ChatRooms.Keys.ElementAt(selectedChat);
 
                 string[] arr = { "NU", chatID.ToString(), username };
                 _handle(this, arr);
