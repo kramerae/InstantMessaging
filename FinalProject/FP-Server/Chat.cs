@@ -19,13 +19,8 @@ namespace FP_Server
                 {
                     string temp = _storage.Dequeue();
                     Sessions.Broadcast(temp);
-
                 }
-
-
             }
-
-
         }
 
         protected override void OnMessage(MessageEventArgs e)

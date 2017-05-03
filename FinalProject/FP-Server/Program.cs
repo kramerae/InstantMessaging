@@ -29,7 +29,6 @@ namespace FP_Server
         static void Main(string[] args)
         {
             // Construct model
-
              ServerDatabase d = new ServerDatabase();
 
             // Construct Server Controlller
@@ -44,23 +43,12 @@ namespace FP_Server
             // Add the Echo websocket service
             //wss.AddWebSocketService<Echo>("/echo");
             
-
-
-
-
-
-
-
             // Add the Chat websocket service
             wss.AddWebSocketService<ServerController>("/chat", () => new ServerController(sf.UpdateListEvents, sf.UpdateUserLists, sf, sf.UpdateContacts, d));
 
             sf.Show();
 
             //Construct Form
-
-           
-
-
             Application.Run();
         
 

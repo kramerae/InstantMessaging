@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary
 {
+    //Packet class
     public class Packet
     {
         private Status _status;
@@ -21,12 +22,14 @@ namespace ClassLibrary
         private int _chatRoomID;
         private Dictionary<int, KeyValuePair<List<string>, List<string>>>_chatData;
 
+        //Constructor for the Packet class
         public Packet(Status status)
         {
             _status = status;
             _messageHistory = new List<string>();
         }
 
+        //Gets/Sets the user status
         public Status GetStatus
         {
             get
@@ -37,6 +40,7 @@ namespace ClassLibrary
                 _status = value;
             }
         }
+
         /// <summary>
         /// This is property for the username
         /// </summary>
@@ -45,7 +49,8 @@ namespace ClassLibrary
             get
             {
                 return _username;
-            }set
+            }
+            set
             {
                 _username = value;
             }
