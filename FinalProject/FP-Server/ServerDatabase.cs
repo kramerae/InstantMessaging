@@ -54,6 +54,14 @@ namespace FP_Server
         }
 
 
+        public Dictionary<string, bool> GetOnline
+        {
+            get
+            {
+                return _onLine;
+            }
+        }
+
         ///<summary>
         /// 
         ///</summary>
@@ -442,6 +450,7 @@ namespace FP_Server
             _onLine[s] = false;
             UpdateStatusOfAllUsers();
             _userPairing.Remove(s);
+            
 
         }
 

@@ -56,9 +56,9 @@ namespace FP_Server
             Updates(events);
         }
 
-        public void UpdateUserLists(string s)
+        public void UpdateUserLists(Dictionary<string,bool> d)
         {
-            UpdateUserListBox(s);
+            UpdateUserListBox(d);
 
         }
 
@@ -82,23 +82,23 @@ namespace FP_Server
         //Updates the list box of the users
         private void UpdateUserListBox(string s)
         {
-            ListViewItem s1 = new ListViewItem(s + " | Online");
+            //ListViewItem s1 = new ListViewItem(s + " | Online");
+            string p = s + " | Online";
+            //s1.SubItems.Add("s");
+            //s1.SubItems.Add("Online");
 
-            s1.SubItems.Add("s");
-            s1.SubItems.Add("Online");
-
-            if (uxListViewUsers.InvokeRequired)
+            if (uxListBoxUserNames.InvokeRequired)
             {
-                Invoke(new MethodInvoker(delegate () { uxListViewUsers.Items.Add(s1); }));
+                Invoke(new MethodInvoker(delegate () { uxListBoxUserNames.Items.Add(p); }));
 
 
             }else
             {
-                uxListViewUsers.Items.Add(s1);
+                uxListBoxUserNames.Items.Add(p);
             }
 
               
-            uxListViewUsers.EndUpdate();
+            uxListBoxUserNames.EndUpdate();
 
 
 
@@ -112,8 +112,115 @@ namespace FP_Server
 
             }*/
 
-            uxListBoxUsers.EndUpdate();
+            uxListBoxContacts.EndUpdate();
         }
+
+        private void UpdateUserListBox(Dictionary<string, bool> d)
+        {
+            //ListViewItem s1 = new ListViewItem(s + " | Online");
+            // string p = s + " | Online";
+            //s1.SubItems.Add("s");
+            //s1.SubItems.Add("Online");
+            if (uxListBoxUserNames.InvokeRequired)
+            {
+                Invoke(new MethodInvoker(delegate ()
+                {
+                    uxListBoxUserNames.Items.Clear();
+
+
+                }));
+            }
+            else
+            {
+                uxListBoxUserNames.Items.Clear();
+            }
+
+                
+            uxListBoxUserNames.EndUpdate();
+            foreach(KeyValuePair<string, bool> kvp in d)
+            {
+                string s = kvp.Key;
+                if (uxListBoxUserNames.InvokeRequired)
+                {
+                    Invoke(new MethodInvoker(delegate ()
+                    {
+                        if (kvp.Value == true)
+                        {
+
+                            s += (" | Online");
+
+
+                        }
+                        else
+                        {
+                            s += (" | Offline");
+                        }
+
+                        uxListBoxUserNames.Items.Add(s);
+                    }));
+                }else
+                {
+                    if (kvp.Value == true)
+                    {
+
+                        s += (" | Online");
+
+
+                    }
+                    else
+                    {
+                        s += (" | Offline");
+                    }
+
+                    uxListBoxUserNames.Items.Add(s);
+
+
+                }
+
+
+            }
+
+
+
+           /* if (uxListBoxUserNames.InvokeRequired)
+            {
+                Invoke(new MethodInvoker(delegate () {
+
+                    
+
+
+
+                    uxListBoxUserNames.Items.Add(p);
+
+
+                }));
+
+
+            }
+            else
+            {
+                uxListBoxUserNames.Items.Add(p);
+            }
+
+
+            uxListBoxUserNames.EndUpdate();*/
+
+
+
+            /*for(int i = 0; i < uxListViewUsers.Items.Count; i++)
+            {
+                if(s == (string)uxListViewUsers.Items[i].Name)
+              {
+                    checkedListBoxUsers.CheckedItems[i] = true;
+                    break;
+                }
+
+            }*/
+
+            uxListBoxContacts.EndUpdate();
+        }
+
+
 
         //Updates the Contacts
         public void UpdateContacts()
@@ -153,6 +260,8 @@ namespace FP_Server
             }
         }
 
+        
+
 
         //Writes the log and users when the form closes
         private void ServerForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -168,5 +277,28 @@ namespace FP_Server
             sd.WriteToFile();
             Application.ExitThread();
         }
+
+        private void uxListBoxUserNames_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int selected = uxListBoxUserNames.SelectedIndex;
+            string item = (string)uxListBoxUserNames.Items[selected];
+
+            string[] items = item.Split(' ');
+
+            Dictionary<string, bool> d = sd.GetContacts(items[0]);
+
+            uxListBoxContacts.EndUpdate();
+
+            foreach(string name in d.Keys)
+            {
+
+                uxListBoxContacts.Items.Add(name);
+
+            }
+            uxListBoxContacts.EndUpdate();
+
+        }
+
+     
     }
 }

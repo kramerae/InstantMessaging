@@ -30,12 +30,10 @@
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.uxListViewUsers = new System.Windows.Forms.ListView();
-            this.Username = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.OnlineStatus = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.uxListBoxUserNames = new System.Windows.Forms.ListBox();
             this.usersLabel = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.uxListBoxUsers = new System.Windows.Forms.ListBox();
+            this.uxListBoxContacts = new System.Windows.Forms.ListBox();
             this.uxLabelContacts = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
@@ -72,37 +70,21 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.uxListViewUsers);
+            this.panel1.Controls.Add(this.uxListBoxUserNames);
             this.panel1.Controls.Add(this.usersLabel);
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(283, 344);
             this.panel1.TabIndex = 0;
             // 
-            // uxListViewUsers
+            // uxListBoxUserNames
             // 
-            this.uxListViewUsers.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.Username,
-            this.OnlineStatus});
-            this.uxListViewUsers.GridLines = true;
-            this.uxListViewUsers.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.uxListViewUsers.Location = new System.Drawing.Point(7, 25);
-            this.uxListViewUsers.Name = "uxListViewUsers";
-            this.uxListViewUsers.Size = new System.Drawing.Size(273, 303);
-            this.uxListViewUsers.TabIndex = 1;
-            this.uxListViewUsers.UseCompatibleStateImageBehavior = false;
-            this.uxListViewUsers.View = System.Windows.Forms.View.List;
-            // 
-            // Username
-            // 
-            this.Username.Text = "Username";
-            this.Username.Width = 125;
-            // 
-            // OnlineStatus
-            // 
-            this.OnlineStatus.Text = "Online Status";
-            this.OnlineStatus.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.OnlineStatus.Width = 130;
+            this.uxListBoxUserNames.FormattingEnabled = true;
+            this.uxListBoxUserNames.Location = new System.Drawing.Point(4, 25);
+            this.uxListBoxUserNames.Name = "uxListBoxUserNames";
+            this.uxListBoxUserNames.Size = new System.Drawing.Size(279, 303);
+            this.uxListBoxUserNames.TabIndex = 1;
+            this.uxListBoxUserNames.SelectedIndexChanged += new System.EventHandler(this.uxListBoxUserNames_SelectedIndexChanged);
             // 
             // usersLabel
             // 
@@ -116,7 +98,7 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.uxListBoxUsers);
+            this.panel2.Controls.Add(this.uxListBoxContacts);
             this.panel2.Controls.Add(this.uxLabelContacts);
             this.panel2.Location = new System.Drawing.Point(292, 3);
             this.panel2.Name = "panel2";
@@ -124,13 +106,13 @@
             this.panel2.TabIndex = 1;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
-            // uxListBoxUsers
+            // uxListBoxContacts
             // 
-            this.uxListBoxUsers.FormattingEnabled = true;
-            this.uxListBoxUsers.Location = new System.Drawing.Point(7, 25);
-            this.uxListBoxUsers.Name = "uxListBoxUsers";
-            this.uxListBoxUsers.Size = new System.Drawing.Size(261, 303);
-            this.uxListBoxUsers.TabIndex = 1;
+            this.uxListBoxContacts.FormattingEnabled = true;
+            this.uxListBoxContacts.Location = new System.Drawing.Point(7, 25);
+            this.uxListBoxContacts.Name = "uxListBoxContacts";
+            this.uxListBoxContacts.Size = new System.Drawing.Size(261, 303);
+            this.uxListBoxContacts.TabIndex = 1;
             // 
             // uxLabelContacts
             // 
@@ -287,7 +269,7 @@
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.ListBox uxListBoxUsers;
+        private System.Windows.Forms.ListBox uxListBoxContacts;
         private System.Windows.Forms.Label uxLabelContacts;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label usersLabel;
@@ -299,11 +281,9 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.ListBox uxEventListBox;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.ListView uxListViewUsers;
-        internal System.Windows.Forms.ColumnHeader Username;
-        private System.Windows.Forms.ColumnHeader OnlineStatus;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button uxButtonClearServerLog;
         private System.Windows.Forms.Button uxSaveLogBtn;
+        private System.Windows.Forms.ListBox uxListBoxUserNames;
     }
 }

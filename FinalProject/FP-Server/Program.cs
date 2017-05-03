@@ -11,7 +11,7 @@ using FP_Server.Model;
 namespace FP_Server
 {
     public delegate void Observer();
-    public delegate void UserListUpdates(string s);
+    public delegate void UserListUpdates(Dictionary<string, bool> d);
     public delegate void UpdateEvent(string s);
     public delegate void Logout(string s);
     public delegate void UpdateContacts(Dictionary<string, User_m> d);
