@@ -266,7 +266,7 @@ namespace FinalProject
 
                                     for (int i = 0; i < messages.Count; i++)
                                     {
-                                        uxContactListBox.Items.Add(messages.ElementAt(i));
+                                        uxMessagesLB.Items.Add(messages.ElementAt(i));
                                     }
                                     /*
                                 foreach (string s in m.Value.Value)
@@ -281,7 +281,7 @@ namespace FinalProject
                             {
                                 for (int i = 0; i < messages.Count; i++)
                                 {
-                                    uxContactListBox.Items.Add(messages.ElementAt(i));
+                                    uxMessagesLB.Items.Add(messages.ElementAt(i));
                                 }
                             }
                         }
@@ -360,6 +360,8 @@ namespace FinalProject
 
             string[] arr = { "IM", chatID.ToString(), message};
             _handle(this, arr);
+
+            uxText.Text = "";
         }
 
         private void ClientMenu_Load(object sender, EventArgs e)
