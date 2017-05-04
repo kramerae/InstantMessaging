@@ -98,6 +98,7 @@ namespace FinalProject
 
                 case Status.addContactChatSuccess:
                     _model.ChatRooms = p.ChatData;
+                    updateForms();
                     break;
             }
 
