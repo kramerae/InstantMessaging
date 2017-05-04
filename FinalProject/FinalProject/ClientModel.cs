@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace FinalProject
 {
-    //ClientModel class
+    /// <summary>
+    /// ClientModel class
+    /// </summary>
     public class ClientModel : IClientModel
     {
         private string _id;
@@ -14,19 +16,21 @@ namespace FinalProject
         private bool _loginStatus;
         private Dictionary<string, bool> _contactList;
         private bool _addcontact = true;
-
-        
         private Dictionary<int, KeyValuePair<List<string>, List<string>>> _chatRooms; // Dictionary <chatroomid, KeyValuePair<usernames, messages>>
         private List<string> messages;
-        
-        
-        //Client Model constructor
+
+
+        /// <summary>
+        /// Client Model constructor
+        /// </summary>
         public ClientModel()
         {
             
         }
-        
-        //Gets and sets the ID
+
+        /// <summary>
+        /// Gets and sets the clients ID
+        /// </summary>
         public string ID
         {
             get
@@ -39,7 +43,9 @@ namespace FinalProject
             }
         }
 
-        //Gets and sets the Username
+        /// <summary>
+        /// Gets and sets the cleints Username
+        /// </summary>
         public string Username
         {
             get
@@ -52,7 +58,9 @@ namespace FinalProject
             }
         }
 
-        //Gets and sets the login status
+        /// <summary>
+        /// Gets and sets the login status
+        /// </summary>
         public bool LoginStatus
         {
             get
@@ -65,7 +73,9 @@ namespace FinalProject
             }
         }
 
-        //Gets and sets the contact list
+        /// <summary>
+        /// Gets and sets the contact list
+        /// </summary>
         public Dictionary<string, bool> ContactList
         {
             get
@@ -78,7 +88,10 @@ namespace FinalProject
             }
         }
 
-        //gets and sets the dictionary of chat rooms
+        /// <summary>
+        /// Gets and sets the dictionary of chat rooms 
+        /// Includes chat room #, users, and message history
+        /// </summary>
         public Dictionary<int, KeyValuePair<List<string>, List<string>>> ChatRooms
         {
             get
@@ -91,7 +104,9 @@ namespace FinalProject
             }
         }
 
-        //gets and sets add contact field
+        /// <summary>
+        /// Gets and sets add contact field
+        /// </summary>
         public bool AddContact
         {
             get

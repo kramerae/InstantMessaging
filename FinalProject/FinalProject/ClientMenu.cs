@@ -96,6 +96,15 @@ namespace FinalProject
             string name = uxAddNameText.Text;
             if (name.Count() > 0)
             {
+                for (int i = 0; i < _model.ContactList.Count; i++)
+                {
+                    if(_model.ContactList.ContainsKey(name))
+                    {
+                        MessageBox.Show("Contact already exists in your list!");
+                        break;
+                    }
+                }
+
                 string[] arr = { "AC", name };
                 _handle(this, arr);
             }
