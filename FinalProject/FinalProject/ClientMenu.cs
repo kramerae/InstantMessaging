@@ -420,12 +420,13 @@ namespace FinalProject
         }
 
         /// <summary>
-        /// Event handler for selecting chat room 
+        /// Event handler for selecting chat room from list box
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void uxChatroomsLB_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // Updates Message list box depending on selected chatroom
             _selected = uxChatroomsLB.SelectedIndex;
             uxAddChatMember.Enabled = true;
             UpdateMessageListBox();
@@ -442,10 +443,15 @@ namespace FinalProject
         {
 
         }
-
-
+        
+        /// <summary>
+        /// Event handler for hitting the send button on the chat view
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void uxSend_Click(object sender, EventArgs e)
         {
+            // Gets text to send
             string txt = uxText.Text;
             string message = _model.Username + ": " + txt;
 
@@ -457,6 +463,7 @@ namespace FinalProject
             }
             else
             {
+                // Gets chatroom
                 string line = uxChatroomsLB.SelectedItem.ToString();
 
                 string[] things = line.Split(':');
@@ -464,6 +471,8 @@ namespace FinalProject
                 int chatID = Convert.ToInt32(things[0]);
 
                 string[] arr = { "IM", chatID.ToString(), message };
+
+                // Calls handler
                 _handle(this, arr);
 
                 uxText.Text = "";
@@ -471,30 +480,49 @@ namespace FinalProject
             
         }
 
+        /// <summary>
+        /// Event handler for loading the form
+        /// Loads the contact list upon loading the form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ClientMenu_Load(object sender, EventArgs e)
         {
             UpdateContactList();
         }
 
+        /// <summary>
+        /// Event handler for typing in add contact textbox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void uxAddNameText_TextChanged(object sender, EventArgs e)
         {
+            // Enables button to add contact
             uxAddContact.Enabled = true;
         }
 
+        /// <summary>
+        /// Event handler for adding contact to chatroom
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void uxAddChatMember_Click(object sender, EventArgs e)
         {
             if(uxContactListBox.SelectedIndex != -1)
             {
-
+                // Get current chat room
                 string line = uxChatroomsLB.SelectedItem.ToString();
 
                 string[] things = line.Split(':');
 
                 int chatID = Convert.ToInt32(things[0]);
 
+                // Finds user selected to add
                 int selectedUser = uxContactListBox.SelectedIndex;
                 string username = _model.ContactList.Keys.ElementAt(selectedUser);
 
+                // Calls input handler
                 string[] arr = { "NU", chatID.ToString(), username };
                 _handle(this, arr);
             }
