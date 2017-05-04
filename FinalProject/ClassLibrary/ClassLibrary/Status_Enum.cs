@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary
 {
+        //enum class
         public enum Status {
             loginValidate,              //0
             connectionSuccess,          //1
