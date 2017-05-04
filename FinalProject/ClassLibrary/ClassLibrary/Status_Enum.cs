@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary
 {
-        //enum class
+    /// <summary>
+    /// enum for statuses used in the packets being sent
+    /// </summary>
         public enum Status {
             loginValidate,              //0
             connectionSuccess,          //1

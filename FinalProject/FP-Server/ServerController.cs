@@ -450,13 +450,22 @@ namespace FP_Server
         {
             _database.AddUserToChatRoom(p.GetChatID, p.DestinationUsername);
 
+            List<string> users = _database.GetUsersChat(p.GetChatID);
+
+
             Packet temp = new Packet(Status.addContactChatSuccess);
             temp.ChatData = _database.GetChatRoomData(p.GetChatID);
 
 /*############################################################ NEED TO WRITE ##############################*/
-
-            for()
-
+            /*
+            * TO DO:
+            * Need to loop through each user in the contact room and send the message.
+            * Also need to figure out how to send the message to the user.
+            * */
+            for(int i = 0; i < users.Count; i++)
+            {
+                Sessions.SendTo(JsonConvert.SerializeObject(temp), _database.GetID(users[i]));
+            }
 
             _u("User " + p.DestinationUsername + " added to chatroom " + p.GetChatID);
         }

@@ -9,6 +9,12 @@ namespace ClassLibrary
     public static class ConvertTos
     {
 
+        /// <summary>
+        /// UNUSED
+        /// </summary>
+        /// <param name="x"></param>
+        /// <returns></returns>
+
         public static Status ConvertToStatus(int x)
         {
             switch (x)
