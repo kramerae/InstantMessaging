@@ -10,10 +10,11 @@ using System.Windows.Forms;
 
 namespace FinalProject
 {
-    //Client Menu Form
+    /// <summary>
+    /// Client Menu Form
+    /// </summary>
     public partial class ClientMenu : Form
     {
-       // private ClientController _c;
         private ClientModel _model;
         private InputHandler _handle;
         private int _selected;
@@ -111,13 +112,14 @@ namespace FinalProject
         /// <param name="e"></param>
         private void uxStartChat_Click(object sender, EventArgs e)
         {
-            
+            // Finds Username to start chat with
             string item = uxContactListBox.SelectedItem.ToString();
             char[] delimiterChars = { ' ', '|', '\t' };
             string[] words = item.Split(delimiterChars);
 
             if (words[0] != null)
             {
+                // Input handler is called
                 string[] arr = { "SC", words[0] };
                 _handle(this, arr);
                 MessageBox.Show("Creating Chat Room. ");
@@ -129,7 +131,7 @@ namespace FinalProject
         }
 
         /// <summary>
-        /// Updates the contact list on the form
+        /// Calls handler to update the contact list on the form
         /// </summary>
         public void UpdateContactList()
         {
@@ -168,6 +170,7 @@ namespace FinalProject
                 MessageBox.Show("Contact does not exist!");
             }
 
+            
             Dictionary<string, bool> contacts = _model.ContactList;
         
             uxContactListBox.EndUpdate();
@@ -227,7 +230,9 @@ namespace FinalProject
             uxContactListBox.EndUpdate();
         }
 
-        //Updates the chat room list box
+        /// <summary>
+        /// Updates the chat room list box
+        /// </summary>
         public void UpdateChatRoomListBox()
         {
             Dictionary<int, KeyValuePair<List<string>, List<string>>> chatrooms = _model.ChatRooms;
@@ -250,7 +255,7 @@ namespace FinalProject
                 uxChatroomsLB.Items.Clear();
             }
 
-
+            // Add chatroom # & users to listbox
             if (chatrooms != null)
             {
                 foreach (KeyValuePair<int, KeyValuePair<List<string>, List<string>>> r in chatrooms)
@@ -291,7 +296,9 @@ namespace FinalProject
             uxChatroomsLB.EndUpdate();
         }
 
-        //
+        /// <summary>
+        /// Updates the message list box
+        /// </summary>
         public void UpdateMessageListBox()
         {
             Dictionary<int, KeyValuePair<List<string>, List<string>>> chatrooms = _model.ChatRooms;
@@ -315,7 +322,7 @@ namespace FinalProject
             }
 
 
-
+            // Add messages to message list box
             if (chatrooms != null)
             {
                 if (uxMessagesLB.InvokeRequired)
@@ -327,6 +334,7 @@ namespace FinalProject
 
                         if (selected != -1)
                         {
+                            // finds correct chatroom
                             string line = uxChatroomsLB.SelectedItem.ToString();
 
                             string[] things = line.Split(':');
@@ -335,6 +343,7 @@ namespace FinalProject
 
                             List<string> messages  = chatrooms[chatID].Value;
                             
+                            // Adds messages to specific chatroom listbox
                             if (uxMessagesLB.InvokeRequired)
                             {
                                 Invoke(new MethodInvoker(delegate ()
@@ -407,15 +416,14 @@ namespace FinalProject
 
 
             }
-
-            
             uxChatroomsLB.EndUpdate();
-                
-
-            
         }
 
-
+        /// <summary>
+        /// Event handler for selecting chat room 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void uxChatroomsLB_SelectedIndexChanged(object sender, EventArgs e)
         {
             _selected = uxChatroomsLB.SelectedIndex;
@@ -423,15 +431,18 @@ namespace FinalProject
             UpdateMessageListBox();
         }
 
+        // Unused
         private void uxMessagesLB_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
 
+        // Unused
         private void uxText_TextChanged(object sender, EventArgs e)
         {
 
         }
+
 
         private void uxSend_Click(object sender, EventArgs e)
         {
@@ -439,8 +450,6 @@ namespace FinalProject
             string message = _model.Username + ": " + txt;
 
             
-
-
             int selected = uxChatroomsLB.SelectedIndex;
             if(selected == -1)
             {
