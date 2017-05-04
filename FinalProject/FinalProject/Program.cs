@@ -10,12 +10,6 @@ namespace FinalProject
 
     public delegate void InputHandler(object sender, string[] items);
 
-    public delegate void LoginObserver(); 
-
-    public delegate void MenuObserver();
-
-    public delegate void UpdateContactList();
-
     static class Program
     {
         
@@ -41,7 +35,6 @@ namespace FinalProject
             loginform.ShowDialog();
             if (loginform.DialogResult != DialogResult.Cancel)
             {
-               // MessageBox.Show("WORKED");
                 // Create instance of client menu
                 ClientMenu menu = new ClientMenu(c.handle, model);
                 menu.Show();
