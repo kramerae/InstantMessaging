@@ -21,6 +21,10 @@ namespace FinalProject
 
         public event Message MessageEvent;
 
+        /// <summary>
+        /// Constructs the controller and connects to the websocket being used
+        /// </summary>
+        /// <param name="m">model being used in controller construction</param>
         public ClientController(ClientModel m)
         {
             _model = m;
