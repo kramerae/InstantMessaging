@@ -22,7 +22,10 @@ namespace ClassLibrary
         private int _chatRoomID;
         private Dictionary<int, KeyValuePair<List<string>, List<string>>>_chatData;
 
-        //Constructor for the Packet class
+        /// <summary>
+        /// Constructor for the Packet class
+        /// </summary>
+        /// <param name="status">status of packet being processed</param>
         public Packet(Status status)
         {
             _status = status;
