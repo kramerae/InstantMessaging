@@ -225,6 +225,7 @@ namespace FinalProject
                     p7.GetID = _model.ID;
                     p7.GetChatID = Convert.ToInt32(items[1]);
                     p7.DestinationUsername = items[2];
+                    MessageEntered(p7);
                 }
                 else if(items[0] == "OUT")
                 {
