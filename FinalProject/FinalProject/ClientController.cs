@@ -12,33 +12,18 @@ namespace FinalProject
     public class ClientController
     {
         ClientModel _model;
-        //private string userName;
         private WebSocket ws;
-        private Dictionary<string, bool> contacts;
-        //private string _id;
 
         public delegate void Observer();
 
         private List<Observer> observers = new List<Observer>();
 
-        // private List<LoginObserver> observersLogin = new List<LoginObserver>();
-        //private List<MenuObserver> observersMenu = new List<MenuObserver>();
-      //  private bool loginStatus = false;
-
-        //UpdateContactList del1 = new UpdateContactList(); 
 
         public event Message MessageEvent;
 
         public ClientController(ClientModel m)
         {
             _model = m;
-
-            contacts = new Dictionary<string, bool>();
-            contacts.Add("Bob", true);
-            contacts.Add("Sally", false);
-            contacts.Add("Austin", true);
-
-
 
             // Connects to the server
             ws = new WebSocket("ws://127.0.0.1:8550/chat");
@@ -47,30 +32,12 @@ namespace FinalProject
 
 
         }
-
-
-        // REMOVE LATER
-        public Dictionary<string, bool> GetContacts
-        {
-            get
-            {
-                return contacts;
-            }
-        }
-
-        public bool LoginValidate(string name, string password)
-        {
-            bool validate;
-            // Call server to see if username and password match
-            // If new username creates a new account
-
-            // If validate is true store name in username
-            // Return bool result
-            return true;
-        }
-
-
-
+        
+        /// <summary>
+        /// Receives and deserializes the Json string and constructs a package object to be used
+        /// </summary>
+        /// <param name="message">Json string sent in to be deserialized</param>
+        /// <returns></returns>
         public bool MessageReceived(string message)
         {
             // Deseralize Packet 
@@ -135,6 +102,11 @@ namespace FinalProject
             return true;
         }
 
+        /// <summary>
+        /// Serializes and sends packet to server for processing
+        /// </summary>
+        /// <param name="p">Packet to be sent</param>
+        /// <returns></returns>
         public bool MessageEntered(Packet p)
         {
 
@@ -152,12 +124,17 @@ namespace FinalProject
             {
                 return false;
             }
-
-            ws.WaitTime = TimeSpan.FromSeconds(2);
+            
         }
 
 
-        // Handles when a new message is entered by the user
+        //DELETE LATER
+
+        /// <summary>
+        /// Handles when a new message is entered by the user
+        /// </summary>
+        /// <param name="message"></param>
+        /// <returns></returns>
         public bool MessageEntered(string message)
         {
             // Send the message to the server if connection is alive
@@ -174,6 +151,11 @@ namespace FinalProject
 
         }
 
+        /// <summary>
+        /// Method to handle input to create and pass packets to be sent to server
+        /// </summary>
+        /// <param name="sender">object sending info</param>
+        /// <param name="items">items array being parsed for info</param>
         public void handle(object sender, string[] items)
         {
             if (sender.GetType() == typeof(FinalProject.LoginForm))
@@ -253,12 +235,18 @@ namespace FinalProject
 
         }
 
+        /// <summary>
+        /// register observer
+        /// </summary>
+        /// <param name="f">observer being updated</param>
         public void register(Observer f)
         {
             observers.Add(f);
         }
 
-
+        /// <summary>
+        /// Updates forms in the view
+        /// </summary>
         public void updateForms()
         {
             foreach (Observer m in observers)
@@ -267,6 +255,9 @@ namespace FinalProject
             }
         }
 
+        /// <summary>
+        /// clears observer content
+        /// </summary>
         public void clearObservers()
         {
             observers = new List<Observer>();
