@@ -518,26 +518,34 @@ namespace FinalProject
         /// <param name="e"></param>
         private void uxAddChatMember_Click(object sender, EventArgs e)
         {
-            if(uxContactListBox.SelectedIndex != -1)
+            if (uxChatroomsLB.SelectedIndex != -1)
             {
-                // Get current chat room
-                string line = uxChatroomsLB.SelectedItem.ToString();
 
-                string[] things = line.Split(':');
+                if (uxContactListBox.SelectedIndex != -1)
+                {
+                    // Get current chat room
+                    string line = uxChatroomsLB.SelectedItem.ToString();
 
-                int chatID = Convert.ToInt32(things[0]);
+                    string[] things = line.Split(':');
 
-                // Finds user selected to add
-                int selectedUser = uxContactListBox.SelectedIndex;
-                string username = _model.ContactList.Keys.ElementAt(selectedUser);
+                    int chatID = Convert.ToInt32(things[0]);
 
-                // Calls input handler
-                string[] arr = { "NU", chatID.ToString(), username };
-                _handle(this, arr);
+                    // Finds user selected to add
+                    int selectedUser = uxContactListBox.SelectedIndex;
+                    string username = _model.ContactList.Keys.ElementAt(selectedUser);
+
+                    // Calls input handler
+                    string[] arr = { "NU", chatID.ToString(), username };
+                    _handle(this, arr);
+                }
+                else
+                {
+                    MessageBox.Show("You must select a contact from your contact list to add to the chat.");
+                }
             }
             else
             {
-                MessageBox.Show("You must select a contact from your contact list to add to the chat.");
+                MessageBox.Show("You must select a chatroom from your list to add to the chat.");
             }
         }
     }
